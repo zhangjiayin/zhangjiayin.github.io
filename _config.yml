@@ -28,7 +28,7 @@ twitter_username: zhangjiayin
 github_username:  zhangjiayin
 
 # Build settings
-theme: minima
+theme: jekyll-theme-slate
 plugins:
   - jekyll-feed
 
