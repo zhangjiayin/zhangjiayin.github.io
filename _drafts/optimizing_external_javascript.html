@@ -1,0 +1,72 @@
+---
+layout: post
+title: '优化外部js(Optimizing External Javascript: Be Lazy, And Efficient）'
+date: 
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '1'
+author: 
+permalink: "/"
+---
+<p>link: http://www.schillmania.com/content/entries/2009/defer-script-loading/</p>
+<h3>The Risks And Reality of Third-party Javascript</h3>
+<p>Ever had your site "broken" due to loading Javascript from a remote site that went down, effectively taking yours with it? Using third-party (remote) script references, security concerns aside, introduces a reliability risk and can effectively prevent your site from rendering, which happens more often than necessary - but is avoidable.</p>
+<p>Web 1.0 dHTML!! (San Francisco, 2005 on flickr.com)<br />
+"DHTML" at the Web 1.0 summit, SF (2005)</p>
+<p>With the current trend of web services springing up, there is no shortage of remote services driven by Javascript which you may want to add to your site via &lt;script&gt;. Web analytics, keyword and traffic services, commenting systems, bookmarking and JSON-formatted media feeds are a few common examples.</p>
+<h3>How &lt;script&gt; Can Break Your Site</h3>
+<p>Traditionally, a &lt;script&gt; node blocks (or "hangs") the browser while it is being processed, preventing the rest of the page from loading. Because document.write() or other javascript in the block may inject HTML into the document structure at parse time, browsers generally have to stop rendering in order to parse and evaluate the javascript block before continuing. This is undesirable.</p>
+<p>Where this becomes particularly troublesome is when including third-party javascript, eg., a remote analytics service. If this resource were slow to load, became unavailable or went offline, your site would be frozen while the browser hangs on an unresponsive or broken connection. Numerous large sites including TechCrunch have been hit by, and reported on issues arising from third-party scripts. Unnecessary "downtime" due to a third party bit of Javascript is an embarrassing annoyance which, if tied to blocking issues, can be avoided.</p>
+<h3>Avoiding Site Hang-Ups</h3>
+<p>Sometimes, it's good to be lazy for the sake of performance. There are a few ways to work around the blocking nature of script elements which load slowly, or perhaps don't load at all, from both local and third-party sites.</p>
+<p>The defer Attribute</p>
+<p>Despite being criticized for their IE-only features, Microsoft have come up with a number of good ones over the years (eg. xmlHttpRequest, among others.) It appears they also thought of the script blocking issue, as well.</p>
+<p>Internet Explorer has for years supported the defer attribute on &lt;script&gt; nodes, (reference) which instructs the browser to defer parse and execution of the script until a later time. This does not mean that script loading is deferred, so blocking of rendering may still occur even if the browser's "downloading and parsing" process is not interrupted.</p>
+<p>&lt;script type="text/javascript" src="foo.js" defer="defer"&gt;&lt;/script&gt;</p>
+<p>Deferring and document.write() calls are at odds with each other, so be careful when deferring scripts that use it.</p>
+<p>Though not universally-supported yet, Firefox 3.1 is reported to be introducing support for defer, as Opera does. (Source) Opera 9.5 also has a "deferred script loading" user preference, disabled by default, which reportedly can defer and supports document.write() calls as well. (Source)</p>
+<p>Performance gains can also be made by deferring script, as that the browser can focus on downloading content and doing layout before having to parse and execute potentially-expensive Javascript code which further modifies the DOM.</p>
+<p>Load Javascript Using.. Javascript</p>
+<p>Once the document has been parsed (DOMContentReady etc.) or within an inline script block, one may safely create and append &lt;script&gt; elements to the DOM dynamically via Javascript. Because the document has parsed and rendered, script requests no longer block rendering and their load, parse and execution are effectively deferred. This is safe provided that the code you're loading does not include use of document.write(), which will "blank" the page if called after parsing has completed.</p>
+<p>Dynamically-loading Javascript example</p>
+<p>Creating a script node, assigning the .src attribute and appending it to the document head. The script should be downloaded, parsed and executed immediately, as though it were referenced statically from HTML.</p>
+<pre lang="javascript">function loadScript(sURL) {
+var oS = document.createElement('script');
+oS.type = 'text/javascript';
+oS.src = sURL;
+document.getElementsByTagName('head')[0].appendChild(oS);
+};</pre>
+<p>Dynamically-loading Javascript (with readyState handler)</p>
+<p>Creating and appending a script node including an optional onload()-style event callback for when the script has loaded. This is useful in the case where you need to load a script which does not have a callback of its own (eg., code which defines a data structure but does not pass it to a predefined function.)</p>
+<p>function loadScript(sURL,fOnLoad) {<br />
+function scriptOnload() {<br />
+this.onreadystatechange = null;<br />
+this.onload = null;<br />
+window.setTimeout(fOnLoad,20);<br />
+};<br />
+var loadScriptHandler = function() {<br />
+var rs = this.readyState;<br />
+if (rs == 'loaded' || rs == 'complete') {<br />
+scriptOnload();<br />
+}<br />
+};<br />
+var oS = document.createElement('script');<br />
+oS.type = 'text/javascript';<br />
+if (fOnLoad) {<br />
+// hook into both possible events<br />
+oS.onreadystatechange = loadScriptHandler;<br />
+oS.onload = scriptOnload;<br />
+};<br />
+oS.src = sURL;<br />
+document.getElementsByTagName('head')[0].appendChild(oS);<br />
+};</p>
+<p>Cache Static Content Locally<br />
+This is self-explanatory, but is worth mentioning. If it's static content, why pull it from a remote source? It really should be served (and if possible, deferred) locally.</p>
+<p>Is It Worth Doing?<br />
+Though defer and dynamic loading both make script behave asynchronously, the approach should be quite familiar to modern developers used to working with Ajax-style applications. Ultimately, this method trades a change in programming style for a more failure-proof method which can also improve initial page render and perceived performance.</p>

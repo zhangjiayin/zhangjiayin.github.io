@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>netstat 命令指南 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="netstat 命令指南" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="http://www.cyberciti.biz/tips/netstat-command-tutorial-examples.html" />
+<meta property="og:description" content="http://www.cyberciti.biz/tips/netstat-command-tutorial-examples.html" />
+<link rel="canonical" href="http://localhost:4000/2009/02/netstat-%E5%91%BD%E4%BB%A4%E6%8C%87%E5%8D%97.html" />
+<meta property="og:url" content="http://localhost:4000/2009/02/netstat-%E5%91%BD%E4%BB%A4%E6%8C%87%E5%8D%97.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2009-02-25T16:01:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="netstat 命令指南" />
+<script type="application/ld+json">
+{"headline":"netstat 命令指南","url":"http://localhost:4000/2009/02/netstat-%E5%91%BD%E4%BB%A4%E6%8C%87%E5%8D%97.html","dateModified":"2009-02-25T16:01:00+08:00","datePublished":"2009-02-25T16:01:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2009/02/netstat-%E5%91%BD%E4%BB%A4%E6%8C%87%E5%8D%97.html"},"description":"http://www.cyberciti.biz/tips/netstat-command-tutorial-examples.html","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">netstat 命令指南</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2009-02-25T16:01:00+08:00" itemprop="datePublished">Feb 25, 2009
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>http://www.cyberciti.biz/tips/netstat-command-tutorial-examples.html</p>
+
+<p>netstat command and shell pipe feature can be used to dig out more information about particular IP address connection. You can find out total established connections, closing connection, SYN and FIN bits and much more. You can also display summary statistics for each protocol using netstat.</p>
+
+<p>This is useful to find out if <strong>your server is under attack</strong> or not. You can also <strong>list abusive IP address</strong> using this method.<br />
+<code class="language-plaintext highlighter-rouge"># netstat -nat | awk '{print $6}' | sort | uniq -c | sort -n</code><br />
+Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 CLOSE_WAIT
+1 established)
+1 Foreign
+3 FIN_WAIT1
+3 LAST_ACK
+13 ESTABLISHED
+17 LISTEN
+154 FIN_WAIT2
+327 TIME_WAIT
+</code></pre></div></div>
+
+<p>Dig out more information about a specific ip address:<br />
+<code class="language-plaintext highlighter-rouge"># netstat -nat |grep {IP-address} | awk '{print $6}' | sort | uniq -c | sort -n</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 LAST_ACK
+2 LISTEN
+4 FIN_WAIT1
+14 ESTABLISHED
+91 TIME_WAIT
+130 FIN_WAIT2
+</code></pre></div></div>
+
+<p>Busy server can give out more information:<br />
+<code class="language-plaintext highlighter-rouge"># netstat -nat |grep 202.54.1.10 | awk '{print $6}' | sort | uniq -c | sort -n</code><br />
+Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15 CLOSE_WAIT
+37 LAST_ACK
+64 FIN_WAIT_1
+65 FIN_WAIT_2
+1251 TIME_WAIT
+3597 SYN_SENT
+5124 ESTABLISHED
+</code></pre></div></div>
+
+<h2 id="get-list-of-all-unique-ip-address">Get List Of All Unique IP Address</h2>
+
+<p>To print list of all unique IP address connected to server, enter:<br />
+<code class="language-plaintext highlighter-rouge"># netstat -nat | awk '{ print $5}' | cut -d: -f1 | sed -e '/^$/d' | uniq</code><br />
+To print total of all unique IP address, enter:<br />
+<code class="language-plaintext highlighter-rouge"># netstat -nat | awk '{ print $5}' | cut -d: -f1 | sed -e '/^$/d' | uniq | wc -l</code><br />
+Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>449
+</code></pre></div></div>
+
+<h2 id="find-out-if-box-is-under-dos-attack-or-not">Find Out If Box is Under DoS Attack or Not</h2>
+
+<p>If you think your Linux box is under attack, print out a list of open connections on your box and sorts them by according to IP address, enter:<br />
+<code class="language-plaintext highlighter-rouge"># netstat -atun | awk '{print $5}' | cut -d: -f1 | sed -e '/^$/d' |sort | uniq -c | sort -n</code><br />
+Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 10.0.77.52
+2 10.1.11.3
+4 12.109.42.21
+6 12.191.136.3
+.....
+...
+....
+13 202.155.209.202
+18 208.67.222.222
+28 0.0.0.0
+
+233 127.0.0.1
+</code></pre></div></div>
+
+<p>You can simply block all abusive <a href="http://www.cyberciti.biz/faq/how-do-i-block-an-ip-on-my-linux-server/">IPs using iptables</a> or just <a href="http://www.cyberciti.biz/tips/how-do-i-drop-or-block-attackers-ip-with-null-routes.html">null route them</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>etc.
+
+转略..
+</code></pre></div></div>
+
+<p>]]&gt;</p>
+
+
+  </div><a class="u-url" href="/2009/02/netstat-%E5%91%BD%E4%BB%A4%E6%8C%87%E5%8D%97.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

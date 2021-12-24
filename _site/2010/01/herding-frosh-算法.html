@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>herding frosh 算法 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="herding frosh 算法" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */ public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;&amp; p2.y == 0 &amp;&amp; p1.x * p2.x &lt;= 0) return p1.x &gt; p2.x; if (p1.y == 0 &amp;&amp; p1.x &gt;= 0 &amp;&amp; p2.y != 0) return true; if (p2.y == 0 &amp;&amp; p2.x &gt;= 0 &amp;&amp; p1.y != 0) return false; if (p1.y * p2.y &lt; 0) return p1.y &gt; p2.y; double c = cross(p1, p2); return c &gt; 0 || c == 0 &amp;&amp; Math.abs(p1.x) &lt; Math.abs(p2.x); } /** * determine if o -&gt; p1 -&gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &gt; 0 || c == 0 &amp;&amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &amp;gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;amp;&amp;amp; p2.y == 0 &amp;amp;&amp;amp; p1.x * p2.x &amp;lt;= 0) return p1.x &amp;gt; p2.x; if (p1.y == 0 &amp;amp;&amp;amp; p1.x &amp;gt;= 0 &amp;amp;&amp;amp; p2.y != 0) return true; if (p2.y == 0 &amp;amp;&amp;amp; p2.x &amp;gt;= 0 &amp;amp;&amp;amp; p1.y != 0) return false; if (p1.y * p2.y &amp;lt; 0) return p1.y &amp;gt; p2.y; double c = cross(p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; Math.abs(p1.x) &amp;lt; Math.abs(p2.x); } /** * determine if o -&amp;gt; p1 -&amp;gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &amp;lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } &lt;/k-1&gt;&lt;/treescount&gt;&lt;/k-1&gt;&lt;/treescount&gt;" />
+<meta property="og:description" content="package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */ public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;&amp; p2.y == 0 &amp;&amp; p1.x * p2.x &lt;= 0) return p1.x &gt; p2.x; if (p1.y == 0 &amp;&amp; p1.x &gt;= 0 &amp;&amp; p2.y != 0) return true; if (p2.y == 0 &amp;&amp; p2.x &gt;= 0 &amp;&amp; p1.y != 0) return false; if (p1.y * p2.y &lt; 0) return p1.y &gt; p2.y; double c = cross(p1, p2); return c &gt; 0 || c == 0 &amp;&amp; Math.abs(p1.x) &lt; Math.abs(p2.x); } /** * determine if o -&gt; p1 -&gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &gt; 0 || c == 0 &amp;&amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &amp;gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;amp;&amp;amp; p2.y == 0 &amp;amp;&amp;amp; p1.x * p2.x &amp;lt;= 0) return p1.x &amp;gt; p2.x; if (p1.y == 0 &amp;amp;&amp;amp; p1.x &amp;gt;= 0 &amp;amp;&amp;amp; p2.y != 0) return true; if (p2.y == 0 &amp;amp;&amp;amp; p2.x &amp;gt;= 0 &amp;amp;&amp;amp; p1.y != 0) return false; if (p1.y * p2.y &amp;lt; 0) return p1.y &amp;gt; p2.y; double c = cross(p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; Math.abs(p1.x) &amp;lt; Math.abs(p2.x); } /** * determine if o -&amp;gt; p1 -&amp;gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &amp;lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } &lt;/k-1&gt;&lt;/treescount&gt;&lt;/k-1&gt;&lt;/treescount&gt;" />
+<link rel="canonical" href="http://localhost:4000/2010/01/herding-frosh-%E7%AE%97%E6%B3%95.html" />
+<meta property="og:url" content="http://localhost:4000/2010/01/herding-frosh-%E7%AE%97%E6%B3%95.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2010-01-19T07:33:59+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="herding frosh 算法" />
+<script type="application/ld+json">
+{"headline":"herding frosh 算法","url":"http://localhost:4000/2010/01/herding-frosh-%E7%AE%97%E6%B3%95.html","dateModified":"2010-01-19T07:33:59+08:00","datePublished":"2010-01-19T07:33:59+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2010/01/herding-frosh-%E7%AE%97%E6%B3%95.html"},"description":"package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */ public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;&amp; p2.y == 0 &amp;&amp; p1.x * p2.x &lt;= 0) return p1.x &gt; p2.x; if (p1.y == 0 &amp;&amp; p1.x &gt;= 0 &amp;&amp; p2.y != 0) return true; if (p2.y == 0 &amp;&amp; p2.x &gt;= 0 &amp;&amp; p1.y != 0) return false; if (p1.y * p2.y &lt; 0) return p1.y &gt; p2.y; double c = cross(p1, p2); return c &gt; 0 || c == 0 &amp;&amp; Math.abs(p1.x) &lt; Math.abs(p2.x); } /** * determine if o -&gt; p1 -&gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &gt; 0 || c == 0 &amp;&amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } package programming.challenges; import java.util.Arrays; /** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */public class HerdingTrees { private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &amp;gt; b ? b : a; } /** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); } /** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; } /** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); } /** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) { if (p1.y == 0 &amp;amp;&amp;amp; p2.y == 0 &amp;amp;&amp;amp; p1.x * p2.x &amp;lt;= 0) return p1.x &amp;gt; p2.x; if (p1.y == 0 &amp;amp;&amp;amp; p1.x &amp;gt;= 0 &amp;amp;&amp;amp; p2.y != 0) return true; if (p2.y == 0 &amp;amp;&amp;amp; p2.x &amp;gt;= 0 &amp;amp;&amp;amp; p1.y != 0) return false; if (p1.y * p2.y &amp;lt; 0) return p1.y &amp;gt; p2.y; double c = cross(p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; Math.abs(p1.x) &amp;lt; Math.abs(p2.x); } /** * determine if o -&amp;gt; p1 -&amp;gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &amp;lt; 0; } /** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) { int[] hulls = new int[1000]; int i, j, k; int treesCount = trees.length; // the special case if (treesCount == 0) { return 2.0; } // sort all trees by their angle in polar coordinate system Arrays.sort(trees); double ans = 1e9; // start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k=&quot;0;&quot; for j treescount int p=&quot;(i+j)&quot; while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; } // calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans=&quot;min(ans,&quot; print solution don forget to plus return public static void main argv tree new double a=&quot;new&quot; herdingtrees system.out.println trees2=&quot;{new&quot; b=&quot;new&quot; class implements comparable&gt; { public double x = 0; public double y = 0; public Tree(int x, int y) { this.x = x; this.y = y; } public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1; } } &lt;/k-1&gt;&lt;/treescount&gt;&lt;/k-1&gt;&lt;/treescount&gt;","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">herding frosh 算法</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2010-01-19T07:33:59+08:00" itemprop="datePublished">Jan 19, 2010
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package programming.challenges;
+import java.util.Arrays;
+/**
+* Created by IntelliJ IDEA.
+* User: zhangjiayin
+* Date: Jan 13, 2010
+* Time: 7:15:50 PM
+* To change this template use File | Settings | File Templates.
+*/
+public class HerdingTrees {
+private Tree origin = new Tree(0, 0);
+/**
+* get min value of a and b
+* @param a
+* @param b
+* @return
+*/
+private static double min(double a, double b) {
+return a &gt; b ? b : a;
+}
+/**
+* “vector o p1″ cross “vector o p2″
+* @param o
+* @param p1
+* @param p2
+* @return
+*/
+private static double cross(Tree o , Tree p1, Tree p2) {
+return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x);
+}
+/**
+* ”vector p1″ cross “vector p2″
+* @param p1
+* @param p2
+* @return
+*/
+private static double cross(Tree p1, Tree p2) {
+return p1.x * p2.y – p1.y * p2.x;
+}
+/**
+* distance of two tree p2 and p1
+* @param p1
+* @param p2
+* @return
+*/
+private static double getDistance(Tree p1, Tree p2) {
+return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2));
+}
+/**
+* sort by angle in polar coordinate system
+* if the angle is the same, then sort by their length
+* @param p1
+* @param p2
+* @return
+*/
+public static boolean sortByAngle(Tree p1, Tree p2) {
+if (p1.y == 0 &amp;&amp; p2.y == 0 &amp;&amp; p1.x * p2.x &lt;= 0) return p1.x &gt; p2.x;
+if (p1.y == 0 &amp;&amp; p1.x &gt;= 0 &amp;&amp; p2.y != 0) return true;
+if (p2.y == 0 &amp;&amp; p2.x &gt;= 0 &amp;&amp; p1.y != 0) return false;
+if (p1.y * p2.y &lt; 0) return p1.y &gt; p2.y;
+double c = cross(p1, p2);
+return c &gt; 0 || c == 0 &amp;&amp; Math.abs(p1.x) &lt; Math.abs(p2.x);
+}
+/**
+* determine if o -&gt; p1 -&gt; p2 are convex (refer to the origin)
+* @param o
+* @param p1
+* @param p2
+* @return
+*/
+private boolean convex(Tree o, Tree p1,Tree p2) {
+double c = cross(o, p1, p2);
+return c &gt; 0 || c == 0 &amp;&amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &lt; 0;
+}
+/**
+* instance of this algorithm
+* @param trees
+* @return
+*/
+public double goaround(Tree[] trees) {
+int[] hulls = new int[1000];
+int i, j, k;
+int treesCount = trees.length;
+// the special case
+if (treesCount == 0) {
+return 2.0;
+}
+// sort all trees by their angle in polar coordinate system
+Arrays.sort(trees);
+double ans = 1e9;
+// start from each possible tree
+for (i=0; i&lt;treescount get a proper hull by the graham scan k="0;" for j treescount int p="(i+j)" while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–;
+hulls[k++] = p;
+}
+// calculate the distance of the hull
+double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin);
+for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans="min(ans," print solution don forget to plus return public static void main argv tree new double a="new" herdingtrees system.out.println trees2="{new" b="new" class implements comparable&gt; {
+public double x = 0;
+public double y = 0;
+public Tree(int x, int y) {
+this.x = x;
+this.y = y;
+}
+public int compareTo(Tree p) {
+return HerdingTrees.sortByAngle(this, p) ? 0 : 1;
+}
+}
+package programming.challenges;
+import java.util.Arrays;
+/** * Created by IntelliJ IDEA. * User: zhangjiayin * Date: Jan 13, 2010 * Time: 7:15:50 PM * To change this template use File | Settings | File Templates. */public class HerdingTrees {
+private Tree origin = new Tree(0, 0); /** * get min value of a and b * @param a * @param b * @return */ private static double min(double a, double b) { return a &amp;gt; b ? b : a; }
+/** * “vector o p1″ cross “vector o p2″ * @param o * @param p1 * @param p2 * @return */ private static double cross(Tree o , Tree p1, Tree p2) { return (p1.x – o.x) * (p2.y – o.y) – (p1.y – o.y) * (p2.x – o.x); }
+/** * ”vector p1″ cross “vector p2″ * @param p1 * @param p2 * @return */ private static double cross(Tree p1, Tree p2) { return p1.x * p2.y – p1.y * p2.x; }
+/** * distance of two tree p2 and p1 * @param p1 * @param p2 * @return */ private static double getDistance(Tree p1, Tree p2) { return Math.sqrt(Math.pow(p1.x – p2.x, 2) + Math.pow(p1.y – p2.y, 2)); }
+
+/** * sort by angle in polar coordinate system * if the angle is the same, then sort by their length * @param p1 * @param p2 * @return */ public static boolean sortByAngle(Tree p1, Tree p2) {
+if (p1.y == 0 &amp;amp;&amp;amp; p2.y == 0 &amp;amp;&amp;amp; p1.x * p2.x &amp;lt;= 0) return p1.x &amp;gt; p2.x;
+if (p1.y == 0 &amp;amp;&amp;amp; p1.x &amp;gt;= 0 &amp;amp;&amp;amp; p2.y != 0) return true;
+if (p2.y == 0 &amp;amp;&amp;amp; p2.x &amp;gt;= 0 &amp;amp;&amp;amp; p1.y != 0) return false;
+if (p1.y * p2.y &amp;lt; 0) return p1.y &amp;gt; p2.y;
+double c = cross(p1, p2);
+return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; Math.abs(p1.x) &amp;lt; Math.abs(p2.x); }
+/** * determine if o -&amp;gt; p1 -&amp;gt; p2 are convex (refer to the origin) * @param o * @param p1 * @param p2 * @return */ private boolean convex(Tree o, Tree p1,Tree p2) { double c = cross(o, p1, p2); return c &amp;gt; 0 || c == 0 &amp;amp;&amp;amp; ((p1.x – o.x) * (p2.x – p1.x) + (p1.y – o.y) * (p2.y – p1.y)) &amp;lt; 0; }
+/** * instance of this algorithm * @param trees * @return */ public double goaround(Tree[] trees) {
+int[] hulls = new int[1000];
+int i, j, k;
+int treesCount = trees.length;
+
+// the special case if (treesCount == 0) { return 2.0; }
+
+// sort all trees by their angle in polar coordinate system Arrays.sort(trees);
+double ans = 1e9;
+// start from each possible tree for (i=0; i&lt;treescount get a proper hull by the graham scan k="0;" for j treescount int p="(i+j)" while&gt;= 2 &amp;amp;&amp;amp; !convex(trees[hulls[k-2]], trees[hulls[k-1]], trees[p])) k–; hulls[k++] = p; }
+// calculate the distance of the hull double length = getDistance(trees[i], origin) + getDistance(trees[(i-1+treesCount)%treesCount], origin); for (j=0; j&lt;k-1 length getdistance trees record the minimal distance ans="min(ans," print solution don forget to plus return public static void main argv tree new double a="new" herdingtrees system.out.println trees2="{new" b="new" class implements comparable&gt; { public double x = 0;
+public double y = 0;
+public Tree(int x, int y) { this.x = x; this.y = y; }
+public int compareTo(Tree p) { return HerdingTrees.sortByAngle(this, p) ? 0 : 1;
+
+}
+
+}
+&lt;/k-1&gt;&lt;/treescount&gt;&lt;/k-1&gt;&lt;/treescount&gt;
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/2010/01/herding-frosh-%E7%AE%97%E6%B3%95.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

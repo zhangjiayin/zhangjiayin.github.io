@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>RSS 2.0 规范 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="RSS 2.0 规范" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="RSS 2.0 Specification [RSS 2.0 规范] Contents [目录] What is RSS? [RSS 是什么?] Sample files [示例文件] About this document [关于本文档] Required channel elements [channel 的必要子元素] Optional channel elements [channel 的可选子元素] Elements of [ 子元素] Comments [补充说明] Extending RSS [RSS 扩展] Roadmap [展望] License and authorship [许可及原著者] What is RSS? [RSS 是什么?]" />
+<meta property="og:description" content="RSS 2.0 Specification [RSS 2.0 规范] Contents [目录] What is RSS? [RSS 是什么?] Sample files [示例文件] About this document [关于本文档] Required channel elements [channel 的必要子元素] Optional channel elements [channel 的可选子元素] Elements of [ 子元素] Comments [补充说明] Extending RSS [RSS 扩展] Roadmap [展望] License and authorship [许可及原著者] What is RSS? [RSS 是什么?]" />
+<link rel="canonical" href="http://localhost:4000/2007/04/rss-2-0-%E8%A7%84%E8%8C%83.html" />
+<meta property="og:url" content="http://localhost:4000/2007/04/rss-2-0-%E8%A7%84%E8%8C%83.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-04-17T19:08:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="RSS 2.0 规范" />
+<script type="application/ld+json">
+{"headline":"RSS 2.0 规范","url":"http://localhost:4000/2007/04/rss-2-0-%E8%A7%84%E8%8C%83.html","dateModified":"2007-04-17T19:08:00+08:00","datePublished":"2007-04-17T19:08:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/04/rss-2-0-%E8%A7%84%E8%8C%83.html"},"description":"RSS 2.0 Specification [RSS 2.0 规范] Contents [目录] What is RSS? [RSS 是什么?] Sample files [示例文件] About this document [关于本文档] Required channel elements [channel 的必要子元素] Optional channel elements [channel 的可选子元素] Elements of [ 子元素] Comments [补充说明] Extending RSS [RSS 扩展] Roadmap [展望] License and authorship [许可及原著者] What is RSS? [RSS 是什么?]","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">RSS 2.0 规范</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-04-17T19:08:00+08:00" itemprop="datePublished">Apr 17, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>RSS 2.0 Specification [RSS 2.0 规范]<br />
+Contents [目录]<br />
+What is RSS? [RSS 是什么?] <br />
+Sample files [示例文件] <br />
+About this document [关于本文档] <br />
+Required channel elements [channel 的必要子元素] <br />
+Optional channel elements [channel 的可选子元素] <br />
+Elements of <item> [<item> 子元素] <br />
+Comments [补充说明] <br />
+Extending RSS [RSS 扩展] <br />
+Roadmap [展望] <br />
+License and authorship [许可及原著者] <br />
+What is RSS? [RSS 是什么?]</item></item></p>
+
+<p>RSS 是一种网络内容联合格式.<br />
+它的名字来自 Really Simple Syndication (真正简单的联合,简单信息聚合)的首字母缩写.<br />
+RSS 是 XML 的分支.所有 RSS 文件都得符合 World Wide Web Consortium (W3C) 网站上发布的 XML 1.0</p>
+
+<p>规范.<br />
+RSS 版本历史概要.<br />
+RSS 文档的最顶层是 <rss> 元素(element),有一个强制性的属性 version ,明确说明该文档所遵循的 </rss></p>
+
+<p>RSS 版本.如果遵循本规范,那它的 version 属性肯定是 2.0 .<br />
+从属于 <rss> 元素的是单个的 <channel> 元素, 包含了该频道(元数据)的信息及内容. </channel></rss></p>
+
+<p>Sample files [示例文件]<br />
+这里有一些 RSS 0.91, 0.92 和 2.0 的示例文件.<br />
+注意,这些链接所指向的文档或服务可能已经不存在了. 0.91 版文档写完即可做 0.91 的示例.维持对示</p>
+
+<p>例的跟踪看来是个好主意.(??)</p>
+
+<p>About this document [关于本文档]<br />
+ 本文档描述 RSS 到2002年秋天 2.0.1 版时为止的状况.<br />
+它合并了所有的修正和添补,基于 RSS 0.91 (2000年6月) 的基本规范,包括了 RSS 0.92 (2000年12月)</p>
+
+<p>和 RSS 0.94 (2002年8月) 引进的新特性.<br />
+修改记录在这里.<br />
+首先我们介绍 <channel> 元素必要的及可选的子元素;然后说明 <item> 元素必要的及可选的子元素.在</item></channel></p>
+
+<p>最后部分回答最常问到的问题(FAQ),并提供未来进展的路标,和 RSS 的扩展的指导.</p>
+
+<p>Required channel elements [channel 的必要子元素]</p>
+
+<p>这里是 channel 必要子元素的一个列表,每个都带着一个简介,一个示例,以及一个到有效的更完整的描述</p>
+
+<p>的指针.</p>
+
+<p>Element 元素 Description 介绍 Example 示例</p>
+
+<p>频道(channel)名字.关乎人们怎样提起你的服务.如果你有一个和你的 RSS 文件包含相同信息的 HTML 网站,你的频道(channel)标题(title)应该和你的网站标题一样. GoUpstate.com News Headlines <br />
+link The URL to the HTML website corresponding to the channel. <br />
+该频道(channel)相应的 HTML 网站的 URL. <a href="http://www.goupstate.com/">http://www.goupstate.com/</a></p>
+
+<p>描述该频道(channel)的短语或句子. The latest news from GoUpstate.com, a Spartanburg Herald-</p>
+
+<p>Journal Web site.</p>
+
+<p>Optional channel elements [channel 的可选子元素]</p>
+
+<p>这是 channel 的可选子元素的一个列表.</p>
+
+<p>Element 元素 Description 介绍 Example 示例</p>
+
+<p>书写频道(channel)所用的语言.比如说,这使得聚合器(aggregator)可以在一个单页内集合所有的意大利</p>
+
+<p>语站点.这里有 Netscape 提供的一份该属性的允许值的列表.你也可以用 W3C 定义的值 en-us <br />
+copyright Copyright notice for content in the channel. <br />
+频道(channel)内容的版权通告. Copyright 2002, Spartanburg Herald-Journal <br />
+managingEditor Email address for person responsible for editorial content. <br />
+内容编辑的责任人的 Email 地址. <a href="mailto:geo@herald.com">geo@herald.com</a> (George Matesky) <br />
+webMaster Email address for person responsible for technical issues relating to channel. <br />
+频道(channel)发布技术的责任人的 Email 地址. <a href="mailto:betty@herald.com">betty@herald.com</a> (Betty Guernsey)</p>
+
+<p>频道(channel)内容的出版日期.比如说,纽约时报每天出版一期,则其出版日期每24小时跳跃一次.频道</p>
+
+<p>(channel)的 pubDate 就在那时改变. RSS 中的所有日期-时间格式都遵循 RFC 822 的日期和时间规格,</p>
+
+<p>除了年份可以用2位数或4位数表示(4位为佳). Sat, 07 Sep 2002 00:00:01 GMT <br />
+lastBuildDate The last time the content of the channel changed. <br />
+频道(channel)内容最后修改的时间. Sat, 07 Sep 2002 09:42:31 GMT <br />
+category Specify one or more categories that the channel belongs to. Follows the same rules</p>
+
+<p>as the <item>-level category element. More info. <br />
+指定频道(channel)所属于的一个或多个分类.与 <item> 级别的 category 元素遵循相同的规则.更多信</item></item></p>
+
+<p>息. <category>Newspapers</category> <br />
+标志生成频道(channel)所用的程序的一个字符串. MightyInHouse Content System v2.3 <br />
+指向 RSS 文件所用格式的文档的 URL .很有可能是到本页面的一个指针(pointer).人们有可能在25年后的某个网络服务器上忽然发现一个 RSS 文件并想了解是什么东西.</p>
+
+<p><a href="http://blogs.law.harvard.edu/tech/rss">http://blogs.law.harvard.edu/tech/rss</a> <br />
+允许程序注册一个 cloud 以得到频道(channel)更新的通报,以实现 RSS feed 的轻量级的出版订阅协议.</p>
+
+<p>更多信息见这里. <cloud domain="rpc.sys.com" port="80" path="/RPC2"></cloud></p>
+<p>registerProcedure="pingMe" protocol="soap"/&gt; <br />
+ttl 表示 time to live (存活时间),以分钟为单位,指示说明从出处刷新前一个频道(channel)能在缓存</p>
+<p>中存在多长时间.更多信息看这里. <ttl>60</ttl> <br />
+image Specifies a GIF, JPEG or PNG image that can be displayed with the channel. More info </p>
+<p>here. <br />
+指定能和频道(channel)一起显示的一张 GIF, JPEG 或 PNG 图片.更多信息见这里.</p>
+<p>&lt;/cloud&gt;</p>
+
+
+  </div><a class="u-url" href="/2007/04/rss-2-0-%E8%A7%84%E8%8C%83.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[转]UML辅助网站规划和设计指南【二】 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="[转]UML辅助网站规划和设计指南【二】" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="3.3 应用部署的规划" />
+<meta property="og:description" content="3.3 应用部署的规划" />
+<link rel="canonical" href="http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E3%80%90%E4%BA%8C%E3%80%91.html" />
+<meta property="og:url" content="http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E3%80%90%E4%BA%8C%E3%80%91.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-04-28T14:58:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[转]UML辅助网站规划和设计指南【二】" />
+<script type="application/ld+json">
+{"headline":"[转]UML辅助网站规划和设计指南【二】","url":"http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E3%80%90%E4%BA%8C%E3%80%91.html","dateModified":"2007-04-28T14:58:00+08:00","datePublished":"2007-04-28T14:58:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E3%80%90%E4%BA%8C%E3%80%91.html"},"description":"3.3 应用部署的规划","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">[转]UML辅助网站规划和设计指南【二】</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-04-28T14:58:00+08:00" itemprop="datePublished">Apr 28, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>3.3 应用部署的规划</strong></p>
+
+<p>　　正如本文前面“工具选择”部分所提到的，大多数<a href="http://dev.21tx.com/web/"><font color="#3366cc">Web</font></a><nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 0px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">网站</font></a></nobr>的体系结构并不复杂。尽管如此，部署图（Deployment Diagram）在两个方面仍旧很有用：网站结构，文件组织。对于文件组织，前面讨论界面规划时已经提到它也可以用类建模工具进行规划。下面给出一个简单的构件图供参考，但根据网站的需要和复杂程度的不同，你可能不需要它。</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10108.gif" />
+<p>图8：构件图 </p>
+</center>
+
+<p>　　 <strong>3.4 设计原则</strong></p>
+
+<p>　　<a href="http://dev.21tx.com/softengine/uml/"><font color="#3366cc">UML</font></a>只是一个工具。如果使用得法，UML能够帮助我们轻松地构造出更好的网站。然而，要<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">设计</font></a></nobr>出优秀的网站，关键仍在于要有一个好的设计原则或理念。</p>
+
+<p>　　“提高类的内聚力，减少不同类之间的联系”这一点在谈到好的面向对象设计原则时经常被反复引用。一个内聚的类包含那些在目标和作用域上都紧密相关的行为和信息。它意味着你不应该把构造UI的代码和实现<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">数学</font></a></nobr>算法的代码混合到一起，你应该尽力把所有与用户紧密相关的信息封装到UserAccount类。内聚式设计是一个重要的设计原则，原因有很多：它有助于减少类之间的依赖关系，使得设计更直观、更容易理解，方便了向其他开发者介绍整个设计，减少了开发者同一时刻需要操作的类的数量，等等。例如，如果你要改变网站的用户身份验证机制，只修改单个文件中的一个类无疑要比修改多个文件、多个类更加方便。</p>
+
+<p>　　“减少不同类之间的联系”意味着使类或者文件之间的交互减到最少。它不仅使得整个设计容易理解，而且也方便了代码的维护。请考虑下面这个例子：</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10229.gif" />
+<p>图9：设计实例A </p>
+</center>
+
+<p>　　除非深入了解了上述各个类的用途，要估计这些类的内聚程度是不可能的。然而，从这些类之间的关系可以看出，这个设计方案已经成功地减少了不同类之间的联系。类之间的交互被减到了最少，从而使得<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">系统</font></a></nobr>的行为很容易理解。更重要的是，修改任意一个类时受影响的类数量都减到了最少（例如，修改D类只直接影响B类）。另外，要访问D类中的功能，我们无需知道任何有关E、F或G类的情况。作为比较，请考虑下图：</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10202.gif" />
+<p>图10 设计实例B </p>
+</center>
+
+<p>　　显然，在这个设计实例中，类之间的联系是相当紧密的。一旦对D1类作了修改，为了检查这种修改对其他类的影响，我们必须对其他类进行广泛的测试。</p>
+
+<p>　　只有在<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">实践</font></a></nobr>中不断锻炼才能避免出现过于复杂的设计，但注意以下几点有助于达到这一目标：</p>
+
+<ul>
+  <li>提高类的内聚力。不要把密切相关的功能分散到多个文件和类之中。</li>
+  <li>采用直观、有意义的名字。如果其他人不能了解类、函数或者变量的作用，不管类的结构是多么完美，整个设计仍缺乏直观性。过多地采用缩写词会影响设计的可理解性。</li>
+  <li>不要害怕改写代码。有些时候，在几个类之间移动一些函数能够大大地简化代码。</li>
+  <li>类应该保持紧凑、简洁。代码膨胀是类缺乏内聚力的一种征兆。过于庞大的类、模块或者文件往往缺乏明确的用途和目标。</li>
+  <li>让其他人复查你的设计。其他人可能有新的想法，或者为你指出你以为显而易见但别人却不能明白的问题。</li>
+  <li>在早期设计阶段不要考虑太多的性能问题。与一个笨拙的、为了昨天所出现的问题而优化的设计相比，一个简洁、经过精心调整的设计更容易进行性能优化。注意这并不是建议把性能问题抛到脑后，而是建议把细节优化问题留到工程后期考虑。</li>
+</ul>
+
+<p>　　 <strong>四、UML工具</strong></p>
+
+<p>　　下面是一些值得考虑的UML建模工具：</p>
+
+<ul>
+  <li>Microsoft Visio：Visio Professional 2000现在开始提供内建的UML支持。如果考虑Visio绘图工具的其他各种用途，这是一个相当有价值的工具。如果你使用2000以前的版本，你可以在这里找到Visio Stencil and Template for UML。</li>
+  <li>Rational Rose：这是一个推荐使用的工具，但对于许多小型Web工程来说它显得很昂贵。有了Rational Rose这样的工具，改进和维护设计、从模型生成报表、在平行协作环境中与他人共同进行建模工作就很方便了。</li>
+  <li>MagicDraw：一个基于<a href="http://dev.21tx.com/java/"><font color="#3366cc">Java</font></a>的廉价UML建模工具。</li>
+  <li>Together：与C/<a href="http://dev.21tx.com/"><font color="#3366cc">C++</font></a>和Java联系密切，支持UML建模。</li>
+  <li>Objecteering UML：一个免费的个人UML产品。</li>
+  <li>System Architect：一个很受欢迎的高端UML建模工具，支持双向工程（Round-trip Engineering）。</li>
+</ul>
+
+<p><strong>　　五、附录：常用UML符号和参考资源</strong></p>
+
+<p>　　下面这个表格简要介绍了常用的UML符号和关系。要了解有关UML概念和各种面向对象术语的详细说明，请参见后面的参考资源。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>符号</td>
+      <td>说明</td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10187.gif" alt="" /></td>
+      <td>Package</td>
+    </tr>
+    <tr>
+      <td>包。用来聚集和组织<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">模型</font></a></nobr>中的一个部分（Use Case，类，等等）。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10103.gif" alt="" /></td>
+      <td>Actor</td>
+    </tr>
+    <tr>
+      <td>参与者。它代表一个用户或者其他外部的激励器。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10178.gif" alt="" /></td>
+      <td>Use Case</td>
+    </tr>
+    <tr>
+      <td>用例。Use Case描述了系统某一部分的行为。一般地，Use Case记录对某个系统功能的需求，而这个功能由对动作或者事件的应答示范。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10170.gif" alt="" /></td>
+      <td>&lt;&lt;include&gt;&lt;/include&gt;&gt; Relationship</td>
+    </tr>
+    <tr>
+      <td>包含关系。标注为&lt;&lt;include&gt;&lt;/include&gt;&gt;关系的Use Case关系能够引入其他Use Case的功能。这是一种方便的分割Use Case、避免单个Use Case过于庞大的方法。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10162.gif" alt="" /></td>
+      <td>&lt;&lt;extend&gt;&lt;/extend&gt;&gt; Relationship</td>
+    </tr>
+    <tr>
+      <td>扩充关系。标注为&lt;&lt;extend&gt;&lt;/extend&gt;&gt;关系的Use Case关系能够在不重复现有Use Case的各种描述和需求的情况下，使现有Use Case的行为特殊化。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10181.gif" alt="" /></td>
+      <td>Dependency</td>
+    </tr>
+    <tr>
+      <td>依赖。正如其字面意义，它表示一个事物依赖另一个事物。这意味着一个事物了解另一个事物，并需要另外一个事物才能发挥功能。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10241.gif" alt="" /></td>
+      <td>Note</td>
+    </tr>
+    <tr>
+      <td>注解。在UML图中提供注解的目的是以简短的说明阐明图表的内容。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10234.gif" alt="" /></td>
+      <td>Component</td>
+    </tr>
+    <tr>
+      <td>构件。构件一般代表一个<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">软件</font></a></nobr>单元，它可能是一个DLL、一个执行文件，或者是一个<a href="http://dev.21tx.com/database/"><font color="#3366cc">数据库</font></a>。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10116.gif" alt="" /></td>
+      <td>Node</td>
+    </tr>
+    <tr>
+      <td>节点。节点一般代表一台机器，这台机器具有运行一个或者多个系统构件的能力。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10120.gif" alt="" /></td>
+      <td>Class</td>
+    </tr>
+    <tr>
+      <td>类。UML中的类与面向对象编程中的类一样，即它定义并封装了一组行为和属性。类在运行时被实例化从而创建出对象。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10190.gif" alt="" /></td>
+      <td>Object</td>
+    </tr>
+    <tr>
+      <td>对象。对象是类的实例。例如，“MyClass myObj = new MyClass; ”创建了一个myObj对象。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10184.gif" alt="" /></td>
+      <td>Generalization</td>
+    </tr>
+    <tr>
+      <td>泛化。父类能够派生出（或称为特殊化）具有更多特殊行为的子类，此时父类即为子类的超类（或子类的泛化版本）。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10136.gif" alt="" /></td>
+      <td>Interface</td>
+    </tr>
+    <tr>
+      <td>接口。接口定义了一组可以从外部访问的行为。类、库、执行文件、<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">数据</font></a></nobr>文件都可以由接口来描述。接口本身并不实现任何功能，它只是和声明实现该接口的对象订立了一个必须实现哪些行为的契约。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10219.gif" alt="" /></td>
+      <td>Abstract Class</td>
+    </tr>
+    <tr>
+      <td>抽象类。抽象类不能直接实例化，但允许派生出具体的、有实际功能的类。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10098.gif" alt="" /></td>
+      <td>Association</td>
+    </tr>
+    <tr>
+      <td>关联。关联就是把两个或以上的类连接起来。你可以为两个类之间的这种关系提供更具体的信息。关联是两个或多个特定类元之间的关系，它描述了这些类元的实例的联系。在一个关联中同一个类可以出现在多个位置上。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><img src="http://image.21tx.com/image/20021203/10224.gif" alt="" /></td>
+      <td>Aggregation</td>
+    </tr>
+    <tr>
+      <td>聚合。聚合关系表示某个对象属于其他对象所有。</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　　参考资源：</p>
+
+<ul>
+  <li><a href="http://www.omg.org/cgi-bin/doc?ad/99-06-08"><font color="#3366cc">UML 1.3 Specification</font></a>：UML规范，来自omg.org</li>
+  <li><a href="http://www.omg.com/technology/uml/index.htm"><font color="#3366cc">UML Resource Page</font></a>：OMG维护的UML资源</li>
+  <li><a href="http://www.cyberdyne-object-sys.com/oofaq2/"><font color="#3366cc">Object Oriented FAQ</font></a>：一个面向对象术语和概念的介绍</li>
+  <li><a href="http://www.togethersoft.com/services/UMLShortCourse/"><font color="#3366cc">Practical UML Guide</font></a></li>
+  <li><a href="http://www.cetus-links.org/oo_uml.html"><font color="#3366cc">Cetus UML Links</font></a></li>
+  <li><a href="http://www.rational.com/products/whitepapers/100462.jsp"><font color="#3366cc">Modeling Web Application Design with UML</font></a> - Rational Rose白皮书</li>
+</ul>
+
+<p>]]&gt;</p>
+
+
+  </div><a class="u-url" href="/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E3%80%90%E4%BA%8C%E3%80%91.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

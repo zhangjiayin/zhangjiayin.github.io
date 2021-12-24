@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>MySQL Cluster(MySQL 集群) 配置指南 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="MySQL Cluster(MySQL 集群) 配置指南" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="转自 http://www.phpv.net/article.php/1521" />
+<meta property="og:description" content="转自 http://www.phpv.net/article.php/1521" />
+<link rel="canonical" href="http://localhost:4000/2007/04/mysql-clustermysql-%E9%9B%86%E7%BE%A4-%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html" />
+<meta property="og:url" content="http://localhost:4000/2007/04/mysql-clustermysql-%E9%9B%86%E7%BE%A4-%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-04-19T17:39:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MySQL Cluster(MySQL 集群) 配置指南" />
+<script type="application/ld+json">
+{"headline":"MySQL Cluster(MySQL 集群) 配置指南","url":"http://localhost:4000/2007/04/mysql-clustermysql-%E9%9B%86%E7%BE%A4-%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html","dateModified":"2007-04-19T17:39:00+08:00","datePublished":"2007-04-19T17:39:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/04/mysql-clustermysql-%E9%9B%86%E7%BE%A4-%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html"},"description":"转自 http://www.phpv.net/article.php/1521","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">MySQL Cluster(MySQL 集群) 配置指南</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-04-19T17:39:00+08:00" itemprop="datePublished">Apr 19, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>转自 <a href="http://www.phpv.net/article.php/1521">http://www.phpv.net/article.php/1521</a></p>
+
+<p>| 
+<strong>MySQL Cluster(MySQL 集群) 配置指南</strong>
+ |
+|</p>
+
+<p>MySQL Cluster 是MySQL适合于分布式计算环境的高实用、高冗余版本。它采用了NDB Cluster 存储引擎，允许在1个 Cluster 中运行多个MySQL服务器。在MyQL 5.0及以上的二进制版本中、以及与最新的Linux版本兼容的RPM中提供了该存储引擎。（注意，要想获得MySQL Cluster 的功能，必须安装 mysql-server 和 mysql-max RPM）。</p>
+
+<p>目前能够运行MySQL Cluster 的操作系统有Linux、Mac OS X和Solaris（一些用户通报成功地在FreeBSD上运行了MySQL Cluster ，但MySQL AB公司尚未正式支持该特性）。</p>
+
+<p><strong><font color="#ff0000">一、MySQL Cluster概述</font></strong></p>
+
+<p>MySQL Cluster 是一种技术，该技术允许在无共享的系统中部署“内存中”数据库的 Cluster 。通过无共享体系结构，系统能够使用廉价的硬件，而且对软硬件无特殊要求。此外，由于每个组件有自己的内存和磁盘，不存在单点故障。<br />
+ MySQL Cluster 由一组计算机构成，每台计算机上均运行着多种进程，包括MySQL服务器，NDB Cluster 的数据节点，管理服务器，以及（可能）专门的数据访问程序。关于 Cluster 中这些组件的关系，请参见下图：<br />
+ <img src="http://imysql.cn/files/pictures/cluster-components-1.png" alt="" /></p>
+
+<p>所有的这些节点构成一个完成的MySQL集群体系。数据保存在“NDB存储服务器”的存储引擎中，表（结构）则保存在“MySQL服务器”中。应用程序通过“MySQL服务器”访问这些数据表，集群管理服务器通过管理工具(ndb_mgmd)来管理“NDB存储服务器”。<br />
+ 通过将MySQL Cluster 引入开放源码世界，MySQL为所有需要它的人员提供了具有高可用性、高性能和可缩放性的 Cluster 数据管理。</p>
+
+<p><strong><font color="#ff0000">二、MySQL Cluster 基本概念</font></strong></p>
+
+<p>“NDB” 是一种“内存中”的存储引擎，它具有可用性高和数据一致性好的特点。<br />
+ MySQL Cluster 能够使用多种故障切换和负载平衡选项配置NDB存储引擎，但在 Cluster 级别上的存储引擎上做这个最简单。MySQL Cluster的NDB存储引擎包含完整的数据集，仅取决于 Cluster本身内的其他数据。<br />
+ 目前，MySQL Cluster的 Cluster部分可独立于MySQL服务器进行配置。在MySQL Cluster中， Cluster的每个部分被视为1个节点。</p>
+
+<ul>
+  <li>管理(MGM)节点：这类节点的作用是管理MySQL Cluster内的其他节点，如提供配置数据、启动并停止节点、运行备份等。由于这类节点负责管理其他节点的配置，应在启动其他节点之前首先启动这类节点。MGM节点是用命令“ndb_mgmd”启动的。</li>
+  <li>数据节点：这类节点用于保存 Cluster的数据。数据节点的数目与副本的数目相关，是片段的倍数。例如，对于两个副本，每个副本有两个片段，那么就有4个数据节点。不过没有必要设置多个副本。数据节点是用命令“ndbd”启动的。</li>
+  <li>注释：在很多情况下，术语“节点”用于指计算机，但在讨论MySQL Cluster时，它表示的是进程。在单台计算机上可以有任意数目的节点，为此，我们采用术语“ Cluster主机”。</li>
+</ul>
+
+<p>管理服务器(MGM节点)负责管理 Cluster配置文件和 Cluster日志。 Cluster中的每个节点从管理服务器检索配置数据，并请求确定管理服务器所在位置的方式。当数据节点内出现新的事件时，节点将关于这类事件的信息传输到管理服务器，然后，将这类信息写入 Cluster日志。<br />
+ 此外，可以有任意数目的 Cluster客户端进程或应用程序。它们分为两种类型：</p>
+
+<ul>
+  <li>标准MySQL客户端：对于MySQL Cluster，它们与标准的（非 Cluster类）MySQL没有区别。换句话讲，能够从用PHP、Perl、C、C++、Java、Python、Ruby等编写的现有MySQL应用程序访问MySQL Cluster。</li>
+  <li>管理客户端：这类客户端与管理服务器相连，并提供了启动和停止节点、启动和停止消息跟踪（仅调试版本）、显示节点版本和状态、启动和停止备份等的命令。</li>
+</ul>
+
+<font color="#ff0000"><strong>三、开始准备</strong></font>
+
+<p>1、准备服务器<br />
+ 现在，我们计划建立有5个节点的MySQL CLuster体系，因此需要用到5台机器，分别做如下用途：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>节点(用途) IP地址(主机名)
+  管理节点(MGM) 192.168.0.1(db1)
+  SQL节点1(SQL1) 192.168.0.2(db2)
+  SQL节点2(SQL2) 192.168.0.3(db3)
+  数据节点1(NDBD1) 192.168.0.4(db4)
+  数据节点2(NDBD2) 192.168.0.4(db5)
+</code></pre></div></div>
+
+<p>2、注意事项及其他<br />
+ 每个节点的操作系统都是Linux，下面的描述中将使用主机名，不再使用IP地址来表示。由于MySQL Cluster采用TCP/IP方式连接，并且节点之间的数据传输没有加密，因此这个体系最好只在单独的子网中运行，并且考虑到传输的速率，强烈建议不要跨越公网使用这个体系。所需的MySQL软件请事先在 http://dev.mysql.com/downloads 下载。<br />
+ 实际上整个体系可以在一个单独的实体计算机上运行成功，当然了，必须设定不同的目录以及端口等，只能作为测试时使用。</p>
+
+<font color="#ff0000"><strong>四、开始安装</strong></font>
+
+<p>1、假定条件<br />
+ 在每个节点计算机上都采用 nobody 用户来运行Cluster，因此执行如下命令添加相关用户（如果已经存在则略过，且用root用户执行）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root# /usr/sbin/groupadd nobody
+ root# /usr/sbin/useradd nobody -g nobody
+</code></pre></div></div>
+
+<p>假设已经下载了mysql可直接使用的二进制安装包，且放在 /tmp 下了。</p>
+
+<p>2、SQL节点和存储节点(NDB节点)安装(即4个机器重复执行以下步骤)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root# cd /tmp/
+ root# tar zxf mysql-max-5.0.24-linux-i686.tar.gz
+ root# mv mysql-max-5.0.24-linux-i686 /usr/local/mysql/
+ root# cd /usr/local/mysql/
+ root# ./configure --prefix=/usr/local/mysql
+ root# ./scripts/mysql_install_db
+ root# chown -R nobody:nobody /usr/local/mysql/
+</code></pre></div></div>
+
+<p>3、配置SQL节点</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root# vi /usr/local/mysql/my.cnf
+</code></pre></div></div>
+
+<p>然后输入如下内容：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[mysqld]
+basedir
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div><a class="u-url" href="/2007/04/mysql-clustermysql-%E9%9B%86%E7%BE%A4-%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

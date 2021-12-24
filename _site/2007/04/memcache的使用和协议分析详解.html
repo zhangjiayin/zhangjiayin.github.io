@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Memcache的使用和协议分析详解 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Memcache的使用和协议分析详解" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作者：heiyeluren 博客： http://blog.csdn.net/heiyeshuwu 时间：2006-11-12 关键字：PHP Memcache Linux 缓存" />
+<meta property="og:description" content="作者：heiyeluren 博客： http://blog.csdn.net/heiyeshuwu 时间：2006-11-12 关键字：PHP Memcache Linux 缓存" />
+<link rel="canonical" href="http://localhost:4000/2007/04/memcache%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E8%AF%A6%E8%A7%A3.html" />
+<meta property="og:url" content="http://localhost:4000/2007/04/memcache%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E8%AF%A6%E8%A7%A3.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-04-10T19:45:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Memcache的使用和协议分析详解" />
+<script type="application/ld+json">
+{"headline":"Memcache的使用和协议分析详解","url":"http://localhost:4000/2007/04/memcache%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E8%AF%A6%E8%A7%A3.html","dateModified":"2007-04-10T19:45:00+08:00","datePublished":"2007-04-10T19:45:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/04/memcache%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E8%AF%A6%E8%A7%A3.html"},"description":"作者：heiyeluren 博客： http://blog.csdn.net/heiyeshuwu 时间：2006-11-12 关键字：PHP Memcache Linux 缓存","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Memcache的使用和协议分析详解</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-04-10T19:45:00+08:00" itemprop="datePublished">Apr 10, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><em>作者：heiyeluren<br />
+博客：</em> <a href="http://blog.csdn.net/heiyeshuwu"><em>http://blog.csdn.net/heiyeshuwu</em></a><br />
+<em>时间：2006-11-12<br />
+关键字：PHP Memcache Linux 缓存</em></p>
+
+<p>Memcache是danga.com的一个项目，最早是为 LiveJournal 服务的，目前全世界不少人使用这个缓存项目来构建自己大负载的网站，来分担数据库的压力。（关于Memcache的更多信息请Google）<br />
+Memcache官方网站：<a href="http://www.danga.com/memcached"><em><font color="#800080">http://www.danga.com/memcached</font></em></a></p>
+
+<p><strong><font size="4">【安装Memcache服务器端】</font></strong></p>
+
+<p>我目前的平台，服务器是Fedora Core 1（内核：2.4.22），客户端是Windows XP SP2，需要安装的就是服务器的Memcached的守护进程和客户端的PHP扩展php_memcache两个东西。现在我分别来讲。</p>
+
+<p>服务器端主要是安装memcache服务器端，目前的最新版本是 memcached-1.2.0 。<br />
+下载：<a href="http://www.danga.com/memcached/dist/memcached-1.2.0.tar.gz"><em><font color="#800080">http://www.danga.com/memcached/dist/memcached-1.2.0.tar.gz</font></em></a><br />
+另外，Memcache用到了libevent这个库用于Socket的处理，所以还需要安装libevent，libevent的最新版本是libevent-1.2。（如果你的系统已经安装了libevent，可以不用安装）<br />
+官网：<a href="http://www.monkey.org/~provos/libevent/"><em>http://www.monkey.org/~provos/libevent/</em></a><br />
+下载：<a href="http://www.monkey.org/~provos/libevent-1.2.tar.gz"><em>http://www.monkey.org/~provos/libevent-1.2.tar.gz</em></a></p>
+
+<p>我分别把两个东东下载回来，放到 /tmp 目录下：</p>
+<font color="#0000ff"># cd /tmp<br />
+# wget </font>
+<p><a href="http://www.danga.com/memcached/dist/memcached-1.2.0.tar.gz"><font color="#0000ff">http://www.danga.com/memcached/dist/memcached-1.2.0.tar.gz</font></a></p>
+<font color="#0000ff"># wget </font>
+<p><a href="http://www.monkey.org/~provos/libevent-1.2.tar.gz"><font color="#0000ff">http://www.monkey.org/~provos/libevent-1.2.tar.gz</font></a></p>
+
+<p>先安装libevent：</p>
+<font color="#0000ff"># tar zxvf libevent-1.2.tar.gz<br />
+# cd libevent-1.2<br />
+# ./configure --prefix=/usr<br />
+# make<br />
+# make install</font>
+
+<p>然后看看我们的libevent是否安装成功：</p>
+<font color="#0000ff"># ls -al /usr/lib | grep libevent</font>
+<font color="#993300">lrwxrwxrwx</font>
+
+
+  </div><a class="u-url" href="/2007/04/memcache%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E8%AF%A6%E8%A7%A3.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

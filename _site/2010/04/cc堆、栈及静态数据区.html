@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>C/C++堆、栈及静态数据区 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="C/C++堆、栈及静态数据区" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="引自http://www.cnw168.cn/china/zxjx/rjbc/c/20080114142636.htm" />
+<meta property="og:description" content="引自http://www.cnw168.cn/china/zxjx/rjbc/c/20080114142636.htm" />
+<link rel="canonical" href="http://localhost:4000/2010/04/cc%E5%A0%86%E3%80%81%E6%A0%88%E5%8F%8A%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA.html" />
+<meta property="og:url" content="http://localhost:4000/2010/04/cc%E5%A0%86%E3%80%81%E6%A0%88%E5%8F%8A%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2010-04-04T12:39:27+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="C/C++堆、栈及静态数据区" />
+<script type="application/ld+json">
+{"headline":"C/C++堆、栈及静态数据区","url":"http://localhost:4000/2010/04/cc%E5%A0%86%E3%80%81%E6%A0%88%E5%8F%8A%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA.html","dateModified":"2010-04-04T12:39:27+08:00","datePublished":"2010-04-04T12:39:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2010/04/cc%E5%A0%86%E3%80%81%E6%A0%88%E5%8F%8A%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA.html"},"description":"引自http://www.cnw168.cn/china/zxjx/rjbc/c/20080114142636.htm","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">C/C++堆、栈及静态数据区</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2010-04-04T12:39:27+08:00" itemprop="datePublished">Apr 4, 2010
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>引自<a href="http://www.cnw168.cn/china/zxjx/rjbc/c/20080114142636.htm">http://www.cnw168.cn/china/zxjx/rjbc/c/20080114142636.htm</a></p>
+
+<p>五大内存分区<br />
+在C++中，内存分成5个区，他们分别是堆、栈、自由存储区、全局/静态存储区和常量存储区。<br />
+栈，就是那些由编译器在需要的时候分配，在不需要的时候自动清除的变量的存储区。里面的变量通常是局部变量、函数参数等。<br />
+堆，就是那些由new分配的内存块，他们的释放编译器不去管，由我们的应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。<br />
+自由存储区，就是那些由malloc等分配的内存块，他和堆是十分相似的，不过它是用free来结束自己的生命的。<br />
+全局/静态存储区，全局变量和静态变量被分配到同一块内存中，在以前的C语言中，全局变量又分为初始化的和未初始化的，在C++里面没有这个区分了，他们共同占用同一块内存区。<br />
+常量存储区，这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改（当然，你要通过非正当手段也可以修改，而且方法很多）<br />
+明确区分堆与栈<br />
+在bbs上，堆与栈的区分问题，似乎是一个永恒的话题，由此可见，初学者对此往往是混淆不清的，所以我决定拿他第一个开刀。<br />
+首先，我们举一个例子：<br />
+void f() { int* p=new int[5]; }<br />
+这条短短的一句话就包含了堆与栈，看到new，我们首先就应该想到，我们分配了一块堆内存，那么指针p呢？他分配的是一块栈内存，所以这句话的意思就是： 在栈内存中存放了一个指向一块堆内存的指针p。在程序会先确定在堆中分配内存的大小，然后调用operator new分配内存，然后返回这块内存的首地址，放入栈中，他在VC6下的汇编代码如下：<br />
+00401028push14h<br />
+0040102Acalloperator new (00401060)<br />
+0040102Faddesp,4<br />
+00401032movdword ptr [ebp-8],eax<br />
+00401035moveax,dword ptr [ebp-8]<br />
+00401038movdword ptr [ebp-4],eax<br />
+这里，我们为了简单并没有释放内存，那么该怎么去释放呢？是delete p么？澳，错了，应该是delete []p，这是为了告诉编译器：我删除的是一个数组，VC6就会根据相应的Cookie信息去进行释放内存的工作。<br />
+好了，我们回到我们的主题：堆和栈究竟有什么区别？<br />
+主要的区别由以下几点：<br />
+1 、管理方式不同；<br />
+2 、空间大小不同；<br />
+3 、能否产生碎片不同；<br />
+4 、生长方向不同；<br />
+5 、分配方式不同；<br />
+6 、分配效率不同；<br />
+管理方式：对于栈来讲，是由编译器自动管理，无需我们手工控制；对于堆来说，释放工作由程序员控制，容易产生memory leak。<br />
+空间大小：一般来讲在32位系统下，堆内存可以达到4G的空间，从这个角度来看堆内存几乎是没有什么限制的。但是对于栈来讲，一般都是有一定的空间大小的，例如，在VC6下面，默认的栈空间大小是1M（好像是，记不清楚了）。当然，我们可以修改：<br />
+打开工程，依次操作菜单如下：Project-&gt;Setting-&gt;Link，在Category 中选中Output，然后在Reserve中设定堆栈的最大值和commit。<br />
+注意：reserve最小值为4Byte；commit是保留在虚拟内存的页文件里面，它设置的较大会使栈开辟较大的值，可能增加内存的开销和启动时间。<br />
+碎片问题：对于堆来讲，频繁的new/delete势必会造成内存空间的不连续，从而造成大量的碎片，使程序效率降低。对于栈来讲，则不会存在这个问题， 因为栈是先进后出的队列，他们是如此的一一对应，以至于永远都不可能有一个内存块从栈中间弹出，在他弹出之前，在他上面的后进的栈内容已经被弹出，详细的 可以参考数据结构，这里我们就不再一一讨论了。<br />
+生长方向：对于堆来讲，生长方向是向上的，也就是向着内存地址增加的方向；对于栈来讲，它的生长方向是向下的，是向着内存地址减小的方向增长。<br />
+分配方式：堆都是动态分配的，没有静态分配的堆。栈有2种分配方式：静态分配和动态分配。静态分配是编译器完成的，比如局部变量的分配。动态分配由alloca函数进行分配，但是栈的动态分配和堆是不同的，他的动态分配是由编译器进行释放，无需我们手工实现。<br />
+分配效率：栈是机器系统提供的数据结构，计算机会在底层对栈提供支持：分配专门的寄存器存放栈的地址，压栈出栈都有专门的指令执行，这就决定了栈的效率比 较高。堆则是C/C++函数库提供的，它的机制是很复杂的，例如为了分配一块内存，库函数会按照一定的算法（具体的算法可以参考数据结构/操作系统）在堆 内存中搜索可用的足够大小的空间，如果没有足够大小的空间（可能是由于内存碎片太多），就有可能调用系统功能去增加程序数据段的内存空间，这样就有机会分 到足够大小的内存，然后进行返回。显然，堆的效率比栈要低得多。<br />
+从这里我们可以看到，堆和栈相比，由于大量new/delete的使用，容易造成大量的内存碎片；由于没有专门的系统支持，效率很低；由于可能引发用户态 和核心态的切换，内存的申请，代价变得更加昂贵。所以栈在程序中是应用最广泛的，就算是函数的调用也利用栈去完成，函数调用过程中的参数，返回地 址，EBP和局部变量都采用栈的方式存放。所以，我们推荐大家尽量用栈，而不是用堆。<br />
+虽然栈有如此众多的好处，但是由于和堆相比不是那么灵活，有时候分配大量的内存空间，还是用堆好一些。<br />
+无论是堆还是栈，都要防止越界现象的发生（除非你是故意使其越界），因为越界的结果要么是程序崩溃，要么是摧毁程序的堆、栈结构，产生以想不到的结果,就算是在你的程序运行过程中，没有发生上面的问题，你还是要小心，说不定什么时候就崩掉，那时候debug可是相当困难的</p>
+
+
+  </div><a class="u-url" href="/2010/04/cc%E5%A0%86%E3%80%81%E6%A0%88%E5%8F%8A%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

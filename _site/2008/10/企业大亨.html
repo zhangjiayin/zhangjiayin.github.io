@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>企业大亨 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="企业大亨" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="&lt;?php #******************************************************* #    Author        : jiayin #    Last modified : 2008-10-17 19:54 #    Filename      : test.php #    Description   : #*******************************************************&lt;/p&gt; $config = array ( //基本配置 &#39;user&#39; =&gt; array ( &#39;email&#39;    =&gt; &#39;&#39;, &#39;password&#39; =&gt; &#39;123456&#39; ), &#39;app_id&#39;            =&gt; &#39;&#39;, &#39;db&#39;   =&gt; array ( &#39;host&#39; =&gt; &#39;localhost&#39;, &#39;user&#39; =&gt; &#39;root&#39;, &#39;pw&#39;   =&gt; &#39;123456&#39;, &#39;db&#39;   =&gt; &#39;test&#39; ), //可控参数 &#39;mint_limit&#39;        =&gt; &#39;3000&#39;, &#39;interest_limit&#39;    =&gt; &#39;30&#39;, &#39;mint_interest_limit&#39;    =&gt; &#39;40&#39;, &#39;interest_ratio&#39;    =&gt; &#39;2&#39;, &#39;mint_interest_ratio&#39;    =&gt; &#39;2&#39;, //url配置 &#39;login_url&#39;         =&gt; &#39;http://login.kaixin.com/Login.do&#39;, &#39;product_url&#39;       =&gt; &#39;http://tycoon.kaixin.com/buildEmpire.do?select_type=%s&#39;, &#39;sell_url&#39;          =&gt; &#39;http://tycoon.kaixin.com/confirmSellProduct.do&#39;, &#39;buy_url&#39;           =&gt; &#39;http://tycoon.kaixin.com/confirmBuyProduct.do&#39;, &#39;my_usual_url&#39;      =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=0&amp;id=%s&#39;, &#39;my_unusual_url&#39;    =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=1&amp;id=%s&#39;, ); $table_sql = &quot; CREATE TABLE IF NOT EXISTS `p` ( `product_id` int(11) NOT NULL, `name` char(50) character set utf8 NOT NULL, `max_price` int(11), `min_price` int(11) ) &quot;; $data_sql = &quot; INSERT INTO `p` (`product_id`, `name`, `max_price`, `min_price`) VALUES (1, &#39;鱼子酱工厂&#39;, 2, 1), (2, &#39;啤酒厂&#39;, 4, 2), (3, &#39;葡萄酒厂&#39;, 6, 4), (4, &#39;玩具厂&#39;, 21, 18), (5, &#39;名牌服装商标&#39;, 40, 35), (6, &#39;儿童食品厂&#39;, 43, 38), (7, &#39;零食生产厂家&#39;, 55, 52), (8, &#39;谷物食品厂&#39;, 71, 66), (9, &#39;化妆品公司&#39;, 105, 96), (10, &#39;豪华家具厂&#39;, 118, 110), (11, &#39;罐装食品厂&#39;, 124, 116), (12, &#39;名牌提包品牌&#39;, 146, 140), (13, &#39;快餐连锁店&#39;, 200, 190), (14, &#39;汽车生产线&#39;, 267, 255), (15, &#39;软饮料公司&#39;, 567, 550), (16, &#39;家用电器公司&#39;, 577, 560), (17, &#39;名牌鞋商标&#39;, 650, 630), (18, &#39;珠宝厂商&#39;, 784, 760), (19, &#39;服装市场连锁&#39;, 949, 920), (20, &#39;咖啡店连锁&#39;, 1237, 1200), (21, &#39;赛马&#39;, 2, 1), (22, &#39;意大利布加迪跑车&#39;, 4, 2), (23, &#39;美洲鸵养殖场&#39;, 4, 3), (24, &#39;私人动物园&#39;, 7, 5), (25, &#39;赛车队&#39;, 5, 1), (26, &#39;猎鹰&#39;, 49, 46), (27, &#39;喷气式飞机&#39;, 64, 60), (28, &#39;度假风情岛&#39;, 157, 150), (29, &#39;太空飞行装备&#39;, 167, 160), (30, &#39;搜宝队&#39;, 251, 240), (31, &#39;基因实验室&#39;, 743, 720), (32, &#39;大学城&#39;, 949, 920), (33, &#39;慈善基金会&#39;, 1135, 1100), (34, &#39;太空探索队&#39;, 2660, 2600), (35, &#39;军事机器人&#39;, 4400, 4300), (36, &#39;国家公园&#39;, 40443, 40000), (37, &#39;新国家&#39;, 78763, 78000), (38, &#39;太空聚居地&#39;, 262199, 260000), (39, &#39;油轮&#39;, 7, 5), (40, &#39;钢铁厂&#39;, 37, 32), (41, &#39;金矿开采&#39;, 40, 35), (42, &#39;机械厂&#39;, 70, 65), (43, &#39;风力发电厂&#39;, 85, 79), (44, &#39;汽车运输公司&#39;, 356, 340), (45, &#39;采矿场&#39;, 805, 780), (46, &#39;钻石开采&#39;, 1269, 1240), (47, &#39;医用设备&#39;, 3069, 3000), (48, &#39;采油厂&#39;, 4092, 4000), (49, &#39;石油开采团队&#39;, 6650, 6500), (50, &#39;太阳能发电厂&#39;, 7161, 7000), (51, &#39;热气球旅行公司&#39;, 12, 8), (52, &#39;夜总会&#39;, 14, 10), (53, &#39;飞船公司&#39;, 26, 23), (54, &#39;广播卫星&#39;, 37, 32), (55, &#39;电视频道&#39;, 37, 32), (56, &#39;报社&#39;, 50, 46), (57, &#39;航空公司&#39;, 75, 70), (58, &#39;健身中心&#39;, 97, 90), (59, &#39;游乐园&#39;, 107, 100), (60, &#39;杂志出版社&#39;, 152, 145), (61, &#39;电影制片厂&#39;, 167, 160), (62, &#39;唱片公司&#39;, 188, 180), (63, &#39;电视台&#39;, 516, 500), (64, &#39;赌场&#39;, 536, 520), (65, &#39;冰球队&#39;, 598, 580), (66, &#39;足球队&#39;, 1135, 1100), (67, &#39;篮球队&#39;, 1134, 1100), (68, &#39;垒球队&#39;, 1432, 1400), (69, &#39;橄榄球队&#39;, 1637, 1600), (70, &#39;服务器制造厂&#39;, 14, 10), (71, &#39;电子宠物公司&#39;, 54, 50), (72, &#39;电脑游戏公司&#39;, 107, 100), (73, &#39;IT公司&#39;, 314, 300), (74, &#39;电子商务公司&#39;, 419, 400), (75, &#39;特技公司&#39;, 619, 600), (76, &#39;电话中心&#39;, 619, 600), (77, &#39;电讯网络&#39;, 826, 800), (78, &#39;商务软件公司&#39;, 1031, 1000), (79, &#39;水上别墅&#39;, 9, 6), (80, &#39;公寓单元楼&#39;, 86, 80), (81, &#39;大农场&#39;, 86, 80), (82, &#39;豪华宾馆&#39;, 86, 80), (83, &#39;豪华公寓&#39;, 108, 100), (84, &#39;滑雪场&#39;, 188, 180), (85, &#39;私人别墅&#39;, 293, 280), (86, &#39;综合写字楼&#39;, 433, 420), (87, &#39;高尔夫球场&#39;, 433, 420), (88, &#39;摩天大楼&#39;, 722, 700), (89, &#39;温室&#39;, 929, 900), (90, &#39;购物中心&#39;, 2046, 2000), (91, &#39;法拉利ENZO&#39;, 40, 10), (92, &#39;超级游艇&#39;, 792, 700), (93, &#39;圣杯&#39;, 100, 40), (94, &#39;兵马俑&#39;, 100, 20), (95, &#39;莫奈真迹&#39;, 197, 100), (96, &#39;英国皇宫&#39;, 338, 200), (97, &#39;金腰带&#39;, 105, 60), (98, &#39;皇冠&#39;, 310, 200), (99, &#39;大本钟&#39;, 40946, 40000);&quot;; function httpRequest ($url, $data=array(), $cookiefile=&quot;cookiefile&quot;) { $ch = curl_init(); curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); curl_setopt($ch, CURLOPT_HEADER, 0); curl_setopt($ch, CURLOPT_REFERER, &quot;http://home.kaixin.com/Home.do&quot;); curl_setopt($ch, CURLOPT_COOKIEFILE, $cookiefile); curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiefile); curl_setopt($ch, CURLOPT_URL, $url); if(!empty($data)) { curl_setopt ($ch, CURLOPT_POST, 1); curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data)); } $result = curl_exec($ch); curl_close($ch); return $result; } function login ($cookie=&quot;cookiefile&quot;) { global $config; $data = array( &#39;email&#39; =&gt; $config[&#39;user&#39;][&#39;email&#39;], &#39;password&#39; =&gt; $config[&#39;user&#39;][&#39;password&#39;], &#39;origURL&#39; =&gt; &#39;http://www.kaixin.com/SysHome.do&#39;, ); httpRequest($config[&#39;login_url&#39;],$data, $cookie); return $cookie; } function getProductInfo ($cookie = &quot;cookiefile&quot;) { global $config; $product_url = $config[&#39;product_url&#39;]; $productTotalPage = 7; for($i=1; $i&lt;=$productTotalPage; $i++) { $request_url[] = sprintf($product_url, $i); } $product = array(); foreach($request_url as $url) { $response = httpRequest($url,array(), $cookie); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;buy_price&quot; value=&quot;(\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_price); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;count&quot; value=&quot;(\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_count); $pattern = &#39;#&lt;dt title=&quot;.*?&quot;&gt;(.*?)&lt;/dt&gt;#&#39;; preg_match_all($pattern, $response, $buy_name); foreach($buy_name[1] as $key =&gt; $name) { $product[$product_id[1][$key]] = array ( &#39;name&#39; =&gt; $name, &#39;id&#39;    =&gt; $product_id[1][$key], &#39;price&#39; =&gt; $buy_price[1][$key], &#39;count&#39; =&gt; $buy_count[1][$key], ); } } return $product; } function getDbLink () { global $link; global $config; if($link == null) { $link = new Mysqli($config[&#39;db&#39;][&#39;host&#39;], $config[&#39;db&#39;][&#39;user&#39;], $config[&#39;db&#39;][&#39;pw&#39;], $config[&#39;db&#39;][&#39;db&#39;]); $link-&gt;query(&#39;set Names utf8&#39;); } return $link; } function initDB () { global $table_sql; global $data_sql; $link = getDbLink(); $return = $link-&gt;query($table_sql); $return &amp;= $link-&gt;query($data_sql); return $return; } function getInterestInfo ($mint=false) { global $config; $link = getDbLink(); if($mint) { $sql = &quot;SELECT product_id, (max_price - min_price) as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } else { $sql = &quot;SELECT product_id, (max_price - min_price) / min_price as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } $stmt = $link-&gt;query($sql); if($link-&gt;errno == 1146) { initDB(); $stmt = $link-&gt;query($sql); } $return = array(); while($row = $stmt-&gt;fetch_assoc()) { $return[$row[&#39;product_id&#39;]] = $row; } return $return; } function updatePrice ($product_id, $price, $max=false) { $link = getDbLink(); $sql = &#39;UPDATE P set &#39;; if($max) { $sql .= &#39;`max_price` = &#39; . $price; } else { $sql .= &#39;`min_price` = &#39; . $price; } $sql .= &#39; where product_id =&#39; . $product_id; return $link-&gt;query($sql); } function sellProduct ($product_id, $pid, $price) { global $config; $url = $config[&#39;sell_url&#39;]; $data = array( &#39;confirm&#39;       =&gt; &#39;true&#39;, &#39;pid&#39;           =&gt; $pid, &#39;product_id&#39;    =&gt; $product_id, &#39;sell_price&#39;    =&gt; $price, &#39;is_use_item&#39;   =&gt; &#39;false&#39; ); for($i=5; $i&gt;0; $i++) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function buyProduct ($product_id, $price) { global $config; $url = $config[&#39;buy_url&#39;]; $data = array ( &#39;confirm&#39;    =&gt; &#39;true&#39;, &#39;product_id&#39; =&gt; $product_id, &#39;buy_price&#39; =&gt; $price, ); for($i=5; $i&gt;0; $i--) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function getMyProduct () { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;pid&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $pid); foreach($product_id[1] as $key =&gt; $value) { $return[$value] = array(&#39;pid&#39; =&gt; $pid[1][$key], &#39;product_id&#39; =&gt; $product_id[1][$key]); } } return $return; } function getMyInfo() { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); $product_count = 0; $return = array(); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); if(!empty($product_id[0])) { $product_count +=count($product_id[0]); } if(empty($return)) { $pattern = &#39;#资产总额：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $total_assets); $return[&#39;total_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$total_assets[1][0]), 0, -2); $pattern = &#39;#现金：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $cash); $return[&#39;cash&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$cash[1][0]), 0, -2); $pattern = &#39;#企业价值：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $ent_assets); $return[&#39;ent_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$ent_assets[1][0]), 0, -2); } } $return[&#39;ent_count&#39;] = $product_count; return $return; } function Utf8toGBK ($str) { return iconv(&quot;unicodebig&quot;, &quot;gbk&quot; ,iconv(&quot;utf-8&quot;, &#39;unicodebig&#39;, $str)); } $link   = null; $cookie = login(); $link   = getDbLink(); //print_r(getMyInfo()); //exit; if(file_exists(&#39;exit&#39;)){ unlink(&#39;exit&#39;); } while(1) { if(file_exists(&#39;exit&#39;)) { exit; } $myInfo = getMyInfo(); $mint = false; if($myInfo[&#39;total_assets&#39;] &gt; $config[&#39;mint_limit&#39;]) { $mint = true; } $product = getProductInfo(); $interest = getInterestInfo($mint); $myProduct = getMyProduct(); foreach($interest as $product_id =&gt; $value) { if($product[$product_id][&#39;price&#39;] &lt;= $value[&#39;min_price&#39;]) { if($product[$product_id][&#39;price&#39;] &lt; $value[&#39;min_price&#39;]) { updatePrice($product_id, $product[$product_id][&#39;price&#39;],false); } $str = $product[$product_id][&#39;name&#39;] . &quot; 可买&quot; . &quot; 当前为历史最低价格:&quot; . $product[$product_id][&#39;price&#39;]; echo Utf8toGBK($str) . &quot;\n\n&quot;; if(!array_key_exists($product_id, $myProduct)) { if( $r = buyProduct($product_id, $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;买入&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;); echo &quot;\n\n&quot;; } } } if($product[$product_id][&#39;price&#39;] &gt;= $value[&#39;max_price&#39;]) { if($product[$product_id][&#39;price&#39;] &gt; $value[&#39;max_price&#39;]) { updatePrice($product_id,$product[$product_id][&#39;price&#39;] ,true); } $str = $product[$product_id][&#39;name&#39;] . &quot;\33 可卖&quot; . &quot; 当前为历史最高价格:&quot; . $product[$product_id][&#39;price&#39;] ; echo Utf8toGBK($str) . &quot;\n\n&quot;; } if(array_key_exists($product_id, $myProduct)) { if($mint) { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;mint_interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } else { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } if($sell_cond) { if($r = sellProduct($product_id, $myProduct[$product_id][&#39;pid&#39;], $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;卖出&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;) ; echo &quot;\n\n&quot;; } } } } $myInfo = getMyInfo(); echo &quot;\n&quot;; echo &quot;----------------------------------------------&quot;; echo &quot;\n&quot;; $str = &#39;当前总资产:&#39; . $myInfo[&#39;total_assets&#39;] . &quot;\n&quot;; $str .= &#39;现金      :&#39; . $myInfo[&#39;cash&#39;] . &quot;\n&quot;; $str .= &#39;企业资产 :&#39; . $myInfo[&#39;ent_assets&#39;] . &quot;\n&quot;; echo Utf8toGBK($str); echo &quot;---------------------------------------------- &quot;; echo &quot;\n&quot;; sleep(30); }" />
+<meta property="og:description" content="&lt;?php #******************************************************* #    Author        : jiayin #    Last modified : 2008-10-17 19:54 #    Filename      : test.php #    Description   : #*******************************************************&lt;/p&gt; $config = array ( //基本配置 &#39;user&#39; =&gt; array ( &#39;email&#39;    =&gt; &#39;&#39;, &#39;password&#39; =&gt; &#39;123456&#39; ), &#39;app_id&#39;            =&gt; &#39;&#39;, &#39;db&#39;   =&gt; array ( &#39;host&#39; =&gt; &#39;localhost&#39;, &#39;user&#39; =&gt; &#39;root&#39;, &#39;pw&#39;   =&gt; &#39;123456&#39;, &#39;db&#39;   =&gt; &#39;test&#39; ), //可控参数 &#39;mint_limit&#39;        =&gt; &#39;3000&#39;, &#39;interest_limit&#39;    =&gt; &#39;30&#39;, &#39;mint_interest_limit&#39;    =&gt; &#39;40&#39;, &#39;interest_ratio&#39;    =&gt; &#39;2&#39;, &#39;mint_interest_ratio&#39;    =&gt; &#39;2&#39;, //url配置 &#39;login_url&#39;         =&gt; &#39;http://login.kaixin.com/Login.do&#39;, &#39;product_url&#39;       =&gt; &#39;http://tycoon.kaixin.com/buildEmpire.do?select_type=%s&#39;, &#39;sell_url&#39;          =&gt; &#39;http://tycoon.kaixin.com/confirmSellProduct.do&#39;, &#39;buy_url&#39;           =&gt; &#39;http://tycoon.kaixin.com/confirmBuyProduct.do&#39;, &#39;my_usual_url&#39;      =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=0&amp;id=%s&#39;, &#39;my_unusual_url&#39;    =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=1&amp;id=%s&#39;, ); $table_sql = &quot; CREATE TABLE IF NOT EXISTS `p` ( `product_id` int(11) NOT NULL, `name` char(50) character set utf8 NOT NULL, `max_price` int(11), `min_price` int(11) ) &quot;; $data_sql = &quot; INSERT INTO `p` (`product_id`, `name`, `max_price`, `min_price`) VALUES (1, &#39;鱼子酱工厂&#39;, 2, 1), (2, &#39;啤酒厂&#39;, 4, 2), (3, &#39;葡萄酒厂&#39;, 6, 4), (4, &#39;玩具厂&#39;, 21, 18), (5, &#39;名牌服装商标&#39;, 40, 35), (6, &#39;儿童食品厂&#39;, 43, 38), (7, &#39;零食生产厂家&#39;, 55, 52), (8, &#39;谷物食品厂&#39;, 71, 66), (9, &#39;化妆品公司&#39;, 105, 96), (10, &#39;豪华家具厂&#39;, 118, 110), (11, &#39;罐装食品厂&#39;, 124, 116), (12, &#39;名牌提包品牌&#39;, 146, 140), (13, &#39;快餐连锁店&#39;, 200, 190), (14, &#39;汽车生产线&#39;, 267, 255), (15, &#39;软饮料公司&#39;, 567, 550), (16, &#39;家用电器公司&#39;, 577, 560), (17, &#39;名牌鞋商标&#39;, 650, 630), (18, &#39;珠宝厂商&#39;, 784, 760), (19, &#39;服装市场连锁&#39;, 949, 920), (20, &#39;咖啡店连锁&#39;, 1237, 1200), (21, &#39;赛马&#39;, 2, 1), (22, &#39;意大利布加迪跑车&#39;, 4, 2), (23, &#39;美洲鸵养殖场&#39;, 4, 3), (24, &#39;私人动物园&#39;, 7, 5), (25, &#39;赛车队&#39;, 5, 1), (26, &#39;猎鹰&#39;, 49, 46), (27, &#39;喷气式飞机&#39;, 64, 60), (28, &#39;度假风情岛&#39;, 157, 150), (29, &#39;太空飞行装备&#39;, 167, 160), (30, &#39;搜宝队&#39;, 251, 240), (31, &#39;基因实验室&#39;, 743, 720), (32, &#39;大学城&#39;, 949, 920), (33, &#39;慈善基金会&#39;, 1135, 1100), (34, &#39;太空探索队&#39;, 2660, 2600), (35, &#39;军事机器人&#39;, 4400, 4300), (36, &#39;国家公园&#39;, 40443, 40000), (37, &#39;新国家&#39;, 78763, 78000), (38, &#39;太空聚居地&#39;, 262199, 260000), (39, &#39;油轮&#39;, 7, 5), (40, &#39;钢铁厂&#39;, 37, 32), (41, &#39;金矿开采&#39;, 40, 35), (42, &#39;机械厂&#39;, 70, 65), (43, &#39;风力发电厂&#39;, 85, 79), (44, &#39;汽车运输公司&#39;, 356, 340), (45, &#39;采矿场&#39;, 805, 780), (46, &#39;钻石开采&#39;, 1269, 1240), (47, &#39;医用设备&#39;, 3069, 3000), (48, &#39;采油厂&#39;, 4092, 4000), (49, &#39;石油开采团队&#39;, 6650, 6500), (50, &#39;太阳能发电厂&#39;, 7161, 7000), (51, &#39;热气球旅行公司&#39;, 12, 8), (52, &#39;夜总会&#39;, 14, 10), (53, &#39;飞船公司&#39;, 26, 23), (54, &#39;广播卫星&#39;, 37, 32), (55, &#39;电视频道&#39;, 37, 32), (56, &#39;报社&#39;, 50, 46), (57, &#39;航空公司&#39;, 75, 70), (58, &#39;健身中心&#39;, 97, 90), (59, &#39;游乐园&#39;, 107, 100), (60, &#39;杂志出版社&#39;, 152, 145), (61, &#39;电影制片厂&#39;, 167, 160), (62, &#39;唱片公司&#39;, 188, 180), (63, &#39;电视台&#39;, 516, 500), (64, &#39;赌场&#39;, 536, 520), (65, &#39;冰球队&#39;, 598, 580), (66, &#39;足球队&#39;, 1135, 1100), (67, &#39;篮球队&#39;, 1134, 1100), (68, &#39;垒球队&#39;, 1432, 1400), (69, &#39;橄榄球队&#39;, 1637, 1600), (70, &#39;服务器制造厂&#39;, 14, 10), (71, &#39;电子宠物公司&#39;, 54, 50), (72, &#39;电脑游戏公司&#39;, 107, 100), (73, &#39;IT公司&#39;, 314, 300), (74, &#39;电子商务公司&#39;, 419, 400), (75, &#39;特技公司&#39;, 619, 600), (76, &#39;电话中心&#39;, 619, 600), (77, &#39;电讯网络&#39;, 826, 800), (78, &#39;商务软件公司&#39;, 1031, 1000), (79, &#39;水上别墅&#39;, 9, 6), (80, &#39;公寓单元楼&#39;, 86, 80), (81, &#39;大农场&#39;, 86, 80), (82, &#39;豪华宾馆&#39;, 86, 80), (83, &#39;豪华公寓&#39;, 108, 100), (84, &#39;滑雪场&#39;, 188, 180), (85, &#39;私人别墅&#39;, 293, 280), (86, &#39;综合写字楼&#39;, 433, 420), (87, &#39;高尔夫球场&#39;, 433, 420), (88, &#39;摩天大楼&#39;, 722, 700), (89, &#39;温室&#39;, 929, 900), (90, &#39;购物中心&#39;, 2046, 2000), (91, &#39;法拉利ENZO&#39;, 40, 10), (92, &#39;超级游艇&#39;, 792, 700), (93, &#39;圣杯&#39;, 100, 40), (94, &#39;兵马俑&#39;, 100, 20), (95, &#39;莫奈真迹&#39;, 197, 100), (96, &#39;英国皇宫&#39;, 338, 200), (97, &#39;金腰带&#39;, 105, 60), (98, &#39;皇冠&#39;, 310, 200), (99, &#39;大本钟&#39;, 40946, 40000);&quot;; function httpRequest ($url, $data=array(), $cookiefile=&quot;cookiefile&quot;) { $ch = curl_init(); curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); curl_setopt($ch, CURLOPT_HEADER, 0); curl_setopt($ch, CURLOPT_REFERER, &quot;http://home.kaixin.com/Home.do&quot;); curl_setopt($ch, CURLOPT_COOKIEFILE, $cookiefile); curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiefile); curl_setopt($ch, CURLOPT_URL, $url); if(!empty($data)) { curl_setopt ($ch, CURLOPT_POST, 1); curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data)); } $result = curl_exec($ch); curl_close($ch); return $result; } function login ($cookie=&quot;cookiefile&quot;) { global $config; $data = array( &#39;email&#39; =&gt; $config[&#39;user&#39;][&#39;email&#39;], &#39;password&#39; =&gt; $config[&#39;user&#39;][&#39;password&#39;], &#39;origURL&#39; =&gt; &#39;http://www.kaixin.com/SysHome.do&#39;, ); httpRequest($config[&#39;login_url&#39;],$data, $cookie); return $cookie; } function getProductInfo ($cookie = &quot;cookiefile&quot;) { global $config; $product_url = $config[&#39;product_url&#39;]; $productTotalPage = 7; for($i=1; $i&lt;=$productTotalPage; $i++) { $request_url[] = sprintf($product_url, $i); } $product = array(); foreach($request_url as $url) { $response = httpRequest($url,array(), $cookie); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;buy_price&quot; value=&quot;(\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_price); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;count&quot; value=&quot;(\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_count); $pattern = &#39;#&lt;dt title=&quot;.*?&quot;&gt;(.*?)&lt;/dt&gt;#&#39;; preg_match_all($pattern, $response, $buy_name); foreach($buy_name[1] as $key =&gt; $name) { $product[$product_id[1][$key]] = array ( &#39;name&#39; =&gt; $name, &#39;id&#39;    =&gt; $product_id[1][$key], &#39;price&#39; =&gt; $buy_price[1][$key], &#39;count&#39; =&gt; $buy_count[1][$key], ); } } return $product; } function getDbLink () { global $link; global $config; if($link == null) { $link = new Mysqli($config[&#39;db&#39;][&#39;host&#39;], $config[&#39;db&#39;][&#39;user&#39;], $config[&#39;db&#39;][&#39;pw&#39;], $config[&#39;db&#39;][&#39;db&#39;]); $link-&gt;query(&#39;set Names utf8&#39;); } return $link; } function initDB () { global $table_sql; global $data_sql; $link = getDbLink(); $return = $link-&gt;query($table_sql); $return &amp;= $link-&gt;query($data_sql); return $return; } function getInterestInfo ($mint=false) { global $config; $link = getDbLink(); if($mint) { $sql = &quot;SELECT product_id, (max_price - min_price) as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } else { $sql = &quot;SELECT product_id, (max_price - min_price) / min_price as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } $stmt = $link-&gt;query($sql); if($link-&gt;errno == 1146) { initDB(); $stmt = $link-&gt;query($sql); } $return = array(); while($row = $stmt-&gt;fetch_assoc()) { $return[$row[&#39;product_id&#39;]] = $row; } return $return; } function updatePrice ($product_id, $price, $max=false) { $link = getDbLink(); $sql = &#39;UPDATE P set &#39;; if($max) { $sql .= &#39;`max_price` = &#39; . $price; } else { $sql .= &#39;`min_price` = &#39; . $price; } $sql .= &#39; where product_id =&#39; . $product_id; return $link-&gt;query($sql); } function sellProduct ($product_id, $pid, $price) { global $config; $url = $config[&#39;sell_url&#39;]; $data = array( &#39;confirm&#39;       =&gt; &#39;true&#39;, &#39;pid&#39;           =&gt; $pid, &#39;product_id&#39;    =&gt; $product_id, &#39;sell_price&#39;    =&gt; $price, &#39;is_use_item&#39;   =&gt; &#39;false&#39; ); for($i=5; $i&gt;0; $i++) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function buyProduct ($product_id, $price) { global $config; $url = $config[&#39;buy_url&#39;]; $data = array ( &#39;confirm&#39;    =&gt; &#39;true&#39;, &#39;product_id&#39; =&gt; $product_id, &#39;buy_price&#39; =&gt; $price, ); for($i=5; $i&gt;0; $i--) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function getMyProduct () { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;pid&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $pid); foreach($product_id[1] as $key =&gt; $value) { $return[$value] = array(&#39;pid&#39; =&gt; $pid[1][$key], &#39;product_id&#39; =&gt; $product_id[1][$key]); } } return $return; } function getMyInfo() { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); $product_count = 0; $return = array(); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\d+)&quot;\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); if(!empty($product_id[0])) { $product_count +=count($product_id[0]); } if(empty($return)) { $pattern = &#39;#资产总额：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $total_assets); $return[&#39;total_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$total_assets[1][0]), 0, -2); $pattern = &#39;#现金：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $cash); $return[&#39;cash&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$cash[1][0]), 0, -2); $pattern = &#39;#企业价值：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $ent_assets); $return[&#39;ent_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$ent_assets[1][0]), 0, -2); } } $return[&#39;ent_count&#39;] = $product_count; return $return; } function Utf8toGBK ($str) { return iconv(&quot;unicodebig&quot;, &quot;gbk&quot; ,iconv(&quot;utf-8&quot;, &#39;unicodebig&#39;, $str)); } $link   = null; $cookie = login(); $link   = getDbLink(); //print_r(getMyInfo()); //exit; if(file_exists(&#39;exit&#39;)){ unlink(&#39;exit&#39;); } while(1) { if(file_exists(&#39;exit&#39;)) { exit; } $myInfo = getMyInfo(); $mint = false; if($myInfo[&#39;total_assets&#39;] &gt; $config[&#39;mint_limit&#39;]) { $mint = true; } $product = getProductInfo(); $interest = getInterestInfo($mint); $myProduct = getMyProduct(); foreach($interest as $product_id =&gt; $value) { if($product[$product_id][&#39;price&#39;] &lt;= $value[&#39;min_price&#39;]) { if($product[$product_id][&#39;price&#39;] &lt; $value[&#39;min_price&#39;]) { updatePrice($product_id, $product[$product_id][&#39;price&#39;],false); } $str = $product[$product_id][&#39;name&#39;] . &quot; 可买&quot; . &quot; 当前为历史最低价格:&quot; . $product[$product_id][&#39;price&#39;]; echo Utf8toGBK($str) . &quot;\n\n&quot;; if(!array_key_exists($product_id, $myProduct)) { if( $r = buyProduct($product_id, $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;买入&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;); echo &quot;\n\n&quot;; } } } if($product[$product_id][&#39;price&#39;] &gt;= $value[&#39;max_price&#39;]) { if($product[$product_id][&#39;price&#39;] &gt; $value[&#39;max_price&#39;]) { updatePrice($product_id,$product[$product_id][&#39;price&#39;] ,true); } $str = $product[$product_id][&#39;name&#39;] . &quot;\33 可卖&quot; . &quot; 当前为历史最高价格:&quot; . $product[$product_id][&#39;price&#39;] ; echo Utf8toGBK($str) . &quot;\n\n&quot;; } if(array_key_exists($product_id, $myProduct)) { if($mint) { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;mint_interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } else { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } if($sell_cond) { if($r = sellProduct($product_id, $myProduct[$product_id][&#39;pid&#39;], $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;卖出&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;) ; echo &quot;\n\n&quot;; } } } } $myInfo = getMyInfo(); echo &quot;\n&quot;; echo &quot;----------------------------------------------&quot;; echo &quot;\n&quot;; $str = &#39;当前总资产:&#39; . $myInfo[&#39;total_assets&#39;] . &quot;\n&quot;; $str .= &#39;现金      :&#39; . $myInfo[&#39;cash&#39;] . &quot;\n&quot;; $str .= &#39;企业资产 :&#39; . $myInfo[&#39;ent_assets&#39;] . &quot;\n&quot;; echo Utf8toGBK($str); echo &quot;---------------------------------------------- &quot;; echo &quot;\n&quot;; sleep(30); }" />
+<link rel="canonical" href="http://localhost:4000/2008/10/%E4%BC%81%E4%B8%9A%E5%A4%A7%E4%BA%A8.html" />
+<meta property="og:url" content="http://localhost:4000/2008/10/%E4%BC%81%E4%B8%9A%E5%A4%A7%E4%BA%A8.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2008-10-19T15:27:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="企业大亨" />
+<script type="application/ld+json">
+{"headline":"企业大亨","url":"http://localhost:4000/2008/10/%E4%BC%81%E4%B8%9A%E5%A4%A7%E4%BA%A8.html","dateModified":"2008-10-19T15:27:00+08:00","datePublished":"2008-10-19T15:27:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2008/10/%E4%BC%81%E4%B8%9A%E5%A4%A7%E4%BA%A8.html"},"description":"&lt;?php #******************************************************* #    Author        : jiayin #    Last modified : 2008-10-17 19:54 #    Filename      : test.php #    Description   : #*******************************************************&lt;/p&gt; $config = array ( //基本配置 &#39;user&#39; =&gt; array ( &#39;email&#39;    =&gt; &#39;&#39;, &#39;password&#39; =&gt; &#39;123456&#39; ), &#39;app_id&#39;            =&gt; &#39;&#39;, &#39;db&#39;   =&gt; array ( &#39;host&#39; =&gt; &#39;localhost&#39;, &#39;user&#39; =&gt; &#39;root&#39;, &#39;pw&#39;   =&gt; &#39;123456&#39;, &#39;db&#39;   =&gt; &#39;test&#39; ), //可控参数 &#39;mint_limit&#39;        =&gt; &#39;3000&#39;, &#39;interest_limit&#39;    =&gt; &#39;30&#39;, &#39;mint_interest_limit&#39;    =&gt; &#39;40&#39;, &#39;interest_ratio&#39;    =&gt; &#39;2&#39;, &#39;mint_interest_ratio&#39;    =&gt; &#39;2&#39;, //url配置 &#39;login_url&#39;         =&gt; &#39;http://login.kaixin.com/Login.do&#39;, &#39;product_url&#39;       =&gt; &#39;http://tycoon.kaixin.com/buildEmpire.do?select_type=%s&#39;, &#39;sell_url&#39;          =&gt; &#39;http://tycoon.kaixin.com/confirmSellProduct.do&#39;, &#39;buy_url&#39;           =&gt; &#39;http://tycoon.kaixin.com/confirmBuyProduct.do&#39;, &#39;my_usual_url&#39;      =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=0&amp;id=%s&#39;, &#39;my_unusual_url&#39;    =&gt; &#39;http://tycoon.kaixin.com/myEmpire.do?type=1&amp;id=%s&#39;, ); $table_sql = &quot; CREATE TABLE IF NOT EXISTS `p` ( `product_id` int(11) NOT NULL, `name` char(50) character set utf8 NOT NULL, `max_price` int(11), `min_price` int(11) ) &quot;; $data_sql = &quot; INSERT INTO `p` (`product_id`, `name`, `max_price`, `min_price`) VALUES (1, &#39;鱼子酱工厂&#39;, 2, 1), (2, &#39;啤酒厂&#39;, 4, 2), (3, &#39;葡萄酒厂&#39;, 6, 4), (4, &#39;玩具厂&#39;, 21, 18), (5, &#39;名牌服装商标&#39;, 40, 35), (6, &#39;儿童食品厂&#39;, 43, 38), (7, &#39;零食生产厂家&#39;, 55, 52), (8, &#39;谷物食品厂&#39;, 71, 66), (9, &#39;化妆品公司&#39;, 105, 96), (10, &#39;豪华家具厂&#39;, 118, 110), (11, &#39;罐装食品厂&#39;, 124, 116), (12, &#39;名牌提包品牌&#39;, 146, 140), (13, &#39;快餐连锁店&#39;, 200, 190), (14, &#39;汽车生产线&#39;, 267, 255), (15, &#39;软饮料公司&#39;, 567, 550), (16, &#39;家用电器公司&#39;, 577, 560), (17, &#39;名牌鞋商标&#39;, 650, 630), (18, &#39;珠宝厂商&#39;, 784, 760), (19, &#39;服装市场连锁&#39;, 949, 920), (20, &#39;咖啡店连锁&#39;, 1237, 1200), (21, &#39;赛马&#39;, 2, 1), (22, &#39;意大利布加迪跑车&#39;, 4, 2), (23, &#39;美洲鸵养殖场&#39;, 4, 3), (24, &#39;私人动物园&#39;, 7, 5), (25, &#39;赛车队&#39;, 5, 1), (26, &#39;猎鹰&#39;, 49, 46), (27, &#39;喷气式飞机&#39;, 64, 60), (28, &#39;度假风情岛&#39;, 157, 150), (29, &#39;太空飞行装备&#39;, 167, 160), (30, &#39;搜宝队&#39;, 251, 240), (31, &#39;基因实验室&#39;, 743, 720), (32, &#39;大学城&#39;, 949, 920), (33, &#39;慈善基金会&#39;, 1135, 1100), (34, &#39;太空探索队&#39;, 2660, 2600), (35, &#39;军事机器人&#39;, 4400, 4300), (36, &#39;国家公园&#39;, 40443, 40000), (37, &#39;新国家&#39;, 78763, 78000), (38, &#39;太空聚居地&#39;, 262199, 260000), (39, &#39;油轮&#39;, 7, 5), (40, &#39;钢铁厂&#39;, 37, 32), (41, &#39;金矿开采&#39;, 40, 35), (42, &#39;机械厂&#39;, 70, 65), (43, &#39;风力发电厂&#39;, 85, 79), (44, &#39;汽车运输公司&#39;, 356, 340), (45, &#39;采矿场&#39;, 805, 780), (46, &#39;钻石开采&#39;, 1269, 1240), (47, &#39;医用设备&#39;, 3069, 3000), (48, &#39;采油厂&#39;, 4092, 4000), (49, &#39;石油开采团队&#39;, 6650, 6500), (50, &#39;太阳能发电厂&#39;, 7161, 7000), (51, &#39;热气球旅行公司&#39;, 12, 8), (52, &#39;夜总会&#39;, 14, 10), (53, &#39;飞船公司&#39;, 26, 23), (54, &#39;广播卫星&#39;, 37, 32), (55, &#39;电视频道&#39;, 37, 32), (56, &#39;报社&#39;, 50, 46), (57, &#39;航空公司&#39;, 75, 70), (58, &#39;健身中心&#39;, 97, 90), (59, &#39;游乐园&#39;, 107, 100), (60, &#39;杂志出版社&#39;, 152, 145), (61, &#39;电影制片厂&#39;, 167, 160), (62, &#39;唱片公司&#39;, 188, 180), (63, &#39;电视台&#39;, 516, 500), (64, &#39;赌场&#39;, 536, 520), (65, &#39;冰球队&#39;, 598, 580), (66, &#39;足球队&#39;, 1135, 1100), (67, &#39;篮球队&#39;, 1134, 1100), (68, &#39;垒球队&#39;, 1432, 1400), (69, &#39;橄榄球队&#39;, 1637, 1600), (70, &#39;服务器制造厂&#39;, 14, 10), (71, &#39;电子宠物公司&#39;, 54, 50), (72, &#39;电脑游戏公司&#39;, 107, 100), (73, &#39;IT公司&#39;, 314, 300), (74, &#39;电子商务公司&#39;, 419, 400), (75, &#39;特技公司&#39;, 619, 600), (76, &#39;电话中心&#39;, 619, 600), (77, &#39;电讯网络&#39;, 826, 800), (78, &#39;商务软件公司&#39;, 1031, 1000), (79, &#39;水上别墅&#39;, 9, 6), (80, &#39;公寓单元楼&#39;, 86, 80), (81, &#39;大农场&#39;, 86, 80), (82, &#39;豪华宾馆&#39;, 86, 80), (83, &#39;豪华公寓&#39;, 108, 100), (84, &#39;滑雪场&#39;, 188, 180), (85, &#39;私人别墅&#39;, 293, 280), (86, &#39;综合写字楼&#39;, 433, 420), (87, &#39;高尔夫球场&#39;, 433, 420), (88, &#39;摩天大楼&#39;, 722, 700), (89, &#39;温室&#39;, 929, 900), (90, &#39;购物中心&#39;, 2046, 2000), (91, &#39;法拉利ENZO&#39;, 40, 10), (92, &#39;超级游艇&#39;, 792, 700), (93, &#39;圣杯&#39;, 100, 40), (94, &#39;兵马俑&#39;, 100, 20), (95, &#39;莫奈真迹&#39;, 197, 100), (96, &#39;英国皇宫&#39;, 338, 200), (97, &#39;金腰带&#39;, 105, 60), (98, &#39;皇冠&#39;, 310, 200), (99, &#39;大本钟&#39;, 40946, 40000);&quot;; function httpRequest ($url, $data=array(), $cookiefile=&quot;cookiefile&quot;) { $ch = curl_init(); curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); curl_setopt($ch, CURLOPT_HEADER, 0); curl_setopt($ch, CURLOPT_REFERER, &quot;http://home.kaixin.com/Home.do&quot;); curl_setopt($ch, CURLOPT_COOKIEFILE, $cookiefile); curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiefile); curl_setopt($ch, CURLOPT_URL, $url); if(!empty($data)) { curl_setopt ($ch, CURLOPT_POST, 1); curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($data)); } $result = curl_exec($ch); curl_close($ch); return $result; } function login ($cookie=&quot;cookiefile&quot;) { global $config; $data = array( &#39;email&#39; =&gt; $config[&#39;user&#39;][&#39;email&#39;], &#39;password&#39; =&gt; $config[&#39;user&#39;][&#39;password&#39;], &#39;origURL&#39; =&gt; &#39;http://www.kaixin.com/SysHome.do&#39;, ); httpRequest($config[&#39;login_url&#39;],$data, $cookie); return $cookie; } function getProductInfo ($cookie = &quot;cookiefile&quot;) { global $config; $product_url = $config[&#39;product_url&#39;]; $productTotalPage = 7; for($i=1; $i&lt;=$productTotalPage; $i++) { $request_url[] = sprintf($product_url, $i); } $product = array(); foreach($request_url as $url) { $response = httpRequest($url,array(), $cookie); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\\d+)&quot;\\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;buy_price&quot; value=&quot;(\\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_price); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;count&quot; value=&quot;(\\d+)&quot;/&gt;#&#39;; preg_match_all($pattern, $response, $buy_count); $pattern = &#39;#&lt;dt title=&quot;.*?&quot;&gt;(.*?)&lt;/dt&gt;#&#39;; preg_match_all($pattern, $response, $buy_name); foreach($buy_name[1] as $key =&gt; $name) { $product[$product_id[1][$key]] = array ( &#39;name&#39; =&gt; $name, &#39;id&#39;    =&gt; $product_id[1][$key], &#39;price&#39; =&gt; $buy_price[1][$key], &#39;count&#39; =&gt; $buy_count[1][$key], ); } } return $product; } function getDbLink () { global $link; global $config; if($link == null) { $link = new Mysqli($config[&#39;db&#39;][&#39;host&#39;], $config[&#39;db&#39;][&#39;user&#39;], $config[&#39;db&#39;][&#39;pw&#39;], $config[&#39;db&#39;][&#39;db&#39;]); $link-&gt;query(&#39;set Names utf8&#39;); } return $link; } function initDB () { global $table_sql; global $data_sql; $link = getDbLink(); $return = $link-&gt;query($table_sql); $return &amp;= $link-&gt;query($data_sql); return $return; } function getInterestInfo ($mint=false) { global $config; $link = getDbLink(); if($mint) { $sql = &quot;SELECT product_id, (max_price - min_price) as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } else { $sql = &quot;SELECT product_id, (max_price - min_price) / min_price as interest_rate , name, max_price , min_price FROM `p` group by product_id order by   interest_rate desc limit &quot; . $config[&#39;interest_limit&#39;]; } $stmt = $link-&gt;query($sql); if($link-&gt;errno == 1146) { initDB(); $stmt = $link-&gt;query($sql); } $return = array(); while($row = $stmt-&gt;fetch_assoc()) { $return[$row[&#39;product_id&#39;]] = $row; } return $return; } function updatePrice ($product_id, $price, $max=false) { $link = getDbLink(); $sql = &#39;UPDATE P set &#39;; if($max) { $sql .= &#39;`max_price` = &#39; . $price; } else { $sql .= &#39;`min_price` = &#39; . $price; } $sql .= &#39; where product_id =&#39; . $product_id; return $link-&gt;query($sql); } function sellProduct ($product_id, $pid, $price) { global $config; $url = $config[&#39;sell_url&#39;]; $data = array( &#39;confirm&#39;       =&gt; &#39;true&#39;, &#39;pid&#39;           =&gt; $pid, &#39;product_id&#39;    =&gt; $product_id, &#39;sell_price&#39;    =&gt; $price, &#39;is_use_item&#39;   =&gt; &#39;false&#39; ); for($i=5; $i&gt;0; $i++) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function buyProduct ($product_id, $price) { global $config; $url = $config[&#39;buy_url&#39;]; $data = array ( &#39;confirm&#39;    =&gt; &#39;true&#39;, &#39;product_id&#39; =&gt; $product_id, &#39;buy_price&#39; =&gt; $price, ); for($i=5; $i&gt;0; $i--) { $data[&#39;count&#39;] = $i; $return = httpRequest($url, $data); if(strpos($return, &#39;成功&#39;)) { return $i; } } return false; } function getMyProduct () { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\\d+)&quot;\\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;pid&quot; value=&quot;(\\d+)&quot;\\/&gt;#i&#39;; preg_match_all($pattern, $response, $pid); foreach($product_id[1] as $key =&gt; $value) { $return[$value] = array(&#39;pid&#39; =&gt; $pid[1][$key], &#39;product_id&#39; =&gt; $product_id[1][$key]); } } return $return; } function getMyInfo() { global $config; $my_url = array ( sprintf($config[&#39;my_usual_url&#39;], $config[&#39;app_id&#39;]), sprintf($config[&#39;my_unusual_url&#39;], $config[&#39;app_id&#39;]), ); $product_count = 0; $return = array(); foreach($my_url as $url) { $response = httpRequest($url); $pattern = &#39;#&lt;input type=&quot;hidden&quot; name=&quot;product_id&quot; value=&quot;(\\d+)&quot;\\/&gt;#i&#39;; preg_match_all($pattern, $response, $product_id); if(!empty($product_id[0])) { $product_count +=count($product_id[0]); } if(empty($return)) { $pattern = &#39;#资产总额：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $total_assets); $return[&#39;total_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$total_assets[1][0]), 0, -2); $pattern = &#39;#现金：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $cash); $return[&#39;cash&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$cash[1][0]), 0, -2); $pattern = &#39;#企业价值：&lt;span class=&quot;add-num&quot;&gt;(.*?)&lt;/span&gt;#&#39;; preg_match_all($pattern, $response, $ent_assets); $return[&#39;ent_assets&#39;] = substr(str_replace(array(&#39;万&#39;, &#39;亿&#39;), &#39;&#39;,$ent_assets[1][0]), 0, -2); } } $return[&#39;ent_count&#39;] = $product_count; return $return; } function Utf8toGBK ($str) { return iconv(&quot;unicodebig&quot;, &quot;gbk&quot; ,iconv(&quot;utf-8&quot;, &#39;unicodebig&#39;, $str)); } $link   = null; $cookie = login(); $link   = getDbLink(); //print_r(getMyInfo()); //exit; if(file_exists(&#39;exit&#39;)){ unlink(&#39;exit&#39;); } while(1) { if(file_exists(&#39;exit&#39;)) { exit; } $myInfo = getMyInfo(); $mint = false; if($myInfo[&#39;total_assets&#39;] &gt; $config[&#39;mint_limit&#39;]) { $mint = true; } $product = getProductInfo(); $interest = getInterestInfo($mint); $myProduct = getMyProduct(); foreach($interest as $product_id =&gt; $value) { if($product[$product_id][&#39;price&#39;] &lt;= $value[&#39;min_price&#39;]) { if($product[$product_id][&#39;price&#39;] &lt; $value[&#39;min_price&#39;]) { updatePrice($product_id, $product[$product_id][&#39;price&#39;],false); } $str = $product[$product_id][&#39;name&#39;] . &quot; 可买&quot; . &quot; 当前为历史最低价格:&quot; . $product[$product_id][&#39;price&#39;]; echo Utf8toGBK($str) . &quot;\\n\\n&quot;; if(!array_key_exists($product_id, $myProduct)) { if( $r = buyProduct($product_id, $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;买入&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;); echo &quot;\\n\\n&quot;; } } } if($product[$product_id][&#39;price&#39;] &gt;= $value[&#39;max_price&#39;]) { if($product[$product_id][&#39;price&#39;] &gt; $value[&#39;max_price&#39;]) { updatePrice($product_id,$product[$product_id][&#39;price&#39;] ,true); } $str = $product[$product_id][&#39;name&#39;] . &quot;\\33 可卖&quot; . &quot; 当前为历史最高价格:&quot; . $product[$product_id][&#39;price&#39;] ; echo Utf8toGBK($str) . &quot;\\n\\n&quot;; } if(array_key_exists($product_id, $myProduct)) { if($mint) { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;mint_interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } else { $sell_cond = ($product[$product_id][&#39;price&#39;] - $value[&#39;min_price&#39;]) * $config[&#39;interest_ratio&#39;] / $value[&#39;min_price&#39;] &gt;= $value[&#39;interest_rate&#39;]; } if($sell_cond) { if($r = sellProduct($product_id, $myProduct[$product_id][&#39;pid&#39;], $product[$product_id][&#39;price&#39;])) { echo Utf8toGBK(&#39;卖出&#39; . $product[$product_id][&#39;name&#39;] . &#39; &#39; . $r . &#39;个&#39;) ; echo &quot;\\n\\n&quot;; } } } } $myInfo = getMyInfo(); echo &quot;\\n&quot;; echo &quot;----------------------------------------------&quot;; echo &quot;\\n&quot;; $str = &#39;当前总资产:&#39; . $myInfo[&#39;total_assets&#39;] . &quot;\\n&quot;; $str .= &#39;现金      :&#39; . $myInfo[&#39;cash&#39;] . &quot;\\n&quot;; $str .= &#39;企业资产 :&#39; . $myInfo[&#39;ent_assets&#39;] . &quot;\\n&quot;; echo Utf8toGBK($str); echo &quot;---------------------------------------------- &quot;; echo &quot;\\n&quot;; sleep(30); }","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">企业大亨</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2008-10-19T15:27:00+08:00" itemprop="datePublished">Oct 19, 2008
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <div id="blog_text" class="cnt">
+<h2></h2>
+<div id="blog_text">&lt;?php<br />
+#*******************************************************<br />
+#     Author        : jiayin<br />
+#    Last modified : 2008-10-17 19:54<br />
+#     Filename      : test.php<br />
+#    Description    :<br />
+#*******************************************************&lt;/p&gt;
+<p>$config =  array (<br />
+//基本配置<br />
+'user' =&gt; array (<br />
+'email'    =&gt;  '',<br />
+'password' =&gt; '123456'<br />
+),<br />
+'app_id'             =&gt; '',</p>
+<p>'db'   =&gt; array (<br />
+'host' =&gt;  'localhost',<br />
+'user' =&gt; 'root',<br />
+'pw'   =&gt;  '123456',<br />
+'db'   =&gt; 'test'<br />
+),<br />
+//可控参数<br />
+'mint_limit'        =&gt; '3000',<br />
+'interest_limit'    =&gt; '30',<br />
+'mint_interest_limit'    =&gt; '40',<br />
+'interest_ratio'    =&gt;  '2',<br />
+'mint_interest_ratio'    =&gt; '2',</p>
+<p>//url配置<br />
+'login_url'         =&gt; 'http://login.kaixin.com/Login.do',<br />
+'product_url'       =&gt;  'http://tycoon.kaixin.com/buildEmpire.do?select_type=%s',<br />
+'sell_url'          =&gt;  'http://tycoon.kaixin.com/confirmSellProduct.do',<br />
+'buy_url'            =&gt; 'http://tycoon.kaixin.com/confirmBuyProduct.do',<br />
+'my_usual_url'      =&gt;  'http://tycoon.kaixin.com/myEmpire.do?type=0&amp;id=%s',<br />
+'my_unusual_url'    =&gt;  'http://tycoon.kaixin.com/myEmpire.do?type=1&amp;id=%s',</p>
+<p>);</p>
+<p>$table_sql  = "<br />
+CREATE TABLE IF NOT EXISTS `p` (<br />
+`product_id` int(11) NOT  NULL,<br />
+`name` char(50) character set utf8 NOT NULL,<br />
+`max_price` int(11),<br />
+`min_price` int(11)<br />
+) ";</p>
+<p>$data_sql = "<br />
+INSERT INTO `p` (`product_id`, `name`, `max_price`, `min_price`) VALUES<br />
+(1, '鱼子酱工厂', 2, 1),<br />
+(2, '啤酒厂', 4, 2),<br />
+(3, '葡萄酒厂', 6, 4),<br />
+(4, '玩具厂', 21,  18),<br />
+(5, '名牌服装商标', 40, 35),<br />
+(6, '儿童食品厂', 43, 38),<br />
+(7, '零食生产厂家', 55,  52),<br />
+(8, '谷物食品厂', 71, 66),<br />
+(9, '化妆品公司', 105, 96),<br />
+(10, '豪华家具厂', 118,  110),<br />
+(11, '罐装食品厂', 124, 116),<br />
+(12, '名牌提包品牌', 146, 140),<br />
+(13, '快餐连锁店',  200, 190),<br />
+(14, '汽车生产线', 267, 255),<br />
+(15, '软饮料公司', 567, 550),<br />
+(16,  '家用电器公司', 577, 560),<br />
+(17, '名牌鞋商标', 650, 630),<br />
+(18, '珠宝厂商', 784,  760),<br />
+(19, '服装市场连锁', 949, 920),<br />
+(20, '咖啡店连锁', 1237, 1200),<br />
+(21, '赛马',  2, 1),<br />
+(22, '意大利布加迪跑车', 4, 2),<br />
+(23, '美洲鸵养殖场', 4, 3),<br />
+(24, '私人动物园', 7,  5),<br />
+(25, '赛车队', 5, 1),<br />
+(26, '猎鹰', 49, 46),<br />
+(27, '喷气式飞机', 64,  60),<br />
+(28, '度假风情岛', 157, 150),<br />
+(29, '太空飞行装备', 167, 160),<br />
+(30, '搜宝队',  251, 240),<br />
+(31, '基因实验室', 743, 720),<br />
+(32, '大学城', 949, 920),<br />
+(33,  '慈善基金会', 1135, 1100),<br />
+(34, '太空探索队', 2660, 2600),<br />
+(35, '军事机器人', 4400,  4300),<br />
+(36, '国家公园', 40443, 40000),<br />
+(37, '新国家', 78763, 78000),<br />
+(38,  '太空聚居地', 262199, 260000),<br />
+(39, '油轮', 7, 5),<br />
+(40, '钢铁厂', 37, 32),<br />
+(41,  '金矿开采', 40, 35),<br />
+(42, '机械厂', 70, 65),<br />
+(43, '风力发电厂', 85, 79),<br />
+(44,  '汽车运输公司', 356, 340),<br />
+(45, '采矿场', 805, 780),<br />
+(46, '钻石开采', 1269,  1240),<br />
+(47, '医用设备', 3069, 3000),<br />
+(48, '采油厂', 4092, 4000),<br />
+(49,  '石油开采团队', 6650, 6500),<br />
+(50, '太阳能发电厂', 7161, 7000),<br />
+(51, '热气球旅行公司', 12,  8),<br />
+(52, '夜总会', 14, 10),<br />
+(53, '飞船公司', 26, 23),<br />
+(54, '广播卫星', 37,  32),<br />
+(55, '电视频道', 37, 32),<br />
+(56, '报社', 50, 46),<br />
+(57, '航空公司', 75,  70),<br />
+(58, '健身中心', 97, 90),<br />
+(59, '游乐园', 107, 100),<br />
+(60, '杂志出版社', 152,  145),<br />
+(61, '电影制片厂', 167, 160),<br />
+(62, '唱片公司', 188, 180),<br />
+(63, '电视台', 516,  500),<br />
+(64, '赌场', 536, 520),<br />
+(65, '冰球队', 598, 580),<br />
+(66, '足球队', 1135,  1100),<br />
+(67, '篮球队', 1134, 1100),<br />
+(68, '垒球队', 1432, 1400),<br />
+(69, '橄榄球队',  1637, 1600),<br />
+(70, '服务器制造厂', 14, 10),<br />
+(71, '电子宠物公司', 54, 50),<br />
+(72,  '电脑游戏公司', 107, 100),<br />
+(73, 'IT公司', 314, 300),<br />
+(74, '电子商务公司', 419,  400),<br />
+(75, '特技公司', 619, 600),<br />
+(76, '电话中心', 619, 600),<br />
+(77, '电讯网络', 826,  800),<br />
+(78, '商务软件公司', 1031, 1000),<br />
+(79, '水上别墅', 9, 6),<br />
+(80, '公寓单元楼', 86,  80),<br />
+(81, '大农场', 86, 80),<br />
+(82, '豪华宾馆', 86, 80),<br />
+(83, '豪华公寓', 108,  100),<br />
+(84, '滑雪场', 188, 180),<br />
+(85, '私人别墅', 293, 280),<br />
+(86, '综合写字楼', 433,  420),<br />
+(87, '高尔夫球场', 433, 420),<br />
+(88, '摩天大楼', 722, 700),<br />
+(89, '温室', 929,  900),<br />
+(90, '购物中心', 2046, 2000),<br />
+(91, '法拉利ENZO', 40, 10),<br />
+(92, '超级游艇',  792, 700),<br />
+(93, '圣杯', 100, 40),<br />
+(94, '兵马俑', 100, 20),<br />
+(95, '莫奈真迹', 197,  100),<br />
+(96, '英国皇宫', 338, 200),<br />
+(97, '金腰带', 105, 60),<br />
+(98, '皇冠', 310,  200),<br />
+(99, '大本钟', 40946, 40000);";</p>
+<p>function httpRequest ($url,  $data=array(), $cookiefile="cookiefile")<br />
+{<br />
+$ch = curl_init();<br />
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);<br />
+curl_setopt($ch,  CURLOPT_RETURNTRANSFER, TRUE);<br />
+curl_setopt($ch, CURLOPT_HEADER,  0);<br />
+curl_setopt($ch, CURLOPT_REFERER,  "http://home.kaixin.com/Home.do");<br />
+curl_setopt($ch, CURLOPT_COOKIEFILE,  $cookiefile);<br />
+curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiefile);<br />
+curl_setopt($ch, CURLOPT_URL, $url);</p>
+<p>if(!empty($data))<br />
+{<br />
+curl_setopt ($ch, CURLOPT_POST, 1);<br />
+curl_setopt ($ch,  CURLOPT_POSTFIELDS, http_build_query($data));<br />
+}</p>
+<p>$result =  curl_exec($ch);<br />
+curl_close($ch);</p>
+<p>return  $result;<br />
+}</p>
+<p>function login ($cookie="cookiefile")<br />
+{<br />
+global  $config;</p>
+<p>$data = array(<br />
+'email' =&gt;  $config['user']['email'],<br />
+'password' =&gt;  $config['user']['password'],<br />
+'origURL' =&gt;  'http://www.kaixin.com/SysHome.do',<br />
+);</p>
+<p>httpRequest($config['login_url'],$data, $cookie);</p>
+<p>return  $cookie;<br />
+}</p>
+<p>function getProductInfo ($cookie =  "cookiefile")<br />
+{<br />
+global $config;</p>
+<p>$product_url =  $config['product_url'];<br />
+$productTotalPage = 7;</p>
+<p>for($i=1;  $i&lt;=$productTotalPage; $i++)<br />
+{<br />
+$request_url[] =  sprintf($product_url, $i);<br />
+}</p>
+<p>$product = array();</p>
+<p>foreach($request_url as $url)<br />
+{<br />
+$response =  httpRequest($url,array(), $cookie);</p>
+<p>$pattern = '#&lt;input  type="hidden" name="product_id" value="(\d+)"\/&gt;#i';<br />
+preg_match_all($pattern, $response, $product_id);</p>
+<p>$pattern =  '#&lt;input type="hidden" name="buy_price" value="(\d+)"/&gt;#';<br />
+preg_match_all($pattern, $response, $buy_price);</p>
+<p>$pattern =  '#&lt;input type="hidden" name="count" value="(\d+)"/&gt;#';<br />
+preg_match_all($pattern, $response, $buy_count);</p>
+<p>$pattern =  '#&lt;dt title=".*?"&gt;(.*?)&lt;/dt&gt;#';<br />
+preg_match_all($pattern, $response, $buy_name);</p>
+<p>foreach($buy_name[1] as $key =&gt; $name)<br />
+{<br />
+$product[$product_id[1][$key]] = array (<br />
+'name' =&gt;  $name,<br />
+'id'    =&gt; $product_id[1][$key],<br />
+'price' =&gt; $buy_price[1][$key],<br />
+'count' =&gt;  $buy_count[1][$key],<br />
+);<br />
+}<br />
+}</p>
+<p>return  $product;<br />
+}</p>
+<p>function getDbLink ()<br />
+{<br />
+global $link;<br />
+global $config;</p>
+<p>if($link == null)<br />
+{<br />
+$link = new  Mysqli($config['db']['host'], $config['db']['user'], $config['db']['pw'],  $config['db']['db']);<br />
+$link-&gt;query('set Names utf8');<br />
+}</p>
+<p>return $link;<br />
+}</p>
+<p>function initDB ()<br />
+{<br />
+global  $table_sql;<br />
+global $data_sql;<br />
+$link = getDbLink();<br />
+$return  = $link-&gt;query($table_sql);<br />
+$return &amp;=  $link-&gt;query($data_sql);<br />
+return $return;<br />
+}</p>
+<p>function  getInterestInfo ($mint=false)<br />
+{<br />
+global $config;</p>
+<p>$link =  getDbLink();<br />
+if($mint)<br />
+{<br />
+$sql = "SELECT product_id,  (max_price - min_price) as interest_rate , name, max_price , min_price FROM `p`  group by product_id order by   interest_rate desc limit " .  $config['interest_limit'];<br />
+} else {<br />
+$sql = "SELECT product_id,  (max_price - min_price) / min_price as interest_rate , name, max_price ,  min_price FROM `p` group by product_id order by   interest_rate desc limit " .  $config['interest_limit'];<br />
+}<br />
+$stmt = $link-&gt;query($sql);<br />
+if($link-&gt;errno == 1146)<br />
+{<br />
+initDB();<br />
+$stmt =  $link-&gt;query($sql);<br />
+}</p>
+<p>$return = array();</p>
+<p>while($row = $stmt-&gt;fetch_assoc())<br />
+{<br />
+$return[$row['product_id']] = $row;<br />
+}</p>
+<p>return  $return;<br />
+}</p>
+<p>function updatePrice ($product_id, $price,  $max=false)<br />
+{<br />
+$link = getDbLink();<br />
+$sql = 'UPDATE P set  ';</p>
+<p>if($max)<br />
+{<br />
+$sql .= '`max_price` = ' .  $price;<br />
+} else {<br />
+$sql .= '`min_price` = ' . $price;<br />
+}</p>
+<p>$sql .= ' where product_id =' . $product_id;</p>
+<p>return  $link-&gt;query($sql);<br />
+}</p>
+<p>function sellProduct ($product_id, $pid,  $price)<br />
+{<br />
+global $config;</p>
+<p>$url =  $config['sell_url'];</p>
+<p>$data = array(<br />
+'confirm'       =&gt;  'true',<br />
+'pid'           =&gt; $pid,<br />
+'product_id'    =&gt;  $product_id,<br />
+'sell_price'    =&gt; $price,<br />
+'is_use_item'    =&gt; 'false'<br />
+);</p>
+<p>for($i=5; $i&gt;0; $i++)<br />
+{<br />
+$data['count'] = $i;<br />
+$return = httpRequest($url,  $data);</p>
+<p>if(strpos($return, '成功'))<br />
+{<br />
+return $i;<br />
+}<br />
+}</p>
+<p>return false;<br />
+}</p>
+<p>function  buyProduct ($product_id, $price)<br />
+{<br />
+global $config;</p>
+<p>$url =  $config['buy_url'];</p>
+<p>$data = array (<br />
+'confirm'    =&gt;  'true',<br />
+'product_id' =&gt; $product_id,<br />
+'buy_price' =&gt;  $price,<br />
+);</p>
+<p>for($i=5; $i&gt;0; $i--)<br />
+{<br />
+$data['count'] = $i;<br />
+$return = httpRequest($url, $data);<br />
+if(strpos($return, '成功'))<br />
+{<br />
+return $i;<br />
+}<br />
+}<br />
+return false;<br />
+}</p>
+<p>function getMyProduct ()<br />
+{<br />
+global $config;</p>
+<p>$my_url = array (<br />
+sprintf($config['my_usual_url'], $config['app_id']),<br />
+sprintf($config['my_unusual_url'], $config['app_id']),<br />
+);</p>
+<p>foreach($my_url as $url)<br />
+{<br />
+$response =  httpRequest($url);</p>
+<p>$pattern = '#&lt;input type="hidden"  name="product_id" value="(\d+)"\/&gt;#i';<br />
+preg_match_all($pattern,  $response, $product_id);</p>
+<p>$pattern = '#&lt;input type="hidden"  name="pid" value="(\d+)"\/&gt;#i';<br />
+preg_match_all($pattern,  $response, $pid);</p>
+<p>foreach($product_id[1] as $key =&gt;  $value)<br />
+{<br />
+$return[$value] = array('pid' =&gt;  $pid[1][$key], 'product_id' =&gt; $product_id[1][$key]);<br />
+}<br />
+}</p>
+<p>return $return;<br />
+}</p>
+<p>function getMyInfo()<br />
+{<br />
+global  $config;</p>
+<p>$my_url = array (<br />
+sprintf($config['my_usual_url'], $config['app_id']),<br />
+sprintf($config['my_unusual_url'], $config['app_id']),<br />
+);</p>
+<p>$product_count = 0;<br />
+$return = array();</p>
+<p>foreach($my_url as  $url)<br />
+{<br />
+$response = httpRequest($url);</p>
+<p>$pattern  = '#&lt;input type="hidden" name="product_id" value="(\d+)"\/&gt;#i';<br />
+preg_match_all($pattern, $response, $product_id);<br />
+if(!empty($product_id[0]))<br />
+{<br />
+$product_count  +=count($product_id[0]);<br />
+}</p>
+<p>if(empty($return))  {<br />
+$pattern = '#资产总额：&lt;span  class="add-num"&gt;(.*?)&lt;/span&gt;#';<br />
+preg_match_all($pattern,  $response, $total_assets);<br />
+$return['total_assets'] =  substr(str_replace(array('万', '亿'), '',$total_assets[1][0]), 0,  -2);<br />
+$pattern = '#现金：&lt;span  class="add-num"&gt;(.*?)&lt;/span&gt;#';<br />
+preg_match_all($pattern,  $response, $cash);<br />
+$return['cash'] =  substr(str_replace(array('万', '亿'), '',$cash[1][0]), 0, -2);</p>
+<p>$pattern = '#企业价值：&lt;span  class="add-num"&gt;(.*?)&lt;/span&gt;#';<br />
+preg_match_all($pattern,  $response, $ent_assets);<br />
+$return['ent_assets'] =  substr(str_replace(array('万', '亿'), '',$ent_assets[1][0]), 0, -2);<br />
+}<br />
+}</p>
+<p>$return['ent_count'] = $product_count;</p>
+<p>return  $return;<br />
+}</p>
+<p>function Utf8toGBK ($str)<br />
+{<br />
+return  iconv("unicodebig", "gbk" ,iconv("utf-8", 'unicodebig',  $str));<br />
+}</p>
+<p>$link   = null;<br />
+$cookie = login();<br />
+$link   =  getDbLink();<br />
+//print_r(getMyInfo());<br />
+//exit;<br />
+if(file_exists('exit')){<br />
+unlink('exit');<br />
+}</p>
+<p>while(1)<br />
+{<br />
+if(file_exists('exit'))<br />
+{<br />
+exit;<br />
+}</p>
+<p>$myInfo = getMyInfo();<br />
+$mint =  false;<br />
+if($myInfo['total_assets'] &gt; $config['mint_limit'])  {<br />
+$mint = true;<br />
+}</p>
+<p>$product =  getProductInfo();<br />
+$interest = getInterestInfo($mint);<br />
+$myProduct =  getMyProduct();</p>
+<p>foreach($interest as $product_id =&gt; $value)<br />
+{<br />
+if($product[$product_id]['price'] &lt;=  $value['min_price'])<br />
+{<br />
+if($product[$product_id]['price'] &lt; $value['min_price'])<br />
+{<br />
+updatePrice($product_id,  $product[$product_id]['price'],false);<br />
+}</p>
+<p>$str  = $product[$product_id]['name'] . " 可买" . " 当前为历史最低价格:" .  $product[$product_id]['price'];<br />
+echo Utf8toGBK($str) .  "\n\n";</p>
+<p>if(!array_key_exists($product_id,  $myProduct))<br />
+{<br />
+if( $r =  buyProduct($product_id, $product[$product_id]['price']))<br />
+{<br />
+echo Utf8toGBK('买入' . $product[$product_id]['name'] . '  ' . $r . '个');<br />
+echo "\n\n";<br />
+}<br />
+}<br />
+}</p>
+<p>if($product[$product_id]['price']  &gt;= $value['max_price'])<br />
+{<br />
+if($product[$product_id]['price'] &gt; $value['max_price'])<br />
+{<br />
+updatePrice($product_id,$product[$product_id]['price']  ,true);<br />
+}</p>
+<p>$str = $product[$product_id]['name']  . "\33 可卖" . " 当前为历史最高价格:" . $product[$product_id]['price'] ;<br />
+echo Utf8toGBK($str) . "\n\n";<br />
+}</p>
+<p>if(array_key_exists($product_id, $myProduct))<br />
+{<br />
+if($mint)<br />
+{<br />
+$sell_cond =  ($product[$product_id]['price'] - $value['min_price']) *  $config['mint_interest_ratio'] / $value['min_price'] &gt;=  $value['interest_rate'];<br />
+} else {<br />
+$sell_cond =  ($product[$product_id]['price'] - $value['min_price']) *  $config['interest_ratio'] / $value['min_price'] &gt;=  $value['interest_rate'];<br />
+}</p>
+<p>if($sell_cond)<br />
+{<br />
+if($r =  sellProduct($product_id, $myProduct[$product_id]['pid'],  $product[$product_id]['price']))<br />
+{<br />
+echo Utf8toGBK('卖出' . $product[$product_id]['name'] . ' ' . $r . '个')  ;<br />
+echo "\n\n";<br />
+}<br />
+}<br />
+}<br />
+}</p>
+<p>$myInfo = getMyInfo();<br />
+echo  "\n";<br />
+echo "----------------------------------------------";<br />
+echo  "\n";<br />
+$str = '当前总资产:' . $myInfo['total_assets'] . "\n";<br />
+$str .=  '现金      :' . $myInfo['cash'] . "\n";<br />
+$str .= '企业资产 :' .  $myInfo['ent_assets'] . "\n";<br />
+echo Utf8toGBK($str);<br />
+echo  "----------------------------------------------
+";  
+echo "\n";  
+sleep(30);  
+}
+
+</p></div></div>
+
+  </div><a class="u-url" href="/2008/10/%E4%BC%81%E4%B8%9A%E5%A4%A7%E4%BA%A8.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>VIM的几个操作实例 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="VIM的几个操作实例" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="&lt;![CDATA[ 1:在VIM当中要对所编辑的文件进行简单加密 在VIM当中对所编辑的文件进行简单加密，可以在命令行模式下键入&ldquo;:X&rdquo;，然后在提示&ldquo;Enter the encrypt key&rdquo;时输入口令字串就可以加密了。但是不要忘了保存！保存的时候会发现在屏幕底部有&ldquo;[crypted]&rdquo;这样的字样。下次打开该加密文件会要求您输入口令字串。 2:重复输入同一字符 有时，我们可能想多次输入同一字符，VIM的插入功能可以很好的完成这项工作 命令 80i=^ESC 一次可以输入80个字符= ,当然，80a=^ESC 也可以完成上述功能。 请注意：此处的^ESC表示键盘左上方上的ESC键。 3:在文件中置入行号 工作中，我们有时希望把行号置入文件中，而VIM提供的功能 :set nu 只能显示行号，不能编辑或将其置入文件当中，下面的宏命令脚本row_num.vim可以完成此项功能。 :%s/^/^I/ 每一行的行首添加一个TAB字符 :$ 到文件的末行 :let end=line(&quot;.&quot;) 末行的行号 ==〉变量 END，函数line的功能是取得指定行的行号，此处参数&quot;.&quot;表示当前行 :1 到文件的首行 &quot;------------------------------------------ :let num=1 1 ==〉计数器 :while num&lt;=end :let line=getline(&quot;.&quot;) 取当前行的内容 ==〉变量 LINE :let line=substitute(line,$,num,&quot;&quot;) 在变量 LINE 的前面置入行号 :call setline(&quot;.&quot;,line) 将变量 LINE 的内容写回当前行 :+ 下移一行 :let num=num+1 计数器加一 :endwhile 循环执行，直到文件结束 &quot;------------------------------------------ 4:将文件名插入文件中 在编辑状态下，使用Ctrl+R %来输入你正在编辑的文件名。" />
+<meta property="og:description" content="&lt;![CDATA[ 1:在VIM当中要对所编辑的文件进行简单加密 在VIM当中对所编辑的文件进行简单加密，可以在命令行模式下键入&ldquo;:X&rdquo;，然后在提示&ldquo;Enter the encrypt key&rdquo;时输入口令字串就可以加密了。但是不要忘了保存！保存的时候会发现在屏幕底部有&ldquo;[crypted]&rdquo;这样的字样。下次打开该加密文件会要求您输入口令字串。 2:重复输入同一字符 有时，我们可能想多次输入同一字符，VIM的插入功能可以很好的完成这项工作 命令 80i=^ESC 一次可以输入80个字符= ,当然，80a=^ESC 也可以完成上述功能。 请注意：此处的^ESC表示键盘左上方上的ESC键。 3:在文件中置入行号 工作中，我们有时希望把行号置入文件中，而VIM提供的功能 :set nu 只能显示行号，不能编辑或将其置入文件当中，下面的宏命令脚本row_num.vim可以完成此项功能。 :%s/^/^I/ 每一行的行首添加一个TAB字符 :$ 到文件的末行 :let end=line(&quot;.&quot;) 末行的行号 ==〉变量 END，函数line的功能是取得指定行的行号，此处参数&quot;.&quot;表示当前行 :1 到文件的首行 &quot;------------------------------------------ :let num=1 1 ==〉计数器 :while num&lt;=end :let line=getline(&quot;.&quot;) 取当前行的内容 ==〉变量 LINE :let line=substitute(line,$,num,&quot;&quot;) 在变量 LINE 的前面置入行号 :call setline(&quot;.&quot;,line) 将变量 LINE 的内容写回当前行 :+ 下移一行 :let num=num+1 计数器加一 :endwhile 循环执行，直到文件结束 &quot;------------------------------------------ 4:将文件名插入文件中 在编辑状态下，使用Ctrl+R %来输入你正在编辑的文件名。" />
+<link rel="canonical" href="http://localhost:4000/2007/12/vim%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B.html" />
+<meta property="og:url" content="http://localhost:4000/2007/12/vim%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-12-27T14:10:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="VIM的几个操作实例" />
+<script type="application/ld+json">
+{"headline":"VIM的几个操作实例","url":"http://localhost:4000/2007/12/vim%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B.html","dateModified":"2007-12-27T14:10:00+08:00","datePublished":"2007-12-27T14:10:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/12/vim%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B.html"},"description":"&lt;![CDATA[ 1:在VIM当中要对所编辑的文件进行简单加密 在VIM当中对所编辑的文件进行简单加密，可以在命令行模式下键入&ldquo;:X&rdquo;，然后在提示&ldquo;Enter the encrypt key&rdquo;时输入口令字串就可以加密了。但是不要忘了保存！保存的时候会发现在屏幕底部有&ldquo;[crypted]&rdquo;这样的字样。下次打开该加密文件会要求您输入口令字串。 2:重复输入同一字符 有时，我们可能想多次输入同一字符，VIM的插入功能可以很好的完成这项工作 命令 80i=^ESC 一次可以输入80个字符= ,当然，80a=^ESC 也可以完成上述功能。 请注意：此处的^ESC表示键盘左上方上的ESC键。 3:在文件中置入行号 工作中，我们有时希望把行号置入文件中，而VIM提供的功能 :set nu 只能显示行号，不能编辑或将其置入文件当中，下面的宏命令脚本row_num.vim可以完成此项功能。 :%s/^/^I/ 每一行的行首添加一个TAB字符 :$ 到文件的末行 :let end=line(&quot;.&quot;) 末行的行号 ==〉变量 END，函数line的功能是取得指定行的行号，此处参数&quot;.&quot;表示当前行 :1 到文件的首行 &quot;------------------------------------------ :let num=1 1 ==〉计数器 :while num&lt;=end :let line=getline(&quot;.&quot;) 取当前行的内容 ==〉变量 LINE :let line=substitute(line,$,num,&quot;&quot;) 在变量 LINE 的前面置入行号 :call setline(&quot;.&quot;,line) 将变量 LINE 的内容写回当前行 :+ 下移一行 :let num=num+1 计数器加一 :endwhile 循环执行，直到文件结束 &quot;------------------------------------------ 4:将文件名插入文件中 在编辑状态下，使用Ctrl+R %来输入你正在编辑的文件名。","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">VIM的几个操作实例</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-12-27T14:10:00+08:00" itemprop="datePublished">Dec 27, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>&lt;![CDATA[
+<div id="blog_text" class="cnt">
+<p>1:在VIM当中要对所编辑的文件进行简单加密<br />
+在VIM当中对所编辑的文件进行简单加密，可以在命令行模式下键入&ldquo;:X&rdquo;，然后在提示&ldquo;Enter the encrypt key&rdquo;时输入口令字串就可以加密了。但是不要忘了保存！保存的时候会发现在屏幕底部有&ldquo;[crypted]&rdquo;这样的字样。下次打开该加密文件会要求您输入口令字串。</p>
+<p>2:重复输入同一字符 <br />
+有时，我们可能想多次输入同一字符，VIM的插入功能可以很好的完成这项工作<br />
+命令 80i=^ESC 一次可以输入80个字符= ,当然，80a=^ESC 也可以完成上述功能。<br />
+请注意：此处的^ESC表示键盘左上方上的ESC键。</p>
+<p>3:在文件中置入行号</p>
+<p>工作中，我们有时希望把行号置入文件中，而VIM提供的功能 :set nu 只能显示行号，不能编辑或将其置入文件当中，下面的宏命令脚本row_num.vim可以完成此项功能。</p>
+<p>:%s/^/^I/ 每一行的行首添加一个TAB字符<br />
+:$ 到文件的末行<br />
+:let end=line(".") 末行的行号 ==〉变量 END，函数line的功能是取得指定行的行号，此处参数"."表示当前行<br />
+:1 到文件的首行<br />
+"------------------------------------------<br />
+:let num=1 1 ==〉计数器<br />
+:while num&lt;=end<br />
+:let line=getline(".") 取当前行的内容 ==〉变量 LINE<br />
+:let line=substitute(line,$,num,"") 在变量 LINE 的前面置入行号<br />
+:call setline(".",line) 将变量 LINE 的内容写回当前行<br />
+:+ 下移一行<br />
+:let num=num+1 计数器加一<br />
+:endwhile 循环执行，直到文件结束<br />
+"------------------------------------------
+4:将文件名插入文件中  
+在编辑状态下，使用Ctrl+R %来输入你正在编辑的文件名。
+
+5: 用VIM编写C/C++程序  
+Vi是Unix下最常用的文本编辑器。VIM（Vi IMproved）则是它的增强版。有人常常拿VIM和emacs比较，VIM尽管不象emacs那样有那么多的功能，但是比emacs更方便、好用。用过emacs的人肯定会为emacs的一些快捷键感到烦恼，有时候用真希望自己有八只手。VIM的学习曲线也不象emacs那么长，只要看看VIM自带的vitutor，大约只要20分钟就能掌握VIM的用法。对于Unix下的C/C++的程序员，我推荐你们使用VIM+Ctags的组合来写程序。其中原因听我慢慢道来。（下面对VIM的介绍主要是针对5.6以后的版本）
+
+VIM支持语法制导和自动缩进  
+VIM会根据文件的后缀名，如：\*.c、\*.cpp、\*.cc，等，自动设置语法制导（Syntax Highlighting）。C/C++中的一些保留字，如：if、for、include，等等，就会有不同的颜色，这样就会减少程序员犯错的可能，阅读程序的时候相对来说也轻松很多。用下面这些命令在VIM中查看有关语法制导的帮助：“:h syntax”、“:h syn-qstart”、“:h syntax-printing”。
+
+VIM也支持根据GNU的风格自动缩进，这样程序员编写出来的代码就更易阅读，而且也有利于培养好的编程风格。用下面这些命令在VIM中查看有关自动缩进的帮助：“:h cindent”、“:h cinoptions”、“:h cinoptions-values”、“:h cinkeys”、“:h cinwords”。
+
+使用Ctags  
+VIM中已经带了Ctags这个程序。尽管ctags也可以支持其它编辑器，但是它正式支持的只有VIM。Ctags可以帮助程序员很容易地浏览源代码。用下面的命令可以在源代码的根目录下创建“tags”文件：
+
+[/home/brimmer/src]$ ctags -R
+
+“-R”表示递归创建，也就包括源代码根目录下的所有子目录下的源程序。“tags”文件中包括这些对象的列表：
+
+l 用#define定义的宏
+
+l 枚举型变量的值
+
+l 函数的定义、原型和声明
+
+l 名字空间（namespace）
+
+l 类型定义（typedefs）
+
+l 变量（包括定义和声明）
+
+l 类（class）、结构（struct）、枚举类型（enum）和联合（union）
+
+l 类、结构和联合中成员变量或函数
+
+VIM用这个“tags”文件来定位上面这些做了标记的对象，下面介绍一下定位这些对象的方法：
+
+1) 用命令行。在运行vim的时候加上“-t”参数，例如：
+
+[/home/brimmer/src]$ vim -t foo\_bar
+
+这个命令将打开定义“foo\_bar”（变量或函数或其它）的文件，并把光标定位到这一行。
+
+2) 在vim编辑器内用“:ta”命令，例如：
+
+:ta foo\_bar
+
+3) 最方便的方法是把光标移到变量名或函数名上，然后按下“Ctrl-]”。用“Ctrl-o”退回原来的地方。
+
+注意：运行vim的时候，必须在“tags”文件所在的目录下运行。否则，运行vim的时候还要用“:set tags=”命令设定“tags”文件的路径，这样vim才能找到“tags”文件。
+
+快速改正错误  
+在VIM编辑器的环境下用“:make”就可以编译程序，当然其前提是在当前目录下有Makefile文件。运行完“:make”之后，如果程序中有错误，就会显示出来。这时候，光标会自动指向第一个出现错误的地方，而且你还可以看到错误的提示。然后，你就可以改正错误，而不用手工找到出错的那一行。记住下面几个有用的命令：
+
+l “:cl”列出错误
+
+l “:cn”让光标指向下一个错误
+
+l “:cp”让光标指向上一个错误
+
+l “:cnew”从头开始
+
+你甚至可以让VIM识别出其它编译器而不是gcc的错误提示。这对一些开发嵌入式系统的程序员这很有用，因为他们很可能用的不是gcc而是其它编译器。通过设置“errorformat”的值，可以让VIM识别出编译器的出错提示。因为不同的编译器的出错提示是不同的，所以如果用的不是gcc就要重新设置。
+
+“errorformat”的值是一个字符串，它的格式和C语言的scanf的字符串格式相识。
+
+gcc的“errorformat”的值为：%f:%l:\%m。其中“%f”表示文件名，“%l”表示行号，“%m”表示出错信息。
+
+用“:h errorformat”查看详细的帮助信息。
+
+用“:h quickfix”、“:h make”、“:h makeprg”、“:h errorfile”查看其它的信息。
+
+有用的快捷键  
+下面的这些快捷键对程序员很有帮助：
+
+在函数中移动光标  
+[[ 转到上一个位于第一列的“{”
+
+]] 转到下一个位于第一列的“{”
+
+{ 转到上一个空行
+
+} 转到下一个空行
+
+gd 转到当前光标所指的局部变量的定义
+
+\* 转到当前光标所指的单词下一次出现的地方
+
+# 转到当前光标所指的单词上一次出现的地方
+
+括号的匹配  
+% 用来进行小括号、中括号和大括号的匹配。这要看当前光标指向的是什么符号了。
+
+其它  
+VIM的配置文件是“.vimrc”，用这个文件可以配置VIM。VIM的图形界面的版本叫gvim。VIM也有用于Windows平台的版本。
+
+版权说明  
+这个技巧的版权属于作者brimmer（[<font color="#000066">brimmer@linuxaid.com.cn</font>](mailto:brimmer@linuxaid.com.cn)）和[<font color="#000066">www.linuxaid.com.cn</font>](http://www.linuxaid.com.cn/)。
+
+6:自动补齐  
+这个技巧在你写程序是十分的有用，在编辑状态下使用Ctrl+N就可以了，当然你要先输入前面的一小部分，如果不是你可以重复使用  
+Ctrl+N来选择正确的匹配，当你的程序变量十分长时，该命令就显得很有用出了。
+
+7：对一段文字进行排序  
+例如，有下面一段文字  
+version.o   
+pch.o   
+getopt.o   
+util.o   
+getopt1.o   
+inp.o   
+patch.o   
+backupfile.o  
+你想要对他们进行排序，按照字母顺序  
+通过以下几部可以做到：  
+a:移动光标到想要排序的那一行  
+b:使用ma标志改行为a  
+c:移动光标到想要排序的最后一行  
+d:使用指令"!'asort"，来完成排序（注意这些步骤都是在非输入模式下进行的。）下面解释一下各个的用途。"!"表示将要执行指令，"'a"表示从当前行道标志为a的行，'sort'是执行的指令。
+
+]]\&gt;
+
+</p></div></p>
+
+  </div><a class="u-url" href="/2007/12/vim%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

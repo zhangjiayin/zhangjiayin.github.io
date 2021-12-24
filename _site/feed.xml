@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-24T23:05:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">佳音的博客</title><subtitle>方乃做人之本，圆乃处世之道.</subtitle><entry><title type="html">慈不掌兵、义不养财、善不为官、情不立事、仁不从政</title><link href="http://localhost:4000/2021/11/%E6%85%88%E4%B8%8D%E6%8E%8C%E5%85%B5%E3%80%81%E4%B9%89%E4%B8%8D%E5%85%BB%E8%B4%A2%E3%80%81%E5%96%84%E4%B8%8D%E4%B8%BA%E5%AE%98%E3%80%81%E6%83%85%E4%B8%8D%E7%AB%8B%E4%BA%8B%E3%80%81%E4%BB%81%E4%B8%8D.html" rel="alternate" type="text/html" title="慈不掌兵、义不养财、善不为官、情不立事、仁不从政" /><published>2021-11-24T10:03:21+08:00</published><updated>2021-11-24T10:03:21+08:00</updated><id>http://localhost:4000/2021/11/%E6%85%88%E4%B8%8D%E6%8E%8C%E5%85%B5%E3%80%81%E4%B9%89%E4%B8%8D%E5%85%BB%E8%B4%A2%E3%80%81%E5%96%84%E4%B8%8D%E4%B8%BA%E5%AE%98%E3%80%81%E6%83%85%E4%B8%8D%E7%AB%8B%E4%BA%8B%E3%80%81%E4%BB%81%E4%B8%8D</id><content type="html" xml:base="http://localhost:4000/2021/11/%E6%85%88%E4%B8%8D%E6%8E%8C%E5%85%B5%E3%80%81%E4%B9%89%E4%B8%8D%E5%85%BB%E8%B4%A2%E3%80%81%E5%96%84%E4%B8%8D%E4%B8%BA%E5%AE%98%E3%80%81%E6%83%85%E4%B8%8D%E7%AB%8B%E4%BA%8B%E3%80%81%E4%BB%81%E4%B8%8D.html">&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;&lt;strong&gt;慈不掌兵、义不养财、善不为官、情不立事、仁不从政&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">cpp复习</title><link href="http://localhost:4000/2021/01/cpp%E5%A4%8D%E4%B9%A0.html" rel="alternate" type="text/html" title="cpp复习" /><published>2021-01-06T17:01:41+08:00</published><updated>2021-01-06T17:01:41+08:00</updated><id>http://localhost:4000/2021/01/cpp%E5%A4%8D%E4%B9%A0</id><content type="html" xml:base="http://localhost:4000/2021/01/cpp%E5%A4%8D%E4%B9%A0.html">&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;decltype&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;lockguard&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;smart ptr&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;std::move&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:preformatted --&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shared_from_this
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- /wp:preformatted --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+
+&lt;!-- /wp:paragraph --&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">mac bind</title><link href="http://localhost:4000/2016/03/mac-bind.html" rel="alternate" type="text/html" title="mac bind" /><published>2016-03-23T23:18:17+08:00</published><updated>2016-03-23T23:18:17+08:00</updated><id>http://localhost:4000/2016/03/mac-bind</id><content type="html" xml:base="http://localhost:4000/2016/03/mac-bind.html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[http://stackoverflow.com/questions/19538118/osx-mavericks-bind-no-longer-installed-how-to-get-local-dns-server-working](http://stackoverflow.com/questions/19538118/osx-mavericks-bind-no-longer-installed-how-to-get-local-dns-server-working)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">[http://stackoverflow.com/questions/19538118/osx-mavericks-bind-no-longer-installed-how-to-get-local-dns-server-working](http://stackoverflow.com/questions/19538118/osx-mavericks-bind-no-longer-installed-how-to-get-local-dns-server-working)</summary></entry><entry><title type="html">android 模拟器设置dns</title><link href="http://localhost:4000/2016/03/android-%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%AE%BE%E7%BD%AEdns.html" rel="alternate" type="text/html" title="android 模拟器设置dns" /><published>2016-03-23T23:02:02+08:00</published><updated>2016-03-23T23:02:02+08:00</updated><id>http://localhost:4000/2016/03/android-%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%AE%BE%E7%BD%AEdns</id><content type="html" xml:base="http://localhost:4000/2016/03/android-%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%AE%BE%E7%BD%AEdns.html">&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/as_314159265/article/details/6956306&quot;&gt;http://blog.csdn.net/as_314159265/article/details/6956306&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;第一步：用系统的命令进入Android开发包的tools目录&lt;/p&gt;
+
+&lt;p&gt;cd X:...\android-sdk-windows\tool&lt;/p&gt;
+
+&lt;p&gt;第二布：使用adb的shell，确认系统的各项属性&lt;/p&gt;
+
+&lt;p&gt;adb shell&lt;/p&gt;
+
+&lt;p&gt;getprop&lt;/p&gt;
+
+&lt;p&gt;getprop会列出系统当前的各项属性&lt;/p&gt;
+
+&lt;p&gt;第三步：得到模拟器的DNS地址&lt;/p&gt;
+
+&lt;p&gt;在结果里可以看到：&lt;/p&gt;
+
+&lt;p&gt;第四步：把dns改成我们自己的DNS&lt;/p&gt;
+
+&lt;p&gt;setprop net.dns1 192.168.1.1&lt;/p&gt;</content><author><name></name></author><summary type="html">http://blog.csdn.net/as_314159265/article/details/6956306</summary></entry><entry><title type="html">build ios with jenkins</title><link href="http://localhost:4000/2016/03/build-ios-with-jenkins.html" rel="alternate" type="text/html" title="build ios with jenkins" /><published>2016-03-09T13:15:45+08:00</published><updated>2016-03-09T13:15:45+08:00</updated><id>http://localhost:4000/2016/03/build-ios-with-jenkins</id><content type="html" xml:base="http://localhost:4000/2016/03/build-ios-with-jenkins.html">&lt;p&gt;jenkins xcode 插件&lt;/p&gt;
+
+&lt;p&gt;打adhoc包的时候并且由widght的时候 注意&lt;br /&gt;
+这几个环境变量&lt;br /&gt;
+PROVISIONING_PROFILE=”xxxx” APP_PROFILE=”xxxx” EXTENSION_PROFILE=”xxxx”&lt;/p&gt;</content><author><name></name></author><summary type="html">jenkins xcode 插件</summary></entry><entry><title type="html">build androd on centos 64bit</title><link href="http://localhost:4000/2016/03/build-androd-on-centos-64bit.html" rel="alternate" type="text/html" title="build androd on centos 64bit" /><published>2016-03-08T23:15:35+08:00</published><updated>2016-03-08T23:15:35+08:00</updated><id>http://localhost:4000/2016/03/build-androd-on-centos-64bit</id><content type="html" xml:base="http://localhost:4000/2016/03/build-androd-on-centos-64bit.html">&lt;p&gt;android sdk i386支持&lt;/p&gt;
+
+&lt;p&gt;sudo yum install glibc.i686&lt;br /&gt;
+sudo yum install libstdc++.i686&lt;br /&gt;
+sudo yum install ncurses-libs.i686&lt;br /&gt;
+sudo yum install zlib.i686&lt;/p&gt;
+
+&lt;p&gt;android update sdk –no-ui –filter support-v4&lt;br /&gt;
+更新制定sdk&lt;br /&gt;
+tools/android update sdk –no-ui&lt;br /&gt;
+更新sdk&lt;br /&gt;
+echo y | ./tools/android update sdk –no-ui –all –filter “extra-android-support”&lt;br /&gt;
+更新 android support&lt;/p&gt;</content><author><name></name></author><summary type="html">android sdk i386支持</summary></entry><entry><title type="html">mysql innodb copy</title><link href="http://localhost:4000/2016/03/mysql-innodb-copy.html" rel="alternate" type="text/html" title="mysql innodb copy" /><published>2016-03-04T15:27:37+08:00</published><updated>2016-03-04T15:27:37+08:00</updated><id>http://localhost:4000/2016/03/mysql-innodb-copy</id><content type="html" xml:base="http://localhost:4000/2016/03/mysql-innodb-copy.html">&lt;p&gt;https://avdeo.com/2015/02/19/moving-innodb-table-between-servers/&lt;/p&gt;</content><author><name></name></author><summary type="html">https://avdeo.com/2015/02/19/moving-innodb-table-between-servers/</summary></entry><entry><title type="html">获取正在运行 进程的函数栈</title><link href="http://localhost:4000/2011/12/%E8%8E%B7%E5%8F%96%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%87%BD%E6%95%B0%E6%A0%88.html" rel="alternate" type="text/html" title="获取正在运行 进程的函数栈" /><published>2011-12-07T19:31:47+08:00</published><updated>2011-12-07T19:31:47+08:00</updated><id>http://localhost:4000/2011/12/%E8%8E%B7%E5%8F%96%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%87%BD%E6%95%B0%E6%A0%88</id><content type="html" xml:base="http://localhost:4000/2011/12/%E8%8E%B7%E5%8F%96%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%87%BD%E6%95%B0%E6%A0%88.html">&lt;p&gt;1、gdb -p pid 当前进程会挂起&lt;br /&gt;
+2、pstack -p pid or gstack -p pid&lt;br /&gt;
+3、gcore [-o filename] pid 然后用gdb调试。&lt;/p&gt;</content><author><name></name></author><summary type="html">1、gdb -p pid 当前进程会挂起 2、pstack -p pid or gstack -p pid 3、gcore [-o filename] pid 然后用gdb调试。</summary></entry><entry><title type="html">gcc march参数 cpu相关</title><link href="http://localhost:4000/2011/12/cpu-%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0.html" rel="alternate" type="text/html" title="gcc march参数 cpu相关" /><published>2011-12-07T19:11:19+08:00</published><updated>2011-12-07T19:11:19+08:00</updated><id>http://localhost:4000/2011/12/cpu-%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0</id><content type="html" xml:base="http://localhost:4000/2011/12/cpu-%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0.html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CPU	Family	Rec. system gcc	Rec. ports compiler
+Intel Atom D525	atom	CPUTYPE=core2 (*)	gcc45 -march=atom
+Intel Xeon 3065	core2	CPUTYPE=core2 (*)	gcc45
+Intel Xeon E5310	core2	CPUTYPE=core2 (*)	gcc45 -march=core2
+Intel Xeon E5405	core2	no CPUTYPE	gcc45 -march=core2
+Intel Core i7-920	nehalem	CPUTYPE=nocona	gcc45 -march=nocona
+Intel Xeon X3450	nehalem	CPUTYPE=nocona	gcc45 -march=nocona
+Intel Xeon E5620	nehalem	CPUTYPE=nocona	gcc45 -march=nocona
+AMD Opteron 6128	barcelona	CPUTYPE=opteron-ssse3	gcc45 -march=barcelona
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;http://blog.vx.sk/archives/25-FreeBSD-Compiler-Benchmark-gcc-base-vs-gcc-ports-vs-clang.html&lt;/p&gt;</content><author><name></name></author><summary type="html">CPU Family Rec. system gcc Rec. ports compiler Intel Atom D525 atom CPUTYPE=core2 (*) gcc45 -march=atom Intel Xeon 3065 core2 CPUTYPE=core2 (*) gcc45 Intel Xeon E5310 core2 CPUTYPE=core2 (*) gcc45 -march=core2 Intel Xeon E5405 core2 no CPUTYPE gcc45 -march=core2 Intel Core i7-920 nehalem CPUTYPE=nocona gcc45 -march=nocona Intel Xeon X3450 nehalem CPUTYPE=nocona gcc45 -march=nocona Intel Xeon E5620 nehalem CPUTYPE=nocona gcc45 -march=nocona AMD Opteron 6128 barcelona CPUTYPE=opteron-ssse3 gcc45 -march=barcelona</summary></entry><entry><title type="html">关于curl multi的bug</title><link href="http://localhost:4000/2011/07/%E5%85%B3%E4%BA%8Ecurl-multi%E7%9A%84bug.html" rel="alternate" type="text/html" title="关于curl multi的bug" /><published>2011-07-31T09:22:26+08:00</published><updated>2011-07-31T09:22:26+08:00</updated><id>http://localhost:4000/2011/07/%E5%85%B3%E4%BA%8Ecurl-multi%E7%9A%84bug</id><content type="html" xml:base="http://localhost:4000/2011/07/%E5%85%B3%E4%BA%8Ecurl-multi%E7%9A%84bug.html">&lt;p&gt;http://curl.haxx.se/mail/lib-2010-06/0030.html&lt;br /&gt;
+http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=2501457&amp;amp;group_id=976&amp;amp;atid=100976&lt;/p&gt;</content><author><name></name></author><summary type="html">http://curl.haxx.se/mail/lib-2010-06/0030.html http://sourceforge.net/tracker/index.php?func=detail&amp;amp;aid=2501457&amp;amp;group_id=976&amp;amp;atid=100976</summary></entry></feed>

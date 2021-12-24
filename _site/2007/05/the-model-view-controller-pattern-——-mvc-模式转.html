@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>The Model-View-Controller Pattern —— MVC 模式[转] | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="The Model-View-Controller Pattern —— MVC 模式[转]" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="###" />
+<meta property="og:description" content="###" />
+<link rel="canonical" href="http://localhost:4000/2007/05/the-model-view-controller-pattern-%E2%80%94%E2%80%94-mvc-%E6%A8%A1%E5%BC%8F%E8%BD%AC.html" />
+<meta property="og:url" content="http://localhost:4000/2007/05/the-model-view-controller-pattern-%E2%80%94%E2%80%94-mvc-%E6%A8%A1%E5%BC%8F%E8%BD%AC.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-05-17T19:17:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Model-View-Controller Pattern —— MVC 模式[转]" />
+<script type="application/ld+json">
+{"headline":"The Model-View-Controller Pattern —— MVC 模式[转]","url":"http://localhost:4000/2007/05/the-model-view-controller-pattern-%E2%80%94%E2%80%94-mvc-%E6%A8%A1%E5%BC%8F%E8%BD%AC.html","dateModified":"2007-05-17T19:17:00+08:00","datePublished":"2007-05-17T19:17:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/05/the-model-view-controller-pattern-%E2%80%94%E2%80%94-mvc-%E6%A8%A1%E5%BC%8F%E8%BD%AC.html"},"description":"###","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Model-View-Controller Pattern —— MVC 模式[转]</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-05-17T19:17:00+08:00" itemprop="datePublished">May 17, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>###</p>
+
+<p>web 应用程序变化很大，而且，这种变化会引起大量的混乱，对于架构一个特定的应用程序，哪个或哪些模式是最好的。虽说如此，那么有没有一种“最好的”web 应用程序架构呢？</p>
+
+<h3 id="问题">问题</h3>
+
+<p>你能不能部署一个单一 web 站点结构体系以适应每个常见的 web 应用程序，包括常见的表现元素、身份验证、表单验证，等等？</p>
+
+<h3 id="解决方案">解决方案</h3>
+
+<p>Model-View-Controller(模型-视图-控制器，MVC) 模式将你的软件组织并分解成三个截然不同的角色：</p>
+
+<ul>
+  <li>
+    <p>Model 封装了你的应用数据、应用流程和业务逻辑。</p>
+  </li>
+  <li>
+    <p>View 从 Model 获取数据并格式化数据以进行显示。</p>
+  </li>
+  <li>
+    <p>Controller 控制程序流程，接收输入，并把它们传递给 Model 和 View。</p>
+  </li>
+</ul>
+
+<p>MVC 的起源</p>
+
+<p>Model-View-Controller 模式是由 Trygve Reenskaug 于七十年代后期在施乐公司的 Palo Alto 研究中心(Xerox’s Palo Alto Research Center，PARC)最初设计的。最初的参考实现是用 Smalltalk-80 写的，其最初的目的是设计来解决应用程序中的 GUI 交互问题。</p>
+
+<p>只要你与 MVC 模式打过交道，你就会对它的实用性心存感激，尤其对于图形用户界面(Graphical User Interface，GUI)应用程序。此外，MVC 对 web 应用程序也很有用，虽然通过一连串无状态 web 连接访问一个服务器应用程序的不连续性会存在一些独特的挑战(也可以说是一种机会)。</p>
+
+<p>如果你翻阅本章，寻找“一种真正的方法”来为 web 应用程序实现 MVC，我希望你不会对这里的答案太失望。根本就不存在什么完美的解决方案，但是有很多“最优实践”以及相关模式，它们的确可以帮助你有效地实现 MVC。希望这里介绍的观点可以为你的代码视为一个跳板，并引导你进行更多的研究。</p>
+
+<h4 id="the-model-view-controller模型-视图-控制器">The Model-View-Controller(模型-视图-控制器)</h4>
+
+<p>与其它设计模式不同，MVC 模式并没有直接反映一个你能够编写或配置的类结构。相反，MVC 更像一个概念上的指导原则或范型。</p>
+
+<p>概念上的 MVC 模式被描述为三个对象 —— Model、View 和 Controller —— 之间的关系。由于 View 和 Controller 都可以从 Model 请求数据，所以 Controller 和 View 都依赖 Model。任何输入都通过 Controller 进入你的系统，然后 Controller 选择一个 View 来发出结果。对你，一个 PHP 开发人员，更具体的来说，Controller 处理每个进入的 HTTP 请求，而 View 则生成 HTTP 响应。</p>
+
+<p>下面是一个概念上的 MVC 模式的图形描述：</p>
+
+<center><img height="286" width="237" src="http://www.wujianrong.com/photo/ch17sec02No.01.gif" /></center>
+
+<p>在这个理想的 MVC 环境中，通信是单向的，如这个序列图所示：</p>
+
+<p><img src="http://www.wujianrong.com/photo/ch17sec02No.10.gif" alt="" /></p>
+
+<p>当然，具体到细节上就有些麻烦了。当在一个 web 应用程序中实现 MVC 时，Modle、View 和 Controller 从来不会在单一的类中出现，而是被实现为紧密相关的对象群体，在那里，每一组执行一个特定的 MVC 任务。Controller 可能由几个类组成，它们被组合到一起，用于分析 HTTP 响应并确定应用程序所需的动作。Model 几乎可以确定由多个类组成。而 View 在 web 应用程序中通常是某种模板系统，而且也很可能由几个对象组成。</p>
+
+<p>在接下来的几节，我们稍微深入“MVC 三元组”的每个部分，了解每个部分都包含哪些模式，或哪些设计模式可以帮助实现每个部分，以及这些模式是如何帮助你组织你的代码的。</p>
+
+<h5 id="模型">模型</h5>
+
+<p>Model 包含了你的应用逻辑和数据，在你的应用程序中，它很可能是主要的值驱动器。Model 没有任何与表现层相关的特性，而且也和 HTTP 请求处理职责中完全无关。(作为一个经验方法，PHP Model 中决不要出现 HTML 标签或 <tt><font face="新宋体">$_GET</font></tt> 超全局变量)</p>
+
+<h6 id="领域模型">领域模型</h6>
+
+<p>Domain Model 是一个对象层，是对现实世界逻辑、数据和你应用程序所处理的问题的抽象。Domain Model 可分为两大类：Simple Domain Model 和 Rich Domain Model。</p>
+
+<p>Simple Domain Model 往往是业务对象和数据库表之间一对一的通信。你已经见过的几种模式 —— Active Record、Table Data Gateway，以及 Data Mapper，所有这些与数据库相关的设计模式 —— 可以帮助你把与数据库相关的逻辑组织成一个 Domain Model(为了使本书例子合理、简单、易懂，所选素材都没有超出简单 Domain Model 的一对一的通信 —— 同构映射）。</p>
+
+<p>Rich Domain Model 包含复杂的，使用继承机制紧密联系在一起的对象网络，在本书和 GoF 一书中介绍的众多模式起着杠杆作用。Rich Domain Models 往往是柔性的，精心测试过的，不断重构的，而且与它们所表达的领域所需的业务逻辑紧密耦合。</p>
+
+<p>采用哪种 Domain Model 类型取决于你的应用环境。如果你正在建立的是一个非常简单的表单处理 web 应用，没必要建立 Rich Domain Model。然而，如果你正在编写一个价值数百万的企业内联网架构的核心库，那么努力开发一个 Rich Domain Model 就是值得的，它可以为你提供一个准确表达业务过程的平台，并可以让你快速传输数据。</p>
+
+<p>Martin Fowler 在 PoEAA 中同时简要介绍了两种 Domain Model。而 Eric Evans 的 Domain Driven Design 一书，则完全专注于 Rich Domain Model 的实践应用和开发过程。</p>
+
+<h5 id="视图">视图</h5>
+
+<p>View 用于处理所有表现层方面的问题。View 从 Model 获取数据，并可以把它格式化成用于 web 页的 HTML，用于 web 服务的 XML，或用于 email 的文本。</p>
+
+<p>鉴别你是否已经把你的代码成功地分离成了明确定义的角色的一个好方法就是，试着去取代(至少从概念上)另一个产生完全不同输出的 View。举例来说，如果你有一个 web 应用程序，要让程序使用 PHP CLI 在命令行方式下运行，你将必须做何更改？</p>
+
+<p>尽管 View 有权访问 Model，但是让 View 调用 Model 的方法来改变它的状态是一种很不好的方式 —— 更新只应该由 Controller 来执行。View 调用的 Model 方法应该是没有副作用的只读数据检索方法。</p>
+
+<p>有两种设计模式经常在 Views 中使用：Template View 和 Transform View。</p>
+
+<h6 id="template-view">Template View</h6>
+
+<p>Template View 是在 web 应用程序的 View 中使用的主要模式。这个模式使用一个包含特殊标记的模板文件(通常是 HTML)，当 Template View 被执行的时候，这些标记会被 Model 中的数据所替换。</p>
+
+<p>PHP 本身就是一个特殊的 Template View 的例子，叫做服务器页面。Savant 就是一个基于使用 PHP 作为模板本身的模板系统(<a href="http://www.phpsavant.com/">http://www.phpsavant.com/</a>)。</p>
+
+<p>下面是一个使用 <tt><font face="新宋体">Savant</font></tt> 的例子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// PHP4
+require_once 'Savant2.php';
+
+$tpl =&amp; new Savant2();  
+$tpl-\&gt;assign('title', 'Colors of the Rainbow');  
+$tpl-\&gt;assign('colors', array('red',
+</code></pre></div></div>
+
+
+  </div><a class="u-url" href="/2007/05/the-model-view-controller-pattern-%E2%80%94%E2%80%94-mvc-%E6%A8%A1%E5%BC%8F%E8%BD%AC.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

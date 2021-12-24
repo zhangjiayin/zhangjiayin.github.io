@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[转]UML辅助网站规划和设计指南一 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="[转]UML辅助网站规划和设计指南一" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一、概述" />
+<meta property="og:description" content="一、概述" />
+<link rel="canonical" href="http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E4%B8%80.html" />
+<meta property="og:url" content="http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E4%B8%80.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-04-28T14:58:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[转]UML辅助网站规划和设计指南一" />
+<script type="application/ld+json">
+{"headline":"[转]UML辅助网站规划和设计指南一","url":"http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E4%B8%80.html","dateModified":"2007-04-28T14:58:00+08:00","datePublished":"2007-04-28T14:58:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E4%B8%80.html"},"description":"一、概述","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">[转]UML辅助网站规划和设计指南一</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-04-28T14:58:00+08:00" itemprop="datePublished">Apr 28, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>一、概述</strong></p>
+
+<p>　　<a href="http://dev.21tx.com/web/"><font color="#3366cc">Web</font></a><nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 0px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">网站</font></a></nobr>往往具有复杂与高度动态的特点。为了让Web应用在短时间之内开始运作，开发周期应该尽量地短。许多时候，开发者直接进入编写代码这一阶段，却不去仔细考虑自己想要构造的是什么样的网站以及准备如何构造：<a href="http://www.21tx.com/server/"><font color="#3366cc">服务器</font></a>端代码往往是毫无准备的即兴式编写，<a href="http://dev.21tx.com/database/"><font color="#3366cc">数据库</font></a>表也是随需随加，整个应用的体系有时候呈现一种无规划状态。然而，只要我们运用一些建模技术和<a href="http://dev.21tx.com/softengine/"><font color="#3366cc">软件工程</font></a>技术，就能够让开发过程更加流畅，确保Web应用将来更容易维护。</p>
+
+<p>　　<a href="http://dev.21tx.com/softengine/uml/"><font color="#3366cc">UML</font></a>（Unified Modeling Language，统一建模语言）是一种通用的可视化建模语言，用于对<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">软件</font></a></nobr>进行描述、可视化处理、构造和建立软件系统的文档。UML适用于各种<a href="http://dev.21tx.com/"><font color="#3366cc">软件开发</font></a>方法、软件生命周期的各个阶段、各种应用领域以及各种开发工具。UML能够描述系统的静态结构和动态行为：静态结构定义了系统中重要对象的属性和操作以及这些对象之间的相互关系；动态行为定义了对象的时间特性和对象为完成目标任务而相互进行<a href="http://news.21tx.com/telcom/"><font color="#3366cc">通信</font></a>的机制。UML不是一种程序<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">设计</font></a></nobr>语言，但我们可以用代码生成器将UML模型转换为多种程序设计语言代码，或使用反向生成器工具将程序源代码转换为UML模型。</p>
+
+<p>　　本文介绍用UML为Web网站建模的一些方法。全面采用UML技术是一个复杂的过程，但UML的某些部分很容易使用，而且它能够帮助你用更少的时间构造出更好的<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">系统</font></a></nobr>。</p>
+
+<p>　　为了示范UML在网站建设中的应用，本文将构造一个支持无线用户、提供各个地区天气报表和<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">交通</font></a></nobr>流量报表的网站。本文不准备详细介绍UML本身。但为了方便起见，附录中简要介绍了常见的UML符号和术语。要了解更多有关UML的信息，请参见文章最后的参考资源。</p>
+
+<p><strong>　　二、规划阶段</strong></p>
+
+<p>　　不论你是从头开始构造网站、移植网站还是增加某个重要的功能，为了确保设计决策的最优化，进行一些先期<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">规划</font></a></nobr>是必要的。如果你和其他人协作完成一项工程，就工作总量及其分配达成明确的共识具有不可估量的作用。在规划期间，你应该努力对系统的以下方面形成正确的认识：</p>
+
+<ul>
+  <li>用户和角色。</li>
+  <li>应用需求。</li>
+  <li>各个界面之间的转换流程。</li>
+  <li>要用到的工具和技术。</li>
+</ul>
+
+<h4 id="-21-用户">　　 <strong>2.1 用户</strong></h4>
+
+<p>　　了解使用系统的用户是很重要的。不仅系统分析要求你接触一些用户（通过问卷调查、email，或者面对面交谈），而且你经常还要让系统能够控制不同的用户角色和权限。通过对用户进行分类并了解他们的需求，你就可以找出线索来确定数据库的安全机制、功能限制方法、用户界面分组、<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">培训</font></a></nobr>和帮助需求、对具体内容的需求，甚至还可以从侧面了解到潜在广告客户的分布。</p>
+
+<center>
+<img height="192" width="186" src="http://image.21tx.com/image/20021203/10208.gif" />
+<p>图1：参与者/角色 层次图 </p>
+</center>
+
+<p>　　上图显示了几组不同的网站用户（在UML中称为Actor，即参与者）。在这里，最普通的用户类型（“Site User”）位于图的顶端，实线箭头表示generalization关系（“泛化”关系，参见本文附录说明，下同），它表示Site User又可以具体分成两类用户：Guest，Re<a href="http://dev.21tx.com/corp/gis/"><font color="#3366cc">GIS</font></a>tered User。这两类用户共有的特征在“Site User”参与者中说明，而Guest和Registered User各自私有的特征则在对应的参与者中说明。通常，你可以直接为参与者加上说明文档，无需单独编写说明用户的文档，但具体与你所用的UML工具有关。在本例中，Registered User又可以细分为Wireless User和Administrator两种类型，系统对这些用户的处理方式应有所不同。</p>
+
+<p>2.2 定义需求</p>
+
+<p>　　在正式开始编写代码之前，你应该对准备构造一个怎样的系统有一个清晰的认识。虽然在编写代码的同时也可以逐步完成这一工作，而且这种做法也很有吸引力，但借助图形和文字资料事先集体进行讨论效率要高得多。为<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">网站</font></a></nobr>编写详细的需求说明往往不那么合算，但你应该有时间画出几个草图、写下几段注解去说明网站准备提供的服务。这就要用到Use Case图（用例图）。Use Case可以看成一组功能——它可能对应网站上的一个页面、一个必须编写的程序，或者网站上可能发生的一个动作（比如，验证用户登录，改变用户的配置文件，清除过期的帐号，等等）。下面就是一个能够帮助你<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">规划</font></a></nobr>网站的Use Case图。注意，该图并没有显示出网站的所有Use Case，通常我们需要多个Use Case图才能描述完整的网站功能。</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10145.gif" />
+<p>图2：Use Case图 </p>
+</center>
+
+<p>　　即使是在这样一个<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">简单</font></a></nobr>的Use Case图中，我们也能够轻松地表达出大量的信息。例如，include关系说明两个Use Case包含同样的身份验证功能；extend关系说明天气页面可能以WML或者HTML格式显示；generalization关系说明各个具体的表现过程将遵从“Render HTML Page”或者“Render WML Page”所描述的基本行为规则以达到维持统一的风格<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">效果</font></a></nobr>和统一宏观行为模式的目的。</p>
+
+<p>　　上图也显示出无线用户能够访问网站中其他用户不能访问的某些区域。在这个Use Case图中，只有无线用户能够访问<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">交通</font></a></nobr>流量报表。这是因为我们已经得知只有在旅途中的移动用户才需要交通流量报表，而且不想再花时间把交通流量报表制作成其他标记语言形式。由此，“Get Traffic Report”Use Case不需要分成WML和HTML两种显示形式，它可以直接包含“Render WML Traffic Report”这个Use Case。</p>
+
+<p>　　一般地，你应该为这些Use Case加上简单的说明。具体地说，你应该描述每一个Use Case里将要发生什么，谁可以使用它，它如何启动、如何停止，以及某些时候可能发生的特殊事件（称为variation，即变化）。</p>
+
+<h4 id="-23-用户界面组织">　　 <strong>2.3 用户界面组织</strong></h4>
+
+<p>　　在制作Use Case的过程中，你会得到一些指示网站需要哪些用户界面的线索。也许你早就有了<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">设计</font></a></nobr>某些页面的绝妙主意，但Use Case帮助我们从另外一个角度来看问题。用户是否确实需要那么多的界面？某个页面是否过于复杂？网站的导航设施是否简单易用，即从主页访问常用服务是否很方便？在勾画界面草图、制作网站原型之前，你应该先在Use Case图中解决这些问题。</p>
+
+<p>　　当Use Case逐渐清晰时，我们就可以开始勾画出网站的大致结构。有些人会强调说页面和文件应该用相应的构件图（Component Diagram）建模，其实类图（Class Diagram）工具也很方便。请参见下图：</p>
+
+<center>
+<img width="550" src="http://image.21tx.com/image/20021203/10127.gif" />
+<p>图3：用户界面及其布局 </p>
+</center>
+
+<p>　　在上图中，各种网站<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">服务</font></a></nobr>被捆绑到了不同的网站区域：</p>
+
+<ul>
+  <li>/ - 网站的根</li>
+  <li>/common/ - 公用的图形、脚本、CSS文件等</li>
+  <li>/maps/ - 地图数据</li>
+  <li>/traffic/ - 交通流量报表</li>
+  <li>/weather/ - 天气报表</li>
+</ul>
+
+<p>　　该图还显示了在页面之间传递的参数。regionId是一个很重要的参数，它代表着用户感兴趣的地区（可能是一个国家、城市或者省份）。regionId在页面之间传递地区<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">信息</font></a></nobr>，使得用户能够从指定地区的天气报表跳转到交通流量信息。至于网站的common区域，你可以看到指针指向的是整个包（package）而不是区域中的单个文件，这是一种减少混乱的简化方法，因为所有其它的包都要用到大部分（如果不是全部的话）/common/区域中的文件。</p>
+
+<p>　　用户界面布局图能够帮助你避免网站混乱，它对于规划网站是很有用的。而且，一旦确定了一种有效的网站结构组织方式，它还可以作为一个固定的模式在多个网站上应用。</p>
+
+<p>2.4 工具选择</p>
+
+<p>　　对于小型<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">网站</font></a></nobr>，选择工具和技术相当简单。特别是由于投资的原因，只有少数几种工具组合才具有现实意义——Apache，<a href="http://dev.21tx.com/database/mysql/"><font color="#3366cc">MySQL</font></a>或者PostgreSQL，<a href="http://dev.21tx.com/web/php/"><font color="#3366cc">PHP</font></a>、<a href="http://dev.21tx.com/web/perl/"><font color="#3366cc">Perl</font></a>或<a href="http://dev.21tx.com/java/jsp/"><font color="#3366cc">JSP</font></a>/<a href="http://dev.21tx.com/java/jsp/"><font color="#3366cc">Servlet</font></a>。当前最流行的组合是Apache + PHP + MySQL，有许多低价位的<a href="http://dev.21tx.com/web/"><font color="#3366cc">Web</font></a>托管服务支持并主要集中在这种工具组合上。而对于规模较大的网站，在投资应用<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">软件</font></a></nobr>之前，它必须对各种工具进行更严格的评估和测试。下面是一个构件图的例子，它可以用来说明网站的体系结构。这个图形虽然简单，但它已经描述出了当前大多数网站的体系结构，对于你的网站，重新制作该图可能也没有必要，因为再也没有什么与众不同的内容值得加入这个图形了。</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10214.gif" />
+<p>图4：网站体系结构图 </p>
+</center>
+
+<p>　　讨论软件的整个生命周期已经超出了本文的范围，但应该指出的是，建立应用原型和界面模型应该在这个时候就开始。务必记下有关网站结构和页面布局的一些想法，因为最终你会想要为布局（菜单，导航条，页面整体布局等）编写一些公用的代码。另外，如果你正在转到新的工具和技术，建立原型的工作能够让你确保设计的可行性，确信已经就新工具的使用对开发组成员进行了足够的<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">培训</font></a></nobr>。</p>
+
+<p><strong>　　三、设计阶段</strong></p>
+
+<p>　　<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">设计</font></a></nobr>阶段应该与分析阶段交迭。一旦对自己所要构造的系统有了较多的认识，你就应该开始拟定设计思路。先100%地分析系统再进入设计阶段是没有意义的。需求总是不断地发展，而设计本身有时也会推动需求的发展（反之亦然）。所有的开发者都在进行某种类型的设计——只不过有些开发者直接以编程代码的形式进行设计。虽然这也能够完成任务，但它使得<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">管理</font></a></nobr>复杂工程和在工作组之内分配任务变得非常困难。先花一点时间通过设计图构造系统模型，以后你将获得巨大的回报。</p>
+
+<h4 id="-31-为未来而设计">　　 <strong>3.1 为未来而设计</strong></h4>
+
+<p>　　许多开发者花费在代码调试和改写上的时间超过了编写代码的时间，如果从一个以上网站的建设来看这个问题，情况就尤其严重了。好的网站设计能够以结构、组织方式和代码重用的形式应用到多个网站上。然而，如果代码只是匆匆忙忙堆砌而成，从现有代码长期获益的机会就减少了。要对网站进行设计<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">规划</font></a></nobr>，一种很有效的方法是画出类图（Class Diagram）。下图显示了类图通常要用到的许多重要关系。</p>
+
+<center>
+<img width="600" src="http://image.21tx.com/image/20021203/10112.gif" />
+<p>图5：类图 </p>
+</center>
+
+<p>　　说明如下：</p>
+
+<ul>
+  <li>Renderer类是一个抽象类（用斜体字显示）。这意味着Renderer类不能直接使用，程序只能创建其子类的实例（即new Region()）。为了满足把页面内容显示到不同类型浏览器的需要，所有用来生成内容的页面都必须从Renderer类派生。</li>
+  <li>WeatherReport类创建并拥有Region对象，这通过代表聚合关系（Aggregate Relationship）的黑色菱形显示出来，它表示一个对象拥有并创建其他对象。</li>
+  <li>方法名字前面的加号（“+”）表示该方法是公用方法，可以被其他对象或者函数调用；减号（“-”）表示方法或者变量是私有的，只能由同一对象内部的成员函数访问。在PHP中方法和变量是公用的，但我们应该总是把变量看成私有，避免从对象外部直接访问变量。</li>
+  <li>HTMLWeatherReport类依赖于HTMLUtils类。依赖关系（dependency）表示一个类要创建另一个类的实例或者调用另一个类的方法。</li>
+  <li>类图中的每一个类应该注明：所有的方法（以及所有的变量，如有的话），方法的访问属性（public，private或者protected），方法的返回值类型，方法的参数，变量的类型。函数写在前面，如果类有变量的话，则一般随后在一个分开的方框中列出。</li>
+</ul>
+
+<p>　　即使你所构造的不是一个面向对象的<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">系统</font></a></nobr>，你仍就可以用类图建立系统的模型。类能够方便地描述出各种包含关系和你所编写的函数文件。虽然此时类图不再显示继承、构成/聚合等面向对象系统特有的关系，但它可以用依赖关系描述出文件之间的调用关系。</p>
+
+<h4 id="-32-运行时的系统模型">　　 <strong>3.2 运行时的系统模型</strong></h4>
+
+<p>　　有些时候，我们需要显示出应用的各个部件如何在运行时协作完成任务。前面的类图显示了类之间的关系，但它没有显示出调用出现的次序，也没有显示出来自一个函数的结果可能决定下一次调用的目标。为了在更动态的层面上描述系统，<a href="http://dev.21tx.com/softengine/uml/"><font color="#3366cc">UML</font></a>提供了许多其他类型的图。对于Web网站设计来说，情节图（Scenario Diagram）特别有用。情节图分成两种：协作图（Collaboration Diagram），序列图（Sequence Diagram）。一般地，我们不会建立系统所有交互过程的<nobr><a class="iAs" style="color: #6600ff; border-bottom: #6600ff 1px dotted; background-color: transparent; text-decoration: underline" target="_blank"><font color="#6600ff">模型</font></a></nobr>，情节图只用来描述系统最复杂的部分，或用来概括出代码的一般调用模式。例如，我们可能要示范特定的页面如何与验证用户身份的代码协作，或者要显示页面如何调用公用代码（工具性的框架代码）以保持统一的外观和风格。</p>
+
+<p>　　协作图和序列图分别举例如下。</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10154.gif" />
+<p>图6：协作图 </p>
+</center>
+
+<p>　　上面的协作图显示了从Web网站获取天气报表的一般过程。注意该图忽略了一些不重要的方法，因为我们只对处理过程中的关键步骤感兴趣。你可以根据编号“1”到“1.3.3.4”找出各个函数的执行次序。一些人喜欢以“1，2，3，……”形式对执行步骤编号，但一般而言，用“1，1.1，1.2，2，2.1，……”的形式显示出调用栈的深度是一种更好的选择，这种编号方式能够更清楚地显示出程序的控制转换过程。例如，上图显示出report()方法调用了WMLUtil以及Region对象中的许多方法：在通过一系列的查询和内容生成函数为指定地区生成报表之前，我们调用了WMLUtil中的buildHeader(…)函数；最后我们调用的是WMLUtil模块的buildFooter(…)，然后返回report()方法，最后返回getPage()。你可以为协作图加上更多的细节说明，比如返回值、约束、条件等。</p>
+
+<center>
+<img src="http://image.21tx.com/image/20021203/10196.gif" />
+<p>图7：序列图 </p>
+</center>
+
+<p>　　就图形所传达的信息而言，次序图和协作图非常相似。事实上，许多UML建模工具能够从协作图生成次序图，或者相反。次序图与协作图的主要不同之处在于：在次序图上，事件的发生次序一目了然，非常直观。另外，次序图中还可以加入生存周期和时间方面的详细信息，比如延迟、线程并发、对象的构造和删除等。</p>
+
+<p>　　在决定选用次序图还是协作图的时候，考虑以下几点有助于你作出最合适的选择：</p>
+
+<ul>
+  <li>如果要显示代码中与时间或线程密切相关的问题，选择次序图。</li>
+  <li>如果要显示对象之间的交互模式，选择协作图。</li>
+  <li>如果要显示几个或者大量对象之间的交互过程，选择次序图。</li>
+  <li>如果要显示少量对象之间的大量消息传递或交互过程，选择协作图。</li>
+</ul>
+
+<p>]]&gt;</p>
+
+
+  </div><a class="u-url" href="/2007/04/%E8%BD%ACuml%E8%BE%85%E5%8A%A9%E7%BD%91%E7%AB%99%E8%A7%84%E5%88%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97%E4%B8%80.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

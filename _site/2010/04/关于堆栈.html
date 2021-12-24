@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>关于堆栈 | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="关于堆栈" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一个进程的内存空间可以在逻辑上分成3个部份：代码区，静态数据区和动态数据区，静态数据区和动态数据区。动态数据区一般就是“堆栈”。“栈 (stack)”和“堆(heap)”是两种不同的动态数据区，栈是一种线性结构，堆是一种链式结构。进程的每个线程都有私有的“栈”，所以每个线程虽然 代码一样，但本地变量的数据都是互不干扰。一个堆栈可以通过“基地址”和“栈顶”地址来描述。全局变量和静态变量分配在静态数据区，本地变量分配在动态数 据区，即堆栈中。程序通过堆栈的基地址和偏移量来访问本地变量。" />
+<meta property="og:description" content="一个进程的内存空间可以在逻辑上分成3个部份：代码区，静态数据区和动态数据区，静态数据区和动态数据区。动态数据区一般就是“堆栈”。“栈 (stack)”和“堆(heap)”是两种不同的动态数据区，栈是一种线性结构，堆是一种链式结构。进程的每个线程都有私有的“栈”，所以每个线程虽然 代码一样，但本地变量的数据都是互不干扰。一个堆栈可以通过“基地址”和“栈顶”地址来描述。全局变量和静态变量分配在静态数据区，本地变量分配在动态数 据区，即堆栈中。程序通过堆栈的基地址和偏移量来访问本地变量。" />
+<link rel="canonical" href="http://localhost:4000/2010/04/%E5%85%B3%E4%BA%8E%E5%A0%86%E6%A0%88.html" />
+<meta property="og:url" content="http://localhost:4000/2010/04/%E5%85%B3%E4%BA%8E%E5%A0%86%E6%A0%88.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2010-04-04T12:33:31+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="关于堆栈" />
+<script type="application/ld+json">
+{"headline":"关于堆栈","url":"http://localhost:4000/2010/04/%E5%85%B3%E4%BA%8E%E5%A0%86%E6%A0%88.html","dateModified":"2010-04-04T12:33:31+08:00","datePublished":"2010-04-04T12:33:31+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2010/04/%E5%85%B3%E4%BA%8E%E5%A0%86%E6%A0%88.html"},"description":"一个进程的内存空间可以在逻辑上分成3个部份：代码区，静态数据区和动态数据区，静态数据区和动态数据区。动态数据区一般就是“堆栈”。“栈 (stack)”和“堆(heap)”是两种不同的动态数据区，栈是一种线性结构，堆是一种链式结构。进程的每个线程都有私有的“栈”，所以每个线程虽然 代码一样，但本地变量的数据都是互不干扰。一个堆栈可以通过“基地址”和“栈顶”地址来描述。全局变量和静态变量分配在静态数据区，本地变量分配在动态数 据区，即堆栈中。程序通过堆栈的基地址和偏移量来访问本地变量。","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">关于堆栈</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2010-04-04T12:33:31+08:00" itemprop="datePublished">Apr 4, 2010
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>一个进程的内存空间可以在逻辑上分成3个部份：代码区，静态数据区和动态数据区，静态数据区和动态数据区。动态数据区一般就是“堆栈”。“栈 (stack)”和“堆(heap)”是两种不同的动态数据区，栈是一种线性结构，堆是一种链式结构。进程的每个线程都有私有的“栈”，所以每个线程虽然 代码一样，但本地变量的数据都是互不干扰。一个堆栈可以通过“基地址”和“栈顶”地址来描述。全局变量和静态变量分配在静态数据区，本地变量分配在动态数 据区，即堆栈中。程序通过堆栈的基地址和偏移量来访问本地变量。</p>
+
+<p>通常栈的空间较小不能再栈上分配很大的内存空间（栈只有1-2MB的大小），而堆可以在内存允许的情况下分配大内存空间</p>
+
+<p>栈区（stack）— 由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。<br />
+堆区（heap） — 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。注意它与数据结构中的堆是两回事</p>
+
+
+  </div><a class="u-url" href="/2010/04/%E5%85%B3%E4%BA%8E%E5%A0%86%E6%A0%88.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

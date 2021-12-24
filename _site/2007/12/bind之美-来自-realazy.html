@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>.bind()之美 [来自 realazy] | 佳音的博客</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content=".bind()之美 [来自 realazy]" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="##" />
+<meta property="og:description" content="##" />
+<link rel="canonical" href="http://localhost:4000/2007/12/bind%E4%B9%8B%E7%BE%8E-%E6%9D%A5%E8%87%AA-realazy.html" />
+<meta property="og:url" content="http://localhost:4000/2007/12/bind%E4%B9%8B%E7%BE%8E-%E6%9D%A5%E8%87%AA-realazy.html" />
+<meta property="og:site_name" content="佳音的博客" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2007-12-12T12:41:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content=".bind()之美 [来自 realazy]" />
+<script type="application/ld+json">
+{"headline":".bind()之美 [来自 realazy]","url":"http://localhost:4000/2007/12/bind%E4%B9%8B%E7%BE%8E-%E6%9D%A5%E8%87%AA-realazy.html","dateModified":"2007-12-12T12:41:00+08:00","datePublished":"2007-12-12T12:41:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2007/12/bind%E4%B9%8B%E7%BE%8E-%E6%9D%A5%E8%87%AA-realazy.html"},"description":"##","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="佳音的博客" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">佳音的博客</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">.bind()之美 [来自 realazy]</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2007-12-12T12:41:00+08:00" itemprop="datePublished">Dec 12, 2007
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>##</p>
+
+<p>我并不是 <a href="http://prototypejs.org/"><font color="#007b99">Prototype JavaScript framework</font></a>的忠实粉丝，但我对它的总体代码质量印象深刻。具体而言，它为<code class="language-plaintext highlighter-rouge">Function</code>对象增加一个简洁的补充，对我管理函数呼叫执行后的上下文产生了极大的正面影响：<code class="language-plaintext highlighter-rouge">bind</code>跟<code class="language-plaintext highlighter-rouge">call</code>一样执行相同的常见任务，改变函数执行的上下文。不同之处在于<code class="language-plaintext highlighter-rouge">bind</code>返回的是函数引用可以备用，而不是<code class="language-plaintext highlighter-rouge">call</code>的立即执行而产生的最终结果。</p>
+
+<p>如果需要简化一下<code class="language-plaintext highlighter-rouge">bind</code>函数以抓住概念的重点，我们可以先把它插进前面讨论的乘积例子中去，看它究竟是如何工作的。这是一个相当优雅的解决方案：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var first_object = {
+  num: 42
+ };
+ var second_object = {
+  num: 24
+ };
+
+ function multiply(mult) {
+  return this.num * mult;
+ }
+
+ Function.prototype.bind = function(obj) {
+  var method = this,
+   temp = function() {
+    return method.apply(obj, arguments);
+   };
+
+  return temp;
+ }
+
+ var first_multiply = multiply.bind(first_object);
+ first_multiply(5); // 返回 42 * 5
+
+ var second_multiply = multiply.bind(second_object);
+ second_multiply(5); // 返回 24 * 5
+</code></pre></div></div>
+
+<p>首先，我们定义了<code class="language-plaintext highlighter-rouge">first_object</code>, <code class="language-plaintext highlighter-rouge">second_object</code>和<code class="language-plaintext highlighter-rouge">multiply</code>函数，一如既往。细心处理这些后，我们继续为<code class="language-plaintext highlighter-rouge">Function</code>对象的<a href="http://en.wikipedia.org/wiki/Prototype-based_programming"><code class="language-plaintext highlighter-rouge">prototype</code></a>定义一个<code class="language-plaintext highlighter-rouge">bind</code>方法，这样的话，我们程序里的函数都有一个<code class="language-plaintext highlighter-rouge">bind</code>方法可用。当执行<code class="language-plaintext highlighter-rouge">multiply.bind(first_object)</code>时，JavaScript为<code class="language-plaintext highlighter-rouge">bind</code>方法创建一个运行上下文，把<code class="language-plaintext highlighter-rouge">this</code>置为<code class="language-plaintext highlighter-rouge">multiply</code>函数的引用，并把第一个参数<code class="language-plaintext highlighter-rouge">obj</code>置为<code class="language-plaintext highlighter-rouge">first_object</code>的引用。目前为止，一切皆顺。</p>
+
+<p>这个解决方案的真正天才之处在于<code class="language-plaintext highlighter-rouge">method</code>的创建，置为<code class="language-plaintext highlighter-rouge">this</code>的引用所指（即<code class="language-plaintext highlighter-rouge">multiply</code>函数自身）。当下一行的匿名函数被创建，<code class="language-plaintext highlighter-rouge">method</code>通过它的作用域链访问，obj亦然（不要在此使用<code class="language-plaintext highlighter-rouge">this</code>, 因为新创建的函数执行后，<code class="language-plaintext highlighter-rouge">this</code>会被新的、局部的上下文覆盖）。这个<code class="language-plaintext highlighter-rouge">this</code>的别名让<code class="language-plaintext highlighter-rouge">apply</code>执行<code class="language-plaintext highlighter-rouge">multiply</code>函数成为可能，而传递<code class="language-plaintext highlighter-rouge">obj</code>则确保上下文的正确。用计算机科学的话说，<code class="language-plaintext highlighter-rouge">temp</code>是一个闭包（<a href="http://www.jibbering.com/faq/faq_notes/closures.html"><cite><font color="#007b99">closure</font></cite></a>），它可以保证，需要在<code class="language-plaintext highlighter-rouge">first_object</code>的上下文中执行<code class="language-plaintext highlighter-rouge">multiply</code>，<code class="language-plaintext highlighter-rouge">bind</code>呼叫的最终返回可以用在任何的上下文中。</p>
+
+<p>这才是前面说到的事件处理函数和<code class="language-plaintext highlighter-rouge">setTimeout</code>情形所真正需要的。以下代码完全解决了这些问题，绑定<code class="language-plaintext highlighter-rouge">deep_thought.ask_question</code>方法到<code class="language-plaintext highlighter-rouge">deep_thought</code>的上下文中，因此能在任何事件触发时都能正确运行：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function addhandler() {
+ var deep_thought = new BigComputer(42),
+  the_button = document.getElementById('thebutton');
+
+ the_button.onclick = deep_thought.ask_question.bind(deep_thought);
+}
+</code></pre></div></div>
+
+<p>漂亮。</p>
+
+<p>]]&gt;</p>
+
+
+  </div><a class="u-url" href="/2007/12/bind%E4%B9%8B%E7%BE%8E-%E6%9D%A5%E8%87%AA-realazy.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">佳音的博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">佳音的博客</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">zhangjiayin</span></a></li><li><a href="https://www.twitter.com/zhangjiayin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">zhangjiayin</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>方乃做人之本，圆乃处世之道.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
