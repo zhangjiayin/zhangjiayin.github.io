@@ -18,5 +18,5 @@ meta:
 author: 
 permalink: "/2010/02/ebook-pro-hadoop.html"
 ---
-[Pro Hadoop](http://blog.00rz.com/wp-content/uploads/2010/02/Pro+Hadoop.pdf)
+[Pro Hadoop](/assets/2010/02/Pro+Hadoop.pdf)
 

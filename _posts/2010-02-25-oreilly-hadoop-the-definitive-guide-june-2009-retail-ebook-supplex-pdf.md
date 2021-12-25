@@ -17,5 +17,5 @@ meta:
 author: 
 permalink: "/2010/02/oreilly-hadoop-the-definitive-guide-june-2009-retail-ebook-supplex-pdf.html"
 ---
-[OReilly.Hadoop.The.Definitive.Guide.June.2009.RETAiL.eBOOk-sUppLeX](http://blog.00rz.com/wp-content/uploads/2010/02/OReilly.Hadoop.The_.Definitive.Guide_.June_.2009.RETAiL.eBOOk-sUppLeX.pdf)
+[OReilly.Hadoop.The.Definitive.Guide.June.2009.RETAiL.eBOOk-sUppLeX](/assets/2010/02/OReilly.Hadoop.The_.Definitive.Guide_.June_.2009.RETAiL.eBOOk-sUppLeX.pdf)
 

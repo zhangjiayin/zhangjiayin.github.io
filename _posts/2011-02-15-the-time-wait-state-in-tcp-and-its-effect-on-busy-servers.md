@@ -16,5 +16,5 @@ meta:
 author: 
 permalink: "/2011/02/the-time-wait-state-in-tcp-and-its-effect-on-busy-servers.html"
 ---
-[The TIME-WAIT state in TCP and Its Effect on Busy Servers](http://blog.00rz.com/wp-content/uploads/2011/02/10.1.1.116.9808.pdf) from &nbsp;[http://www.isi.edu/touch/pubs/infocomm99/infocomm99-web/](http://www.isi.edu/touch/pubs/infocomm99/infocomm99-web/)
+[The TIME-WAIT state in TCP and Its Effect on Busy Servers](/assets/2011/02/10.1.1.116.9808.pdf) from &nbsp;[http://www.isi.edu/touch/pubs/infocomm99/infocomm99-web/](http://www.isi.edu/touch/pubs/infocomm99/infocomm99-web/)
 

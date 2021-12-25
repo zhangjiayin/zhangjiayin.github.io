@@ -17,5 +17,5 @@ meta:
 author: 
 permalink: "/2010/05/the-definitive-guide-to-pylons-dec-2008-pdf.html"
 ---
-[Apress.the.Definitive.Guide.to.Pylons.Dec.2008](http://blog.00rz.com/wp-content/uploads/2010/05/Apress.the_.Definitive.Guide_.to_.Pylons.Dec.2008.pdf)
+[Apress.the.Definitive.Guide.to.Pylons.Dec.2008](/assets/2010/05/Apress.the_.Definitive.Guide_.to_.Pylons.Dec.2008.pdf)
 
